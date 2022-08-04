@@ -8,7 +8,7 @@ class CheckoutController < ApplicationController
                                                       currency: 'EUR',
                                                       unit_amount: product.price,
                                                       product_data: {
-                                                        name: 'name of the product'
+                                                        name: 'Course 1'
                                                       }
                                                     },
                                                     quantity: 1

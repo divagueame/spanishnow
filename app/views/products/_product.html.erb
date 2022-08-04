@@ -5,8 +5,13 @@
   </p>
 
   <p>
+    <strong>Sales:</strong>
+    <%= product.sales_count %>
+  </p>
+
+  <p>
     <strong>Price:</strong>
-    <%= product.price %>
+    <%= number_to_euro  (product.price/100) %>
   </p>
 
   <p>
