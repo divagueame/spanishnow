@@ -2,11 +2,6 @@ class WebhooksController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def create
-    puts "\nCHECKOUT"
-    puts "\n    "
-    puts "\n    "
-    puts "\n    "
-
     payload = request.body.read
     event = nil
 
@@ -23,8 +18,7 @@ class WebhooksController < ApplicationController
 
     # Handle the event
     case event.type
-
-    when 'checkout_session_completed'
+    when 'checkout.session.completed'
       puts "\n COMPLETED!"
       puts "\n    "
       puts "\n    "
