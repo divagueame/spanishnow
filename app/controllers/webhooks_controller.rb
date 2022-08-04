@@ -4,12 +4,9 @@ class WebhooksController < ApplicationController
   def create
     payload = request.body.read
     event = nil
-    sig_header = request.ENV['HTTP_STRIPE_SIGNATURE']
+    sig_header = request.env['HTTP_STRIPE_SIGNATURE']
 
     begin
-      #   event = Stripe::Event.construct_from(
-      #     JSON.parse(payload, symbolize_names: true)
-      #   )
       event = Stripe::Webhook.construct_event(
         payload, sig_header, Rails.application.credentials[:stripe][:webhook]
       )
@@ -23,7 +20,19 @@ class WebhooksController < ApplicationController
     # Handle the event
     case event.type
     when 'checkout.session.completed'
+      session = event.data.object
       puts "\n COMPLETED!"
+      puts "\n    "
+      p session
+      puts "\n    "
+      puts "\n    "
+      puts "\n    "
+      puts "\n    "
+      puts "\n    "
+      puts "\n    "
+      puts "\n    "
+      puts "\n    "
+      puts "\n    "
       puts "\n    "
       puts "\n    "
       puts "\n    "
