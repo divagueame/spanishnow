@@ -4,6 +4,7 @@ class WebhooksController < ApplicationController
   def create
     payload = request.body.read
     event = nil
+    sig_header = request.ENV['HTTP_STRIPE_SIGNATURE']
 
     begin
       #   event = Stripe::Event.construct_from(
