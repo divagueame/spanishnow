@@ -3,13 +3,23 @@ class WebhooksController < ApplicationController
     payload = request.body.read
     sig_header = request.env['HTTP_STRIPE_SIGNATURE']
     event = nil
-
+    p 'GOT'
+    puts "\nTO SATRT"
+    puts "\nTO SATRT"
+    puts "\nTO SATRT"
+    puts "\nTO SATRT"
+    puts "\n "
+    puts "\n "
+    puts "\n "
     begin
       event = Stripe::Webhook.construct_event(
         payload, sig_header, Rails.application.credentials[:stripe][:webhook]
       )
     rescue JSON::ParserError => e
       # Invalid payload
+      puts "\nJSON PARSER ERROR"
+      puts "\nJSON PARSER ERROR"
+      puts "\nJSON PARSER ERROR"
       status 400
       return
     end
@@ -17,8 +27,16 @@ class WebhooksController < ApplicationController
     # Handle the event
     case event.type
     when 'checkout_session_completed'
+      puts "\nJCHECKOUT"
+      puts "\n    "
+      puts "\n    "
+      puts "\n    "
+      puts "\n    "
+      puts "\n"
       session = event.data.object
       @product = Product.find_by(price: session.amount_total)
+      puts "\n PRODUCT"
+      puts @product
       @product.increment(:sales_count)
     when 'payment_intent.succeeded'
       payment_intent = event.data.object # contains a Stripe::PaymentIntent
