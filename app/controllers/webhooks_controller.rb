@@ -6,9 +6,6 @@ class WebhooksController < ApplicationController
     sig_header = request.env['HTTP_STRIPE_SIGNATURE']
     endpoint_secret = Rails.application.credentials[:stripe][:webhook]
     event = nil
-    puts "\n COMPLETED!"
-    puts endpoint_secret
-    puts "\n    "
 
     begin
       event = Stripe::Webhook.construct_event(
@@ -27,24 +24,27 @@ class WebhooksController < ApplicationController
         format.json { render json: { error: e }, status: :bad_request }
       end
     end
+
+    case event.type
+    when 'checkout.session.completed'
+      session = event.data.object
+      puts "\n COMPLETED!"
+      puts "\n    "
+      puts "\n    "
+      puts "\n    "
+      puts "\n    "
+      puts "\n    "
+      puts "\n    "
+      puts "\n    "
+      puts "\n    "
+      puts "\n    "
+      puts "\n    "
+      puts "\n    "
+      puts "\n    "
+      puts "\n    "
+    else
+      puts "Unhandled event type: #{event.type}"
+    end
     head 200
   end
-
-  # when 'checkout.session.completed'
-  #   session = event.data.object
-  #   puts "\n COMPLETED!"
-  #   puts "\n    "
-  #   p session
-  #   puts "\n    "
-  #   puts "\n    "
-  #   puts "\n    "
-  #   puts "\n    "
-  #   puts "\n    "
-  #   puts "\n    "
-  #   puts "\n    "
-  #   puts "\n    "
-  #   puts "\n    "
-  #   puts "\n    "
-  #   puts "\n    "
-  #   puts "\n    "
 end
