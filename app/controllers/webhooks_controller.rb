@@ -3,13 +3,13 @@ class WebhooksController < ApplicationController
 
   def create
     payload = request.body.read
-    # sig_header = request.env['HTTP_STRIPE_SIGNATURE']
+    sig_header = request.env['HTTP_STRIPE_SIGNATURE']
     # endpoint_secret = Rails.application.credentials[:stripe][:webhook]
     # event = nil
     puts "\n COMPLETED!"
-    puts payload
+    puts sig_header
     puts "\n    "
-    head 400
+    head 200
 
     #       begin
     #     event = Stripe::Event.construct_from(
