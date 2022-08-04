@@ -12,11 +12,13 @@ class WebhooksController < ApplicationController
         payload, sig_header, endpoint_secret
       )
     rescue JSON::ParserError => e
+      p 'PPPPPPPPPPPPPPPPPPP'
       # Invalid payload
       status 400
       return
     rescue Stripe::SignatureVerificationError => e
       # Invalid signature
+      p 'PPPPPPPPPPPPPPPPPPP'
       status 400
       return
     end
