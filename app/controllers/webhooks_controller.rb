@@ -5,22 +5,29 @@ class WebhooksController < ApplicationController
     payload = request.body.read
     sig_header = request.env['HTTP_STRIPE_SIGNATURE']
     endpoint_secret = Rails.application.credentials[:stripe][:webhook]
-    # event = nil
+    event = nil
     puts "\n COMPLETED!"
     puts endpoint_secret
     puts "\n    "
-    head 200
 
-    #       begin
-    #     event = Stripe::Event.construct_from(
-    #       JSON.parse(payload, symbolize_names: true)
-    #     )
-    #   rescue JSON::ParserError => e
-    #     # Invalid payload
-    #     puts "⚠️  Webhook error while parsing basic request. #{e.message})"
-    #     status 400
-    #     return
-    #   end
+    begin
+      event = Stripe::Webhook.construct_event(
+        payload,
+        sig_header,
+        endpoint_secret
+      )
+    rescue JSON::ParserError => e
+      # Invalid payload
+      respond_to do |format|
+        format.json { render json: { error: e }, status: :bad_request }
+      end
+    rescue Stripe::SignatureVerificationError => e
+      # Invalid signature
+      respond_to do |format|
+        format.json { render json: { error: e }, status: :bad_request }
+      end
+    end
+    head 200
   end
 
   # when 'checkout.session.completed'
