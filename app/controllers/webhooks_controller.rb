@@ -8,19 +8,27 @@ class WebhooksController < ApplicationController
     event = nil
 
     begin
-      event = Stripe::Webhook.construct_event(
-        payload, sig_header, endpoint_secret
+      event = Stripe::Event.construct_from(
+        JSON.parse(payload, symbolize_names: true)
       )
     rescue JSON::ParserError => e
-      p 'PPPPPPPPPPPPPPPPPPP'
       # Invalid payload
+      puts "⚠️  Webhook error while parsing basic request. #{e.message})"
       status 400
       return
-    rescue Stripe::SignatureVerificationError => e
-      # Invalid signature
-      p 'PPPPPPPPPPPPPPPPPPP'
-      status 400
-      return
+    end
+    # Check if webhook signing is configured.
+    if endpoint_secret
+      # Retrieve the event by verifying the signature using the raw body and secret.
+      signature = request.env['HTTP_STRIPE_SIGNATURE']
+      begin
+        event = Stripe::Webhook.construct_event(
+          payload, signature, endpoint_secret
+        )
+      rescue Stripe::SignatureVerificationError
+        puts "⚠️  Webhook signature verification failed. #{err.message})"
+        status 400
+      end
     end
 
     # Handle the event
