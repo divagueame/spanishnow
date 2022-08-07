@@ -11,9 +11,13 @@
   </head>
 
   <body>
-  <%= link_to 'Courses', :products, style: "display:none" %> 
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+
+    <%= link_to 'Courses', :products, style: "display:none" %> 
  
-  <hr>
+    <hr>
     <%= yield %>
   </body>
 </html>

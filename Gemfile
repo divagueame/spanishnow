@@ -72,3 +72,4 @@ group :test do
 end
 gem 'stripe'
 gem "font-awesome-sass", "~> 6.1.2"
+gem 'devise'
