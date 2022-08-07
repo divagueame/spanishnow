@@ -71,3 +71,4 @@ group :test do
   gem 'webdrivers'
 end
 gem 'stripe'
+gem "font-awesome-sass", "~> 6.1.2"

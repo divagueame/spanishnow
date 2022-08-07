@@ -16,7 +16,7 @@
 
   <p>
     <strong>Payment:</strong>
-    <%= button_to "Buy now!", checkout_create_path, params: {id: product.id}, remote: true, data: {turbo: false}%>
+    <%= get_course_btn(product.id) %>
   </p>
 
 </div>
