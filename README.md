@@ -1,3 +1,3 @@
 # README
 
-- SPANISH NOW
+MAMBO Spanish
