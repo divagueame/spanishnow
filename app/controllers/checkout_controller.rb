@@ -8,7 +8,7 @@ class CheckoutController < ApplicationController
                                                       currency: 'EUR',
                                                       unit_amount: product.price,
                                                       product_data: {
-                                                        name: 'Course 1'
+                                                        name: 'Mambo Spanish Course'
                                                       }
                                                     },
                                                     quantity: 1
@@ -17,6 +17,6 @@ class CheckoutController < ApplicationController
                                                   success_url: root_url,
                                                   cancel_url: root_url
                                                 })
-    redirect_to @session.url, status: 303, allow_other_host: true
+    redirect_to @session.url, status: 303, allow_other_host: true, notice: 'Purchase Completed! Vamos!'
   end
 end
