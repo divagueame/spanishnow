@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  
+  get '/faq', to: 'faq#index', as: 'faq'
   devise_for :users
-  get 'home/index'
-  # root 'products#index'
 
+  # get 'home/index'
   root 'home#index'
   resources :products
   resources :webhooks, only: [:create]

@@ -1,4 +1,7 @@
-<h1>Spanish Now</h1> 
-<h4><%= icon('fa-solid', 'hat-wizard')%> From novice to intermediate in 6 weeks</h4>
-<%= get_course_btn(Product.last.id, "Buy now and start learning today!") %>
- 
+    <h1>Spanish Now</h1> 
+    <% if user_signed_in?  %>
+        <h2>Great to you see here! Let's crash it!</h2>
+    <% else %>
+        <h4><%= icon('fa-solid', 'hat-wizard')%> From novice to intermediate in 6 weeks</h4>
+        <%= get_course_btn(Product.last.id, "Buy now and start learning today!") %>
+    <% end %>
