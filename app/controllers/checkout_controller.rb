@@ -14,9 +14,9 @@ class CheckoutController < ApplicationController
                                                     quantity: 1
                                                   }],
                                                   mode: 'payment',
-                                                  success_url: root_url,
+                                                  success_url: welcome_url,
                                                   cancel_url: root_url
                                                 })
-    redirect_to @session.url, status: 303, allow_other_host: true, notice: 'Purchase Completed! Vamos!'
+    redirect_to @session.url, status: 303, allow_other_host: true
   end
 end
