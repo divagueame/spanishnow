@@ -28,20 +28,7 @@ class WebhooksController < ApplicationController
     case event.type
     when 'checkout.session.completed'
       session = event.data.object
-      puts "\n COMPLETED!"
-      puts "\n    "
-      puts "\n    "
-      puts "\n    "
-      puts "\n    "
-      puts "\n    "
-      puts "\n    "
-      puts "\n    "
-      puts "\n    "
-      puts "\n    "
-      puts "\n    "
-      puts "\n    "
-      puts "\n    "
-      puts "\n    "
+      redirect_to welcome_path
     else
       puts "Unhandled event type: #{event.type}"
     end
