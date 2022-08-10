@@ -2,7 +2,6 @@ class CheckoutController < ApplicationController
   def create
     product = Product.find(params[:id])
     @session = Stripe::Checkout::Session.create({
-                                                  payment_method_types: ['card'],
                                                   line_items: [{
                                                     price_data: {
                                                       currency: 'EUR',
@@ -13,6 +12,7 @@ class CheckoutController < ApplicationController
                                                     },
                                                     quantity: 1
                                                   }],
+                                                  payment_method_types: ['card'],
                                                   mode: 'payment',
                                                   success_url: welcome_url,
                                                   cancel_url: root_url
