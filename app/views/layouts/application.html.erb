@@ -11,6 +11,8 @@
   </head>
 
   <body>
+  <header>
+  <h6>MamboSpanish</h6>
     <nav>
         <%= link_to 'Home', root_path %>
         <%= link_to 'FAQ', faq_path %>
@@ -20,6 +22,7 @@
             <%= link_to 'Log in', new_user_session_path %>
         <% end %>
     </nav>
+  </header>
     <main>
       <%= link_to 'Courses', :products, style: "display:none" %> 
   
