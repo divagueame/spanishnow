@@ -1,9 +1,9 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  name: MyString
-  price: 1
+  name: Spanish for noobs
+  price: 10000
+  sales_count: 0
 
 two:
-  name: MyString
-  price: 1
+  name: Spanish for pros
+  price: 20000
+  sales_count: 0
