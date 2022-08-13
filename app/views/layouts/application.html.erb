@@ -24,9 +24,11 @@
       <%= link_to 'Courses', :products, style: "display:none" %> 
   
       <%= yield %>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <%= render partial: 'partials/flash' %>
     
     </main>
+    <footer>
+    <p>Made with ❤️ by Martin Arce</p>
+    </footer>
   </body>
 </html>

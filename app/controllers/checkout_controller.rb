@@ -17,6 +17,6 @@ class CheckoutController < ApplicationController
                                                   success_url: welcome_url,
                                                   cancel_url: root_url
                                                 })
-    redirect_to @session.url, status: 303, allow_other_host: true
+    redirect_to @session.url, status: 303, allow_other_host: true, notice: "Payment confirmend. Let's rock it! "
   end
 end
