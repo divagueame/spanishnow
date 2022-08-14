@@ -11,21 +11,10 @@
   </head>
 
   <body>
-  <header>
-  <h6>MamboSpanish</h6>
-    <nav>
-        <%= link_to 'Home', root_path %>
-        <%= link_to 'FAQ', faq_path %>
-        <% if user_signed_in?  %>
-            <%= link_to "Sign Out", destroy_user_session_path, data: { "turbo-method": :delete } %>
-        <% else %>
-            <%= link_to 'Log in', new_user_session_path %>
-        <% end %>
-    </nav>
-  </header>
+    <%= render partial: 'partials/nav' %>
+
     <main>
       <%= link_to 'Courses', :products, style: "display:none" %> 
-  
       <%= yield %>
       <%= render partial: 'partials/flash' %>
     

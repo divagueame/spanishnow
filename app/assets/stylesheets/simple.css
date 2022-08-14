@@ -54,7 +54,9 @@ body {
   line-height: 1.5;
   display: grid;
   grid-template-columns:
-    1fr min(45rem, 90%) 1fr;
+  1fr min(45rem, 90%) 1fr;
+  grid-template-rows:
+    55px auto 10px;
   margin: 0;
   min-height: 100vh;
 }
@@ -67,15 +69,20 @@ body>* {
 body > header {
   background: var(--accent-bg);
   border-bottom: 1px solid var(--border);
-  text-align: center;
-  padding: 0 0.5rem 2rem 0.5rem;
+  text-align: left;
+  padding: 0 1.5rem .5rem 1.5rem;
   grid-column: 1 / -1;
   box-sizing: border-box;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px
 }
 
 body > header h1 {
   max-width: 1200px;
-  margin: 1rem auto;
+  margin: .1rem auto .1rem 0;
+  font-size: 1.4rem;
 }
 
 body > header p {
@@ -89,8 +96,8 @@ main {
 }
 
 body > footer {
-  margin-top: 4rem;
-  padding: 2rem 1rem 1.5rem 1rem;
+  margin-top: 1.5rem;
+  padding: 1rem 1rem 1.5rem 1rem;
   color: var(--text-light);
   font-size: 0.9rem;
   text-align: center;
@@ -221,10 +228,12 @@ nav {
   font-size: 1rem;
   line-height: 2;
   padding: 1rem 0 0 0;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
 }
-
 /* Use flexbox to allow items to wrap, as needed */
-nav ul,
+/* nav ul,
 nav ol {
   align-content:   space-around;
   align-items:     center;
@@ -234,13 +243,13 @@ nav ol {
   list-style-type: none;
   margin:          0;
   padding:         0;
-}
+} */
 
 /* List items are inline elements, make them behave more like blocks */
-nav ul li,
+/* nav ul li,
 nav ol li {
   display: inline-block;
-}
+} */
 
 nav a,
 nav a:visited {

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :lessons
   get '/welcome', to: 'payment_sucess#index', as: 'welcome'
   
   get '/faq', to: 'faq#index', as: 'faq'
