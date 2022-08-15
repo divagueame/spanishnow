@@ -84,7 +84,11 @@ body > header h1 {
   margin: .1rem auto .1rem 0;
   font-size: 1.4rem;
 }
-
+body > header a.main-logo {
+  margin-right: auto;
+  color: white;
+  text-decoration: none;
+}
 body > header p {
   max-width: 40rem;
   margin: 1rem auto;

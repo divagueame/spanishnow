@@ -1,5 +1,6 @@
   <header>
-      <h1>MamboSpanish</h1>
+    
+    <%= link_to  root_path, class: 'main-logo' do %><h1>MamboSpanish</h1><% end %>
     <%= link_to 'Home', root_path %>
     <% if user_signed_in?  %>
         <%= link_to 'My Lessons', lessons_path(current_user.id) %>
