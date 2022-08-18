@@ -8,6 +8,10 @@
     <script src="https://js.stripe.com/v3/"></script>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;500;800&display=swap" rel="stylesheet"> 
+
   </head>
 
   <body>
@@ -19,8 +23,9 @@
       <%= render partial: 'partials/flash' %>
     
     </main>
+    
     <footer>
-    <p>Made with ❤️ by Martin Arce</p>
+      <p>Made with ❤️ by <%= link_to 'Martin Arce', 'http://www.martin-arce.com' %></p>
     </footer>
   </body>
 </html>

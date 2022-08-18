@@ -18,3 +18,22 @@
 nav .end {
   margin-left: auto;
 }
+a.btn {
+  background: rgb(102, 103, 149);
+  color: var(--accent-bg);
+  border-radius: 12px;
+  position: relative;
+  padding: 0.4rem 0.8em;
+}
+a.btn::after {
+  content: "";
+}
+p.notice {
+  background-color: rgb(176, 255, 102);
+  padding: 10px;
+}
+.container {
+  display: block;
+  margin: 0 auto;
+  max-width: 70%;
+}
