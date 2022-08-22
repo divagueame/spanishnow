@@ -1,5 +1,5 @@
 <div class="flashes">
     <% flash.each do  |k,v| %>
-        <p><%= v %></p>
+        <p data-controller="flash"><%= v %></p>
     <% end %>
 </div>
