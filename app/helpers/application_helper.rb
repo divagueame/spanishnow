@@ -4,6 +4,6 @@ module ApplicationHelper
   end
 
   def get_course_btn(id,msg="Buy now")
-    button_to msg, checkout_create_path, params: {id: id}, remote: true, data: {turbo: false}
+    # button_to msg, checkout_create_path, params: {id: id}, remote: true, data: {turbo: false}
   end
 end

@@ -9,6 +9,8 @@
         <div class="left">
             <h1>Rock solid Spanish foundations</h1>
             <h5>The most challenging Spanish course for newcomers. Language learning isn't easy but well worth it!</h5>
+            <%= link_to 'Register & Start now!', new_user_registration_path, class: "btn-primary" %>
+
             <%= get_course_btn(Product.last.id, "Buy it & start now!") %>
         </div>
         <div class="right">
