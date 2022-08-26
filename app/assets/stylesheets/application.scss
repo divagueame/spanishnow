@@ -15,19 +15,7 @@
  *= simple
  */
 @import "font-awesome";
-nav .end {
-  margin-left: auto;
-}
-a.btn {
-  background: rgb(102, 103, 149);
-  color: var(--accent-bg);
-  border-radius: 12px;
-  position: relative;
-  padding: 0.4rem 0.8em;
-}
-a.btn::after {
-  content: "";
-}
+
 .flashes {
   position: fixed;
   top: 5%;
