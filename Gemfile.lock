@@ -115,6 +115,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    langtrainer (0.0.0)
     loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -216,6 +217,8 @@ GEM
       railties (>= 6.0.0)
     stripe (6.0.0)
     strscan (3.0.4)
+    tailwindcss-rails (2.0.12-x86_64-linux)
+      railties (>= 6.0.0)
     thor (1.2.1)
     timeout (0.3.0)
     turbo-rails (1.1.1)
@@ -255,6 +258,7 @@ DEPENDENCIES
   font-awesome-sass (~> 6.1.2)
   importmap-rails
   jbuilder
+  langtrainer
   nokogiri
   pg (~> 1.1)
   premailer-rails
@@ -266,6 +270,7 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails
   stripe
+  tailwindcss-rails (~> 2.0)
   turbo-rails
   tzinfo-data
   web-console

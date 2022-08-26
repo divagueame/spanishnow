@@ -5,6 +5,7 @@ ruby '3.1.1'
 gem 'sendgrid-ruby'
 gem 'premailer-rails'
 gem 'nokogiri'
+gem 'langtrainer'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.3', '>= 7.0.3.1'
 
@@ -75,3 +76,4 @@ end
 gem 'stripe'
 gem "font-awesome-sass", "~> 6.1.2"
 gem 'devise'
+gem "tailwindcss-rails", "~> 2.0"
