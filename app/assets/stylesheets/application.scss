@@ -12,7 +12,6 @@
  *
  *= require_tree .
  *= require_self
- *= simple
  */
 @import "font-awesome";
 
@@ -34,15 +33,15 @@
   transition: all ease-out 700ms;
   transform: scale(0.8);
 }
-.container {
-  display: block;
-  margin: 0 auto;
-  max-width: 70%;
-}
-.btn-primary {
-  background-color: rgb(255, 208, 121);
-  padding: 0.8em 1em;
-  width: fit-content;
-  border-radius: 3px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px;
-}
+// .container {
+//   display: block;
+//   margin: 0 auto;
+//   max-width: 70%;
+// }
+// .btn-primary {
+//   background-color: rgb(255, 208, 121);
+//   padding: 0.8em 1em;
+//   width: fit-content;
+//   border-radius: 3px;
+//   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px;
+// }
