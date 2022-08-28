@@ -5,17 +5,27 @@
 @layer base {
   @font-face { 
     font-family: 'Poppins';
-        src: url("/fonts/Poppins-Regular.ttf");
-  } 
-}
+        src: url("/assets/Poppins-Regular.ttf");
+  }  
+  h1 {
+    @apply text-2xl;
+  }
 
- 
-/*
+  h2 {
+    @apply text-xl;
+  }
 
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+  h3 {
+    @apply text-lg;
+  }
+
+  a {
+    @apply text-black underline decoration-dotted font-black hover:opacity-80;
   }
 }
-
-*/
+ 
+@layer components {
+  input[type=submit] {
+    @apply bg-sky-200 px-1 py-2 rounded-sm shadow-sm  w-full cursor-pointer hover:bg-sky-100
+  }
+}

@@ -14,9 +14,9 @@
   <body class="flex flex-col min-h-screen">
     <%= render partial: 'partials/nav' %>
     <main class="mb-auto">
+      <%= render partial: 'partials/flash' %>
       <%= link_to 'Courses', :products, style: "display:none" %> 
       <%= yield %>
-      <%= render partial: 'partials/flash' %>
     </main>
     
     <footer class="mt-24 px-4 py-6 bg-yellow-100 text-center">

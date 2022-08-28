@@ -1,5 +1,8 @@
-<div class="flashes">
+<div class="flashes fixed top-10 left-2/4 -translate-x-2/4">
     <% flash.each do  |k,v| %>
-        <p data-controller="flash"><%= v %></p>
+        <p data-controller="flash"
+            class="bg-orange-300  px-6 py-2 rounded-full shadow-lg transition-all">
+            <%= v %>
+        </p>
     <% end %>
 </div>
