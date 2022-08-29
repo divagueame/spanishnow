@@ -11,7 +11,7 @@
             <h5>The most challenging Spanish course for newcomers. Language learning isn't easy but well worth it!</h5>
             <%= link_to 'Register & Start now!', new_user_registration_path, class: "btn-primary" %>
 
-            <%= get_course_btn(Product.last.id, "Buy it & start now!") %>
+            <%# <%= get_course_btn(Product.last.id, "Buy it & start now!") %> 
         </div>
         <div class="right">
 
@@ -28,7 +28,7 @@
 </style>
 
 <!-- Snippet -->
-<section class="hidden flex flex-col justify-center antialiased text-gray-600 min-h-screen p-4">
+<section class="shidden flex flex-col justify-center antialiased text-gray-600 min-h-screen p-4">
     <div class="h-full">
         <!-- Pricing -->
         <div class="max-w-5xl mx-auto" x-data="{ annual: true }">
@@ -65,7 +65,7 @@
                             <span class="text-2xl">$</span><span class="text-3xl" x-text="annual ? '14' : '19'">0</span><span class="text-gray-500 font-medium text-sm">/mo</span>
                         </div>
                         <!-- CTA -->
-                        <button class="font-medium text-sm inline-flex items-center justify-center px-3 py-2 border border-gray-200 rounded leading-5 shadow-sm transition duration-150 ease-in-out focus:outline-none focus-visible:ring-2 hover:border-gray-300 text-gray-600 w-full">Let's go!</button>
+                        <%= button_to "Let's go!", new_user_registration_path, method: :get, class: "plan-btn bg-green-500 hover:bg-green-600" %>
                     </div>
                     <div class="px-5 pt-4 pb-5">
                         <div class="text-xs text-gray-800 font-semibold uppercase mb-4">What's included</div>
@@ -100,8 +100,8 @@
                 </div>
                 <!-- Chiki - Tab 2 -->
                 <div class="relative col-span-full md:col-span-4 bg-white shadow-md rounded-sm border border-gray-200">
-                    <div class="absolute top-0 left-0 right-0 h-0.5 bg-blue-500" aria-hidden="true"></div>
-                    <div class="px-5 pt-5 pb-6 border-b border-gray-200">
+                    <div class="absolute top-0 left-0 right-0 h-0.5 bg-purple-400" aria-hidden="true"></div>
+                    <div class="px-5 pt-5 pb-6 border-b border-gray-200 min-h8">
                         <header class="flex items-center mb-2">
                             <div class="w-6 h-6 rounded-full flex-shrink-0 bg-gradient-to-tr from-blue-500 to-blue-300 mr-3">
                                 <%= image_tag 'star' %>
@@ -114,14 +114,12 @@
                             <span class="text-2xl">$</span><span class="text-3xl" x-text="annual ? '34' : '39'">34</span><span class="text-gray-500 font-medium text-sm">/mo</span>
                         </div>
                         <!-- CTA -->
-                        <button class="hidden font-medium text-sm inline-flex items-center justify-center px-3 py-2 border border-transparent rounded leading-5 shadow-sm transition duration-150 ease-in-out border-gray-200 focus:outline-none focus-visible:ring-2 bg-gray-100 text-gray-400 w-full cursor-not-allowed flex items-center" disabled>
+                        <button class=" font-medium text-sm inline-flex items-center justify-center px-3 py-2 border border-transparent rounded leading-5 shadow-sm transition duration-150 ease-in-out border-gray-200 focus:outline-none focus-visible:ring-2 bg-gray-100 text-gray-400 w-full cursor-not-allowed flex items-center" disabled>
                             <svg class="w-3 h-3 flex-shrink-0 fill-current mr-2" viewBox="0 0 12 12">
                                 <path d="M10.28 1.28L3.989 7.575 1.695 5.28A1 1 0 00.28 6.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 1.28z" />
                             </svg>
-                            <span>Current Plan</span>
+                            <span>Coming soon</span>
                         </button>
-                                                <!-- CTA -->
-                        <button class="font-medium text-sm inline-flex items-center justify-center px-3 py-2 border border-transparent rounded leading-5 shadow-sm transition duration-150 ease-in-out bg-indigo-500 focus:outline-none focus-visible:ring-2 hover:bg-indigo-600 text-white w-full">Let's go!</button>
                     </div>
                     <div class="px-5 pt-4 pb-5">
                         <div class="text-xs text-gray-800 font-semibold uppercase mb-4">What's included</div>
@@ -176,13 +174,13 @@
                             </div>
                             <h3 class="text-lg text-gray-800 font-semibold">Forever</h3>
                         </header>
-                        <div class="text-sm mb-2">That's your best option if you're willing to invest a considerable amount of time learning and improving your Spanish. Intensive/Crash course style.</div>
+                        <div class="text-sm mb-2">For very motivated learners willing to put in more than one hour day.</div>
                         <!-- Price -->
                         <div class="text-gray-800 font-bold mb-4 text-center">
                             <span class="text-2xl">$</span><span class="text-3xl" x-text="annual ? '74' : '79'">350</span><br><span class="text-gray-500 font-medium text-sm"> One-time payment</span>
                         </div>
                         <!-- CTA -->
-                        <button class="font-medium text-sm inline-flex items-center justify-center px-3 py-2 border border-transparent rounded leading-5 shadow-sm transition duration-150 ease-in-out bg-indigo-500 focus:outline-none focus-visible:ring-2 hover:bg-indigo-600 text-white w-full">Let's go!</button>
+                        <%= course_btn(Product.last.id, "Let's go!", "plan-btn") %>
                     </div>
                     <div class="px-5 pt-4 pb-5">
                         <div class="text-xs text-gray-800 font-semibold uppercase mb-4">What's included</div>
