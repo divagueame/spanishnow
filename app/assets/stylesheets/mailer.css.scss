@@ -1,15 +1,22 @@
-$email-background: #ededed;
-$email-header-bg: #d77373;
+$email-background: #ffffff;
+$email-header-bg: #ffbb61;
+$active-color: #ff9100;
 
 #email-wrapper {
   background: $email-background;
   padding-top: 1px;
   padding-bottom: 1px;
-
-  .chiki {
-    background-color: blueviolet !important;
+  font-size: 16px;
+  line-height: 1.5;
+  a {
+    color: $active-color;
+    text-decoration: underline;
+    font-weight: bold;
   }
-
+  a:hover {
+    color: #ff5e00;
+    text-decoration: none;
+  }
   #header {
     background: $email-header-bg;
     margin: 30px 30px 0px 30px;
