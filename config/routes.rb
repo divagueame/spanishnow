@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   
   get '/faq', to: 'faq#index', as: 'faq'
   devise_for :users
-
+  get '/admin', to: 'admin#index'
   # get 'home/index'
   root 'home#index'
   resources :products
