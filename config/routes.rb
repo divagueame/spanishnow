@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'admin/index'
   resources :lessons
   get '/welcome', to: 'payment_sucess#index', as: 'welcome'
   

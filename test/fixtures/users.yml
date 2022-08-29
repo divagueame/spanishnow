@@ -2,5 +2,14 @@ one:
   email: mike@mike.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'chikipassword') %>
   confirmed_at: <%= Time.now - 1.hour %>
+  role: 0
 two:
+  email: pay@pay.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'chikipassword') %>
+  confirmed_at: <%= Time.now - 1.hour %>
+  role: 1
+three:
   email: chiki@chiki.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'chikipassword') %>
+  confirmed_at: <%= Time.now - 1.hour %>
+  role: 2
