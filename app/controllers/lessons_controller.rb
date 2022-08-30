@@ -1,4 +1,6 @@
 class LessonsController < ApplicationController
+  before_action :authenticate_admin, only: %i[ new edit create edit update destroy ]
+  before_action :authenticate_user!, only: %i[ index show]
   before_action :set_lesson, only: %i[ show edit update destroy ]
 
   def index
@@ -27,7 +29,6 @@ class LessonsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /lessons/1 or /lessons/1.json
   def update
     respond_to do |format|
       if @lesson.update(lesson_params)
@@ -38,7 +39,6 @@ class LessonsController < ApplicationController
     end
   end
 
-  # DELETE /lessons/1 or /lessons/1.json
   def destroy
     @lesson.destroy
 
@@ -48,12 +48,10 @@ class LessonsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_lesson
       @lesson = Lesson.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def lesson_params
       params.require(:lesson).permit(:title, :description, :position, :product_id)
     end
