@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   get 'admin/index'
   resources :lessons
-  resources :blocks, only: [:new :create]
+  resources :blocks, only: [:new, :create]
+
+  resources :rich_blocks, only: [:new, :create]
   get '/welcome', to: 'payment_sucess#index', as: 'welcome'
   
   get '/faq', to: 'faq#index', as: 'faq'
