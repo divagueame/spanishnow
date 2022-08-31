@@ -11,23 +11,29 @@ class BlocksController < ApplicationController
 #   end
 
   def new
-    @block = Block.new
-  end
+    # @block = Block.new
+  # @lesson = Lesson.find(params[:lesson_id])
+  @block = Block.new(lesson_id: params[:lesson_id])
+end
 
 #   def edit
 #   end
 
-#   def create
-#     @lesson = Lesson.new(lesson_params)
-
-#     respond_to do |format|
-#       if @lesson.save
-#         format.html { redirect_to lesson_url(@lesson), notice: "Lesson was successfully created." }
-#       else
-#         format.html { render :new, status: :unprocessable_entity }
-#       end
-#     end
-#   end
+def create
+  @block = Block.new(block_params)
+  
+  # p block_params
+  
+  p @block
+    p @block.valid?
+    respond_to do |format|
+      if @block.save
+        format.html { redirect_to lesson_url(@block.lesson_id), notice: "Block was successfully created." }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
+    end
+  end
 
 #   def update
 #     respond_to do |format|

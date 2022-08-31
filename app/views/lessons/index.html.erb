@@ -1,11 +1,8 @@
 <h1>Lessons</h1>
 
-<div id="lessons">
+<div id="lessons" class="container">
   <% @lessons.each do |lesson| %>
-    <%= render lesson %>
-    <p>
-      <%= link_to "Show this lesson", lesson %>
-    </p>
+    <%= link_to lesson.title, lesson_path(lesson) %><br>
   <% end %>
 </div>
 

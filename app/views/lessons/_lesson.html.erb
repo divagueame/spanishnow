@@ -13,5 +13,14 @@
     <strong>Product:</strong>
     <%= lesson.product_id %>
   </p>
-<%= lesson%>
+  <br><br>
+  
+  Total blocks: <%= lesson.blocks.count %><br>
+
+  <% lesson.blocks.each do |block| %>
+  <div class="bg-purple-200 p-1">
+    <%= block.title %>
+  </div>
+  <% end %>
 </div>
+<hr>
