@@ -1,3 +1,7 @@
 <div class="container mx-auto px-4 py-2 text-center">
   <h1 class="font-bold text-4xl">Admin Panel</h1>
+  <% Block.all.each do |block| %>
+    <%= block.title %>
+    <br>
+  <% end %>
 </div>

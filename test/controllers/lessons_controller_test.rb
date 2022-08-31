@@ -40,7 +40,7 @@ class LessonsControllerTest < ActionDispatch::IntegrationTest
   test "should create lesson if admin" do
     sign_in(@admin_user)
     assert_difference("Lesson.count") do
-      post lessons_url, params: { lesson: { description: @lesson.description, position: @lesson.position, product_id: @lesson.product_id, title: @lesson.title } }
+      post lessons_url, params: { lesson: { description: @lesson.description, product_id: @lesson.product_id, title: @lesson.title } }
     end
 
     assert_redirected_to lesson_url(Lesson.last)
@@ -49,7 +49,7 @@ class LessonsControllerTest < ActionDispatch::IntegrationTest
   test "should not create lesson if not admin" do
     sign_in(@logged_in_user)
     assert_no_difference("Lesson.count") do
-      post lessons_url, params: { lesson: { description: @lesson.description, position: @lesson.position, product_id: @lesson.product_id, title: @lesson.title } }
+      post lessons_url, params: { lesson: { description: @lesson.description,  product_id: @lesson.product_id, title: @lesson.title } }
     end
 
     assert_redirected_to root_path
@@ -80,12 +80,12 @@ class LessonsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update lesson if admin" do
     sign_in(@admin_user)
-    patch lesson_url(@lesson), params: { lesson: { description: @lesson.description, position: @lesson.position, product_id: @lesson.product_id, title: @lesson.title } }
+    patch lesson_url(@lesson), params: { lesson: { description: @lesson.description, product_id: @lesson.product_id, title: @lesson.title } }
     assert_redirected_to lesson_url(@lesson)
   end
 
   test "should not update lesson if logged out" do
-    patch lesson_url(@lesson), params: { lesson: { description: @lesson.description, position: @lesson.position, product_id: @lesson.product_id, title: @lesson.title } }
+    patch lesson_url(@lesson), params: { lesson: { description: @lesson.description, product_id: @lesson.product_id, title: @lesson.title } }
     assert_redirected_to root_path
   end
 

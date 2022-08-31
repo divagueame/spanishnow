@@ -20,7 +20,6 @@ class LessonsTest < ApplicationSystemTestCase
     click_on "New lesson"
 
     fill_in "Description", with: @lesson.description
-    fill_in "Position", with: @lesson.position
     fill_in "Product", with: @lesson.product_id
     fill_in "Title", with: @lesson.title
     click_on "Create Lesson"
@@ -35,7 +34,6 @@ class LessonsTest < ApplicationSystemTestCase
     click_on "Edit this lesson", match: :first
 
     fill_in "Description", with: @lesson.description
-    fill_in "Position", with: @lesson.position
     fill_in "Product", with: @lesson.product_id
     fill_in "Title", with: @lesson.title
     click_on "Update Lesson"
