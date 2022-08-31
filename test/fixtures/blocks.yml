@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: First block
+  position: 1
+  lesson: one
+
+two:
+  title: Second Block
+  position: 1
+  lesson: two
+
+three:
+  title: Independent Block
+  position: 1
