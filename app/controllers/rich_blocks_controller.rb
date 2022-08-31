@@ -1,14 +1,16 @@
 class RichBlocksController < ApplicationController
   before_action :authenticate_admin, only: %i[ new create ]
 #   before_action :authenticate_user!, only: %i[ index show]
-#   before_action :set_block, only: %i[ show edit update destroy ]
+  before_action :set_rich_block, only: %i[ show
+  ]
+  ## edit update destroy 
 
 #   def index
 #     @lessons = Lesson.all
 #   end
 
-#   def show
-#   end
+  def show
+  end
 
   def new
     @rich_block = RichBlock.new
@@ -22,7 +24,7 @@ class RichBlocksController < ApplicationController
 
     respond_to do |format|
       if @rich_block.save
-        format.html { redirect_to new_rich_block_path, notice: "Rich block was successfully created." }
+        format.html { redirect_to rich_block_path(@rich_block), notice: "Rich block was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
