@@ -54,7 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_01_133601) do
 
   create_table "lesson_blocks", force: :cascade do |t|
     t.integer "position"
-    t.bigint "lesson_id", null: false
+    t.bigint "lesson_id"
     t.string "block_type", null: false
     t.bigint "block_id", null: false
     t.datetime "created_at", null: false
