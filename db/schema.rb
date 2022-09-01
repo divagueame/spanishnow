@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_31_173006) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_01_133601) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,13 +52,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_173006) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "blocks", force: :cascade do |t|
-    t.string "title"
+  create_table "lesson_blocks", force: :cascade do |t|
     t.integer "position"
-    t.bigint "lesson_id"
+    t.bigint "lesson_id", null: false
+    t.string "block_type", null: false
+    t.bigint "block_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["lesson_id"], name: "index_blocks_on_lesson_id"
+    t.string "title"
+    t.index ["block_type", "block_id"], name: "index_lesson_blocks_on_block"
+    t.index ["lesson_id"], name: "index_lesson_blocks_on_lesson_id"
   end
 
   create_table "lessons", force: :cascade do |t|
@@ -81,8 +84,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_173006) do
   create_table "rich_blocks", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "block_id"
-    t.index ["block_id"], name: "index_rich_blocks_on_block_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -104,7 +105,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_173006) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "blocks", "lessons"
+  add_foreign_key "lesson_blocks", "lessons"
   add_foreign_key "lessons", "products"
-  add_foreign_key "rich_blocks", "blocks"
 end

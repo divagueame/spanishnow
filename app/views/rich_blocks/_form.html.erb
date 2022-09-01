@@ -11,6 +11,15 @@
     </div>
   <% end %>
 
+  <%= form.hidden_field :lesson_id, value: @lesson_id %>
+  
+ <div>
+  <%= form.fields_for :lesson_block do |lesson_block_form| %> 
+      <%= lesson_block_form.label :title %>
+      <%= lesson_block_form.text_field :title %> 
+    <% end %>
+ </div>
+
   <div>
     <%= form.label :content, style: "display: block" %>
     <%= form.rich_text_area :content %>

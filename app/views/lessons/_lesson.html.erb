@@ -15,11 +15,11 @@
   </p>
   <br><br>
   
-  Total blocks: <%= lesson.blocks.count %><br>
+  Total blocks: <%= lesson.lesson_blocks.count %><br>
 
-  <% lesson.blocks.each do |block| %>
+  <% lesson.lesson_blocks.each do |block| %>
   <div class="bg-purple-200 p-1">
-    <%= block.title %>
+    <%= block.position %> <%= block.title %>
   </div>
   <% end %>
 </div>
