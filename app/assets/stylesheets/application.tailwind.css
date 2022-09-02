@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import 'actiontext.css';
 
 @layer base {
   @font-face { 
@@ -39,4 +40,4 @@
   height: 2px;
   background: rgb(255, 79, 79);
   background: linear-gradient(146deg, rgba(255, 79, 79, 1) 0%, rgba(255, 187, 0, 1) 100%);
-}@import 'actiontext.css';
+}

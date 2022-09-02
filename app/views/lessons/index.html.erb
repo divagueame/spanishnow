@@ -5,5 +5,14 @@
     <%= link_to lesson.title, lesson_path(lesson) %><br>
   <% end %>
 </div>
+<hr class="my-8">
+<div class="container">
+  <h1>Lonely Blocks (<%= @lonely_lesson_blocks.count %>)</h1>
+  <div id="lonely-lesson-blocks" class="container">
+    <% @lonely_lesson_blocks.each do |block| %>
+      <%= block.block_type %>  / <%= block.title %>
+    <% end %>
+  </div>
+</div>
 
 <%= link_to "New lesson", new_lesson_path %>

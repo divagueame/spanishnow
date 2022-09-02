@@ -5,6 +5,7 @@ class LessonsController < ApplicationController
 
   def index
     @lessons = Lesson.all
+    @lonely_lesson_blocks = LessonBlock.where(lesson_id: nil)
   end
 
   def show

@@ -1,4 +1,4 @@
-<div id="<%= dom_id lesson %>">
+<div id="<%= dom_id lesson %>" class="container bg-amber-200">
   <p>
     <strong>Title:</strong>
     <%= lesson.title %>
@@ -9,13 +9,15 @@
     <%= lesson.description %>
   </p>
 
-  <p>
-    <strong>Product:</strong>
-    <%= lesson.product_id %>
-  </p>
-  <br><br>
-  
-  Total blocks: <%= lesson.lesson_blocks.count %><br>
+  <% if current_user.admin? then %>
+    <p>
+      <strong>Product:</strong>
+      <%= lesson.product_id %>
+    </p>
+    <br><br>
+    Total blocks: <%= lesson.lesson_blocks.count %><br>
+  <% end %>
+
 
   <% lesson.lesson_blocks.each do |block| %>
   <div class="bg-purple-200 p-1">

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'admin/index'
   resources :lessons
 
   resources :rich_blocks, only: [:new, :create, :show]

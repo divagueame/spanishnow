@@ -24,3 +24,8 @@ four:
   lesson: two
   block: four
   block_type: RichBlock
+
+five:
+  title: "Lesson block 1 has a title"
+  block: five
+  block_type: RichBlock
