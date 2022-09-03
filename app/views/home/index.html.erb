@@ -5,26 +5,49 @@
 
 
 
-<div class="w-full min-h-screen relative ">
+<div class="w-full min-h-[32rem] relative">
         <div class="logged_in container z-10 relative">
             <h1>Mambo Spanish</h1> 
             <h2>Great to you see here! Let's crash it!</h2><%= icon('fa-solid', 'hat-wizard')%>
         </div>
-    <div class="bg-gradient-to-br from-yellow-100 via-amber-100 to-white h-1/2 opacity-50 absolute top-0 w-full left-0"></div>
-    <div class="bg-gradient-to-bl from-amber-100 via-yellow-200 to-white h-1/2 opacity-50 absolute top-0 w-full left-0"></div>
-    <div class="bg-gradient-to-b from-yellow-100 via-white  to-white h-1/2 opacity-80 absolute top-0 w-full left-0"></div>
+    <div class="bg-gradient-to-br from-yellow-100 via-amber-100 to-white min-h-full opacity-50 absolute top-0 w-full left-0"></div>
+    <div class="bg-gradient-to-bl from-amber-100 via-yellow-200 to-white min-h-full opacity-50 absolute top-0 w-full left-0"></div>
+    <div class="bg-gradient-to-b from-yellow-100 via-white  to-white min-h-full opacity-80 absolute top-0 w-full left-0"></div>
 
  
 
 </div>
+<div>
+</div>
+
+<div class="diagonal-box min-h-[44rem]">
+	<div class="w-full content pt-20">
+        <div class="container">
+            <div class="">
+                <div class="bg-white p-8 rounded-sm shadow-xl">
+                    <h1 class="">This is skewed 1</h1>
+                </div>
+                <div class="bg-white p-8 rounded-sm shadow-xl">
+                    <h1 class="">This is 2</h1>
+                </div>
+                <div class="bg-white p-8 rounded-sm shadow-xl">
+                    <h1 class="">This is 3</h1>
+                </div>
+                <div class="bg-white p-8 rounded-sm shadow-xl">
+                    <h1 class="">This is 35</h1>
+                </div>
+                <div class="bg-white p-8 rounded-sm shadow-xl">
+                    <h1 class="">This is 5</h1>
+                </div>
+            </div>
+        </div>
 
 
-
-
-
-
- 
-
+    </div>
+</div>
+<div class="w-full bg-white relative -top-20">
+<h1>Chiki</h1>
+</div>
 
 
     <% else %>
@@ -44,6 +67,7 @@
     </div>             
 
 <!-- Custom style for toggle -->
+
 <style type="postcss">
     #toggle:checked + label > span:first-child {
   @apply left-[22px];
