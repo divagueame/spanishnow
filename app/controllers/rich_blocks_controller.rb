@@ -1,7 +1,7 @@
 class RichBlocksController < ApplicationController
-  before_action :authenticate_admin, only: %i[ new create ]
+  before_action :authenticate_admin, only: %i[ new create edit update]
 #   before_action :authenticate_user!, only: %i[ index show]
-  before_action :set_rich_block, only: %i[ show
+  before_action :set_rich_block, only: %i[ show edit update
   ]
   ## edit update destroy 
 
@@ -19,12 +19,19 @@ class RichBlocksController < ApplicationController
     @rich_block.build_lesson_block
   end
 
-#   def edit
-#   end
+  def edit
+    # p 'POO'
+    # p @rich_block.lesson
+    
+    # p @lesson_id
+    # @lesson_id = params[:lesson_id]
+    # @rich_block = RichBlock.new
+    # params[:leson_id] = @lesson_id
+    # @rich_block.build_lesson_block
+  end
 
   def create
     @rich_block = RichBlock.new(content: rich_block_params[:content])
-    
     @lesson = Lesson.find(rich_block_params[:lesson_id])
     
     @lesson_block_title = rich_block_params[:lesson_block_attributes][:title]
@@ -37,15 +44,36 @@ class RichBlocksController < ApplicationController
     end
   end
 
-#   def update
-#     respond_to do |format|
-#       if @lesson.update(lesson_params)
-#         format.html { redirect_to lesson_url(@lesson), notice: "Lesson was successfully updated." }
-#       else
-#         format.html { render :edit, status: :unprocessable_entity }
-#       end
-#     end
-#   end
+  def update
+
+
+    # p params
+    # p "PARAMS:"
+    # p @rich_block
+    # p "RICH BLOCk:"
+    # @lesson = @rich_block.lesson
+    # p @lesson
+    # @lesson_block_title = rich_block_params[:lesson_block_attributes][:title]
+    # @lesson_block_title
+    # @rich_block.update(content: rich_block_params[:content])
+    # @lesson.lesson_blocks.update(block: @rich_block, title: @lesson_block_title)
+  #  redirect_to lesson_path(@lesson), notice: "Rich block was successfully created." 
+    # p @lesson
+    # @lesson.update(comments_attributes: [{id: 4, content: 'bob'}]
+    # p rich_block_params
+    # p '@rich_block !!!!!!!'
+    # p rich_block_params
+    # @lesson = Lesson.find(@rich_block.lesson.id)
+    # p @lesson
+    # @lesson.lesson_blocks.update(block: @rich_block, title: )
+    # respond_to do |format|
+    #   if @lesson.update(lesson_params)
+    #     format.html { redirect_to lesson_url(@lesson), notice: "Lesson was successfully updated." }
+    #   else
+    #     format.html { render :edit, status: :unprocessable_entity }
+    #   end
+    # end
+  end
 
 #   def destroy
 #     @lesson.destroy
@@ -61,6 +89,6 @@ class RichBlocksController < ApplicationController
     end
 
     def rich_block_params
-      params.require(:rich_block).permit(:content, :lesson_id, lesson_block_attributes: [:title])
+      params.require(:rich_block).permit(:content, :lesson_id, lesson_block_attributes: [:title, :id])
     end
 end

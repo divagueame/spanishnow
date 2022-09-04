@@ -1,4 +1,21 @@
-# one:
-#   record: name_of_fixture (ClassOfFixture)
-#   name: content
-#   body: <p>In a <i>million</i> stars!</p>
+rich_block_one:
+  record: one (RichBlock)
+  name: content
+  body: <p>In a <i>million</i> stars!</p>
+rich_block_two:
+  record: two (RichBlock)
+  name: content
+  body: <p>In a <i>million</i> stars!</p>
+rich_block_three:
+  record: three (RichBlock)
+  name: content
+  body: <p>In a <i>million</i> stars!</p>
+
+rich_block_four:
+  record: four (RichBlock)
+  name: content
+  body: <p>In a <i>million</i> stars!</p>
+rich_block_five:
+  record: five (RichBlock)
+  name: content
+  body: <p>In a <i>million</i> stars!</p>

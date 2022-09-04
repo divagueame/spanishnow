@@ -1,7 +1,7 @@
-class LessonsBlocksController < ApplicationController
-  before_action :authenticate_admin, only: %i[ new create ]
+class LessonBlocksController < ApplicationController
+  before_action :authenticate_admin, only: %i[ new create destroy]
 #   before_action :authenticate_user!, only: %i[ index show]
-#   before_action :set_block, only: %i[ show edit update destroy ]
+  before_action :set_lesson_block, only: %i[ destroy unlink ]
 
 #   def index
 #     @lessons = Lesson.all
@@ -62,13 +62,27 @@ end
 #     end
 #   end
 
-#   def destroy
-#     @lesson.destroy
+  def destroy
+      @lesson = Lesson.find(@lesson_block.lesson_id)
+    @lesson_block.destroy
 
-#     respond_to do |format|
-#       format.html { redirect_to lessons_url, notice: "Lesson was successfully destroyed." }
-#     end
-#   end
+    respond_to do |format|
+      format.html { redirect_to lesson_path(@lesson), notice: "Lesson block has been removed entirely.", status: 303  }
+    end
+  end
+
+  def unlink
+    p "UNLINK"
+    @lesson = Lesson.find(@lesson_block.lesson_id)
+    @lesson_block.lesson_id = nil
+    @lesson_block.save!
+    
+
+    respond_to do |format|
+      format.html { redirect_to lesson_path(@lesson), notice: "Lesson block has been unlinked to the lesson.", status: 303  }
+    end
+  end
+
 
   private
     def set_lesson_block
@@ -76,7 +90,7 @@ end
     end
 
     def lesson_block_params
-      params.require(:lesson_block).permit(:position, :lesson_id, :block_type, :block_id, :title)
+      params.require(:lesson_block).permit(:id, :position, :lesson_id, :block_type, :block_id, :title)
     end
     
 end

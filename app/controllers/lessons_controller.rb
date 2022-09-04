@@ -24,7 +24,7 @@ class LessonsController < ApplicationController
     respond_to do |format|
       if @lesson.save
         format.html { redirect_to lesson_url(@lesson), notice: "Lesson was successfully created." }
-      else
+      else 
         format.html { render :new, status: :unprocessable_entity }
       end
     end

@@ -16,12 +16,6 @@ class LessonsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get index if admin" do
-    sign_in(@admin_user)
-    get lessons_url
-    assert_response :success
-  end
-
   test "should show lonely blocks if admin" do
     sign_in(@admin_user)
     get lessons_url
