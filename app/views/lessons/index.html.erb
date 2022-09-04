@@ -1,11 +1,13 @@
 <h1>Lessons</h1>
 
+<%# Lessons  %>
 <div id="lessons" class="container">
   <% @lessons.each do |lesson| %>
     <%= link_to lesson.title, lesson_path(lesson) %><br>
   <% end %>
 </div>
 <hr class="my-8">
+<%# Lonely Blocks %>
 <div class="container">
   <h1>Lonely Blocks (<%= @lonely_lesson_blocks.count %>)</h1>
   <div id="lonely-lesson-blocks" class="container">
