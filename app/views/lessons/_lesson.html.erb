@@ -25,6 +25,10 @@
       <%= link_to "Unlink block from this lesson", unlink_path(block.id),  data: { 'turbo-method': :delete, confirm: 'Are you sure?'}  %>
       <br>
       <%= block.lesson_id %> || <%= block.position %> | <%= block.title %>
+      <% if block.block_type === 'RichBlock' %>
+        <%= block.block.content %>
+        
+      <% end %>
     </div>
   <% end %>
 </div>

@@ -12,7 +12,7 @@
   <h1>Lonely Blocks (<%= @lonely_lesson_blocks.count %>)</h1>
   <div id="lonely-lesson-blocks" class="container">
     <% @lonely_lesson_blocks.each do |block| %>
-      <%= block.block_type %>  / <%= block.title %>
+      <%= block.block_type %>  / <%= block.title %><br>
     <% end %>
   </div>
 </div>

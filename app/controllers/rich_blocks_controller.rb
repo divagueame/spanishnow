@@ -31,7 +31,7 @@ class RichBlocksController < ApplicationController
   end
 
   def create
-    @rich_block = RichBlock.new(content: rich_block_params[:content])
+    @rich_block = RichBlock.new(subheader:  rich_block_params[:subheader], content: rich_block_params[:content])
     @lesson = Lesson.find(rich_block_params[:lesson_id])
     
     @lesson_block_title = rich_block_params[:lesson_block_attributes][:title]
@@ -89,6 +89,6 @@ class RichBlocksController < ApplicationController
     end
 
     def rich_block_params
-      params.require(:rich_block).permit(:content, :lesson_id, lesson_block_attributes: [:title, :id])
+      params.require(:rich_block).permit(:content, :lesson_id, :subheader, lesson_block_attributes: [:title, :id])
     end
 end

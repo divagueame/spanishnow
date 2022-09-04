@@ -2,7 +2,8 @@
 
 <div id="rich_blocks">
   <% @rich_blocks.each do |rich_block| %>
-    <%= render rich_block %> 
+    <%= link_to rich_block.subheader, rich_block_path(rich_block) %>
+    <br>
   <% end %>
 </div>
  
