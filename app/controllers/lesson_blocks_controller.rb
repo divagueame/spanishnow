@@ -63,7 +63,7 @@ end
 #   end
 
   def destroy
-      @lesson = Lesson.find(@lesson_block.lesson_id)
+    @lesson = Lesson.find(@lesson_block.lesson_id)
     @lesson_block.destroy
 
     respond_to do |format|
@@ -72,12 +72,11 @@ end
   end
 
   def unlink
-    p "UNLINK"
+
     @lesson = Lesson.find(@lesson_block.lesson_id)
     @lesson_block.lesson_id = nil
     @lesson_block.save!
     
-
     respond_to do |format|
       format.html { redirect_to lesson_path(@lesson), notice: "Lesson block has been unlinked to the lesson.", status: 303  }
     end
