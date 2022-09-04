@@ -1,13 +1,13 @@
 class RichBlocksController < ApplicationController
-  before_action :authenticate_admin, only: %i[ new create edit update]
+  before_action :authenticate_admin, only: %i[index new create edit update]
 #   before_action :authenticate_user!, only: %i[ index show]
   before_action :set_rich_block, only: %i[ show edit update
   ]
   ## edit update destroy 
 
-#   def index
-#     @lessons = Lesson.all
-#   end
+  def index
+    @rich_blocks = RichBlock.all
+  end
 
   def show
   end

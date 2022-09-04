@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :lessons
 
-  resources :rich_blocks, only: [:new, :create, :show, :edit, :update]
+  resources :rich_blocks, only: [:new, :create, :show, :edit, :update, :index]
   delete '/lesson_block/:id' => 'lesson_blocks#destroy', as: 'lesson_block'
   delete '/lesson_block/:id/unlink' => 'lesson_blocks#unlink', as: 'unlink'
   
