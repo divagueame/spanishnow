@@ -64,7 +64,8 @@ end
 
   def destroy
     @lesson = Lesson.find(@lesson_block.lesson_id)
-    @lesson_block.destroy
+    
+    @lesson_block.destroy!
 
     respond_to do |format|
       format.html { redirect_to lesson_path(@lesson), notice: "Lesson block has been removed entirely.", status: 303  }

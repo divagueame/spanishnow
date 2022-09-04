@@ -14,7 +14,7 @@ class LessonsControllerTest < ActionDispatch::IntegrationTest
 
   test "should delete lesson block" do
     sign_in(@admin_user)
-  
+
     assert_difference("LessonBlock.count", -1) do
       assert_difference("RichBlock.count", -1) do
         delete lesson_block_url(@lesson_block)
@@ -27,13 +27,17 @@ class LessonsControllerTest < ActionDispatch::IntegrationTest
 
   test "should remove link to lesson" do
     sign_in(@admin_user)
-    
+    previous_lesson_blocks = @lesson.lesson_blocks.count
+
     assert_difference("LessonBlock.count", 0) do
       assert_difference("RichBlock.count", 0) do
-        delete unlink_url(@lesson_block)
+          delete unlink_url(@lesson_block)
       end
     end
-    
+
+    after_lesson_blocks = @lesson.lesson_blocks.count
+    assert_equal after_lesson_blocks + 1, previous_lesson_blocks
+
     assert_redirected_to lesson_url(@lesson)
     assert_equal "Lesson block has been unlinked to the lesson.", flash[:notice] 
   end
