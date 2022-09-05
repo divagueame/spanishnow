@@ -1,67 +1,49 @@
 <div id="<%= dom_id lesson %>" class="container">
-  <p>
-    <strong>Title:</strong>
-    <%= lesson.title %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= lesson.description %>
-  </p>
 
   <% if current_user.admin? then %>
+  <div class="flex gap-4">
+    <p>
+      <strong>Title:</strong>
+      <%= lesson.title %>
+    </p>||
+    <p>
+      <strong>Description:</strong>
+      <%= lesson.description %>
+    </p>||
     <p>
       <strong>Product:</strong>
       <%= lesson.product_id %>
     </p>
+  </div>
   <% end %>
 
-
-
-
-
-
-
- 
-
 <% lesson.lesson_blocks.each do |block| %> 
+  <div>
+    <div class="inline-block text-sm leading-none rounded no-underline text-gray hover:text-gray-900 hover:bg-white mt-4 lg:mt-0">
+      <div class="relative" data-controller="dropdown">
+        <div data-action="click->dropdown#toggle click@window->dropdown#hide" role="button" data-dropdown-target="button" tabindex="0" class="inline-block select-none  px-2 py-2 hover:opacity-80">
+          <span class="appearance-none inline-block text-gray-700">
+              <%= image_tag  'icons/more', class: "h-4 w-4 align-middle" %>
+          </span>
+        </div>
 
-
- <div class="inline-block text-sm px-4 py-2 leading-none rounded no-underline text-gray hover:text-gray-900 hover:bg-white mt-4 lg:mt-0">
-  <div class="relative" data-controller="dropdown">
-    <div data-action="click->dropdown#toggle click@window->dropdown#hide" role="button" data-dropdown-target="button" tabindex="0" class="inline-block select-none">
-      <span class="appearance-none flex items-center inline-block text-gray-700">
-          <%= image_tag  'icons/more', class: "h-4 w-4 align-middle" %>
-
-      </span>
-    </div>
-
-    <div data-dropdown-target="menu" class="absolute right-0 mt-2 z-50">
-      <div class="bg-white shadow rounded border overflow-hidden block">
-            <%= link_to lesson_block_path(block.id), class: 'w-auto no-underline px-10 py-3 text-gray-900 bg-white hover:bg-gray-300 whitespace-nowrap flex items-center justify-center gap-2',  data: {action: "click->dropdown#toggle", 'turbo-method': :delete, confirm: 'Are you sure?'}  do  %>
-              <%= image_tag 'icons/delete', class: "icon-small" %>
-                Delete Block
-            <% end %>
-
-            <%= link_to unlink_path(block.id), class: 'w-auto no-underline px-10  py-3 text-gray-900 bg-white hover:bg-gray-300 whitespace-nowrap flex  items-center justify-center gap-1',   data: {action: "click->dropdown#toggle", 'turbo-method': :delete, confirm: 'Are you sure?'}  do %>
-              <%= image_tag 'icons/unlink', class: "icon-small" %>
-              Unlink block
-            <% end %>
-  
+        <div data-dropdown-target="menu" class="absolute right-0 mt-2 z-50">
+          <div class="bg-white shadow rounded border overflow-hidden block">
+                <%= link_to lesson_block_path(block.id), class: 'w-auto no-underline px-10 py-3 text-gray-900 bg-white hover:bg-gray-300 whitespace-nowrap flex items-center justify-center gap-2',  data: {action: "click->dropdown#toggle", 'turbo-method': :delete, confirm: 'Are you sure?'}  do  %>
+                  <%= image_tag 'icons/delete', class: "icon-small" %>
+                    Delete Block
+                <% end %>
+                <%= link_to unlink_path(block.id), class: 'w-auto no-underline px-10  py-3 text-gray-900 bg-white hover:bg-gray-300 whitespace-nowrap flex  items-center justify-center gap-1',   data: {action: "click->dropdown#toggle", 'turbo-method': :delete, confirm: 'Are you sure?'}  do %>
+                  <%= image_tag 'icons/unlink', class: "icon-small" %>
+                  Unlink block
+                <% end %>
+          </div>
+        </div>
       </div>
     </div>
+    <h2  class="inline-block">Title: <%= block.title %></h2>
   </div>
-</div>
-
-        <h2  class="inline-block">Title: <%= block.title %></h2>
-        <% if block.block_type === 'RichBlock' %>
-          <%= block.block.content %>
-        <% end %>
-
- <br> 
-
-
-
-    <% end %>
-    
-<hr> 
+  <% if block.block_type === 'RichBlock' %>
+    <%= block.block.content %>
+  <% end %>
+<% end %>
