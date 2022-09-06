@@ -1,0 +1,37 @@
+<div id="<%= dom_id user_text_block %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Prompttitle:</strong>
+    <%= user_text_block.promptTitle %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Promptbody:</strong>
+    <%= user_text_block.promptBody %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Promptlength:</strong>
+    <%= user_text_block.promptLength %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Title:</strong>
+    <%= user_text_block.title %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Body:</strong>
+    <%= user_text_block.body %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">User:</strong>
+    <%= user_text_block.user_id %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this user text block", user_text_block, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this user text block', edit_user_text_block_path(user_text_block), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

@@ -4,5 +4,4 @@ class LessonBlock < ApplicationRecord
   acts_as_list scope: :lesson
   default_scope { includes(:block) }
 
-
 end

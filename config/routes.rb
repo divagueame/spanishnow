@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :user_text_blocks
   resources :lessons
 
   resources :rich_blocks, only: [:new, :create, :show, :edit, :update, :index]
