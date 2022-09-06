@@ -1,7 +1,7 @@
 class LessonBlocksController < ApplicationController
   before_action :authenticate_admin, only: %i[ new create destroy]
 #   before_action :authenticate_user!, only: %i[ index show]
-  before_action :set_lesson_block, only: %i[ destroy unlink ]
+  before_action :set_lesson_block, only: %i[ edit destroy unlink ]
 
 #   def index
 #     @lessons = Lesson.all
@@ -37,8 +37,10 @@ def new
     # binding.break
 end
 
-#   def edit
-#   end
+def edit
+  block_type_target_url = "edit_#{@lesson_block.block_type.underscore}_path"
+  redirect_to public_send(block_type_target_url)
+end
 
 def create
   # @block = Block.new(block_params)
@@ -92,5 +94,5 @@ end
     def lesson_block_params
       params.require(:lesson_block).permit(:id, :position, :lesson_id, :block_type, :block_id, :title)
     end
-    
+
 end
