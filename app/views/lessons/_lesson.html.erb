@@ -53,6 +53,9 @@
       <% if block.block_type === 'RichBlock' %>
         <%= block.block.content %>
       <% end %>
+      <% if block.block_type === 'UserTextBlock' %>
+        <%= block.block.user_id %>
+      <% end %>
     </div>
   <% end %>
 </div>

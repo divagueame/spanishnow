@@ -22,3 +22,15 @@ four:
 five:
   title: "Lesson block 1 has a title"
   block: five (RichBlock)
+
+six:
+  position: 4
+  title: "LessonBlock title - User Text!"
+  block: one (UserTextBlock)
+  lesson: one
+
+seven:
+  position: 5
+  title: "LessonBlock title - User Text2 !"
+  block: two (UserTextBlock)
+  lesson: one

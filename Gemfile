@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.1'
+ruby '3.1.2'
 gem 'sendgrid-ruby'
 gem 'premailer-rails'
 gem 'nokogiri'
@@ -57,7 +57,8 @@ group :development, :test do
 
   ## Debugger gems for Ide
   gem 'ruby-debug-ide', '~> 0.7.3'
-  gem 'debase', "~> 0.2.5.beta2" 
+  # gem 'debase', "~> 0.2.5.beta2" 
+  gem "debase", "0.2.5.beta2", require: false
   ## End debugger
 end
 
@@ -84,3 +85,10 @@ gem 'devise'
 gem "tailwindcss-rails", "~> 2.0"
 
 gem 'acts_as_list'
+
+gem 'capistrano', '~> 3.11'
+gem 'capistrano-rails', '~> 1.4'
+gem 'capistrano-passenger', '~> 0.2.0'
+gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
+gem 'ed25519', '~> 1.2'
+gem 'bcrypt_pbkdf', '~> 1'

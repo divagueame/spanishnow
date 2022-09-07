@@ -38,8 +38,8 @@ def new
 end
 
 def edit
-  block_type_target_url = "edit_#{@lesson_block.block_type.underscore}_path"
-  redirect_to public_send(block_type_target_url)
+  block_target_url = edit_polymorphic_path(@lesson_block.block)
+  redirect_to block_target_url
 end
 
 def create
