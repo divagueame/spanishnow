@@ -4,13 +4,13 @@ class LessonsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @lesson = lessons(:one)
     @lesson_block = lesson_blocks(:one)
+    @lesson_block_2 = lesson_blocks(:seven)
     # @lessons = Lesson.all
     # @lonely_lesson_blocks = LessonBlock.where(lesson_id: nil)
     # @logged_out_user = users(:one)
     # @logged_in_user = users(:two)
     @admin_user = users(:three)
   end
-
 
   test "should delete lesson block" do
     sign_in(@admin_user)
@@ -108,11 +108,7 @@ class LessonsControllerTest < ActionDispatch::IntegrationTest
   #   assert_redirected_to root_path
   # end
 
-  # test "should update lesson if admin" do
-  #   sign_in(@admin_user)
-  #   patch lesson_url(@lesson), params: { lesson: { description: @lesson.description, product_id: @lesson.product_id, title: @lesson.title } }
-  #   assert_redirected_to lesson_url(@lesson)
-  # end
+
 
   # test "should not update lesson if logged out" do
   #   patch lesson_url(@lesson), params: { lesson: { description: @lesson.description, product_id: @lesson.product_id, title: @lesson.title } }
