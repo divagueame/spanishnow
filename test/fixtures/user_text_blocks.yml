@@ -1,15 +1,9 @@
 one:
-  promptTitle: MyString
+  promptTitle: OriginalTitle
   promptBody: MyText
   promptLength: 1
-  title: OriginalTitle
-  body: MyText
-  user: one
 
 two:
   promptTitle: MyString
   promptBody: MyText
   promptLength: 1
-  title: MyString
-  body: MyText
-  user: two

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_06_202829) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_08_225203) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -87,16 +87,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_202829) do
     t.string "subheader"
   end
 
+  create_table "user_text_answers", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_text_answers_on_user_id"
+  end
+
   create_table "user_text_blocks", force: :cascade do |t|
     t.string "promptTitle"
     t.text "promptBody"
     t.integer "promptLength"
-    t.string "title"
-    t.text "body", null: false
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_user_text_blocks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -120,5 +125,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_202829) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "lesson_blocks", "lessons"
   add_foreign_key "lessons", "products"
-  add_foreign_key "user_text_blocks", "users"
+  add_foreign_key "user_text_answers", "users"
 end

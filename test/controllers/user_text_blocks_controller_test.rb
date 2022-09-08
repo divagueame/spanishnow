@@ -5,10 +5,41 @@ class UserTextBlocksControllerTest < ActionDispatch::IntegrationTest
     @user_text_block = user_text_blocks(:one)
     # @lesson_block = @user_text_block.lesson_block
     @admin_user = users(:three)
-    @owner_user = users(:one)
-    @not_owner_user = users(:two)
+    @not_admin = users(:one) 
 
   end
+
+  test "should update user_text_block if admin" do
+    sign_in(@admin_user)
+    patch user_text_block_url(@user_text_block), params: { user_text_block: { promptTitle: 'ChikiUpdated' } }
+    assert_redirected_to lesson_path(@user_text_block.lesson)
+    assert_equal "ChikiUpdated", UserTextBlock.find(user_text_blocks(:one).id).promptTitle
+  end
+
+  test "should not update user_text_block if user is not owner" do
+    sign_in(@not_admin)
+    patch user_text_block_url(@user_text_block), params: { user_text_block: { promptTitle: 'ChikiUpdated' } }
+    assert_redirected_to root_path
+    assert_equal "OriginalTitle", UserTextBlock.find(user_text_blocks(:one).id).promptTitle
+  end
+
+  # test "should update user_text_block if user is right owner" do
+  #   sign_in(@owner_user)
+  #   patch user_text_block_url(@user_text_block), params: { user_text_block: { title: 'ChikiUpdated' } }
+  #   assert_redirected_to lesson_path(@user_text_block.lesson)
+  #   assert_equal "ChikiUpdated", UserTextBlock.find(user_text_blocks(:one).id).title
+  # end
+
+
+
+
+
+
+
+
+
+
+
 
   # test "should get index" do
   #   get user_text_blocks_url
@@ -38,26 +69,7 @@ class UserTextBlocksControllerTest < ActionDispatch::IntegrationTest
   #   assert_response :success
   # end
 
-  test "should update user_text_block if admin" do
-    sign_in(@admin_user)
-    patch user_text_block_url(@user_text_block), params: { user_text_block: { title: 'ChikiUpdated' } }
-    assert_redirected_to lesson_path(@user_text_block.lesson)
-    assert_equal "ChikiUpdated", UserTextBlock.find(user_text_blocks(:one).id).title
-  end
 
-  test "should not update user_text_block if user is not owner" do
-    sign_in(@not_owner_user)
-    patch user_text_block_url(@user_text_block), params: { user_text_block: { title: 'ChikiUpdated' } }
-    assert_redirected_to root_path
-    assert_equal "OriginalTitle", UserTextBlock.find(user_text_blocks(:one).id).title
-  end
-
-  test "should update user_text_block if user is right owner" do
-    sign_in(@owner_user)
-    patch user_text_block_url(@user_text_block), params: { user_text_block: { title: 'ChikiUpdated' } }
-    assert_redirected_to lesson_path(@user_text_block.lesson)
-    assert_equal "ChikiUpdated", UserTextBlock.find(user_text_blocks(:one).id).title
-  end
 
   # test "should destroy user_text_block and corresponding lesson_block" do
   #   assert_difference("UserTextBlock.count", -1) do

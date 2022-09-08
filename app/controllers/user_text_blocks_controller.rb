@@ -1,10 +1,10 @@
 class UserTextBlocksController < ApplicationController
-  before_action :authenticate_admin, only: %i[index destroy]
+  before_action :authenticate_admin, only: %i[index destroy edit update]
   before_action :set_user_text_block, only: %i[ show edit update destroy ]
-  before_action only: %i[ edit update show] do
-    is_user_property(@user_text_block)
-  end
-  # GET /user_text_blocks or /user_text_blocks.json
+  # before_action only: %i[ edit update show] do
+  #   is_user_property(@user_text_block)
+  # end
+  
   def index
     @user_text_blocks = UserTextBlock.all
   end
@@ -60,6 +60,6 @@ class UserTextBlocksController < ApplicationController
     end
 
     def user_text_block_params
-      params.require(:user_text_block).permit(:promptTitle, :promptBody, :promptLength, :title, :body, :user_id)
+      params.require(:user_text_block).permit(:promptTitle, :promptBody, :promptLength)
     end
 end
