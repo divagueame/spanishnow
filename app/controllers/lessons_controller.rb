@@ -9,6 +9,7 @@ class LessonsController < ApplicationController
   end
 
   def show
+    # @user_text_answers
   end
 
   def new

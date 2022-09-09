@@ -91,9 +91,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_08_225203) do
     t.string "title"
     t.text "body"
     t.bigint "user_id", null: false
+    t.bigint "user_text_block_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_user_text_answers_on_user_id"
+    t.index ["user_text_block_id"], name: "index_user_text_answers_on_user_text_block_id"
   end
 
   create_table "user_text_blocks", force: :cascade do |t|
@@ -125,5 +127,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_08_225203) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "lesson_blocks", "lessons"
   add_foreign_key "lessons", "products"
+  add_foreign_key "user_text_answers", "user_text_blocks"
   add_foreign_key "user_text_answers", "users"
 end

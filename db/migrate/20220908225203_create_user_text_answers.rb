@@ -4,7 +4,7 @@ class CreateUserTextAnswers < ActiveRecord::Migration[7.0]
       t.string :title
       t.text :body
       t.references :user, null: false, foreign_key: true
-
+      t.references :user_text_block, null: false, foreign_key: true
       t.timestamps
     end
 

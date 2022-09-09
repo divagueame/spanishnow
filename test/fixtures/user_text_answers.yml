@@ -1,9 +1,11 @@
 one:
-  title: MyString
-  body: MyText
+  title: User text anwser title
+  body: User answer body!!
   user: one
+  user_text_block: one
 
 two:
-  title: MyString
-  body: MyText
+  title: Title answer 2
+  body: User answer body!!
   user: two
+  user_text_block: one

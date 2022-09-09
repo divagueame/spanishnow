@@ -16,9 +16,11 @@
     </p>
   </div>
   <% end %>
+  
 <div class="py-8">
   <% lesson.lesson_blocks.each do |block| %> 
     <div class="mb-4">
+      <% if current_user.admin? %>
       <div class="relative">
         <%= image_tag  'icons/grab', class: "h-8 w-8 align-middle absolute -left-14 cursor-grab rounded-sm hover:bg-slate-100"%>
         <h2  class="inline-block">Title: <%= block.title %></h2>
@@ -48,13 +50,16 @@
             </div>
           </div>
         </div>
+      <% end %>
 
       </div>
       <% if block.block_type === 'RichBlock' %>
         <%= block.block.content %>
       <% end %>
       <% if block.block_type === 'UserTextBlock' %>
- 
+        <%= block.block.promptTitle %><br>
+        <%= block.block.promptBody %><br>
+        
       <% end %>
     </div>
   <% end %>
