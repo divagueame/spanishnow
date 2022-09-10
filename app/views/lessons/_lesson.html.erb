@@ -18,7 +18,7 @@
   <% end %>
   
 <div class="py-8">
-  <% lesson.lesson_blocks.each do |block| %> 
+  <% @lesson_blocks.each do |block| %> 
     <div class="mb-4">
       <% if current_user.admin? %>
       <div class="relative">
@@ -60,7 +60,10 @@
         <%= block.block.promptTitle %><br>
         <%= block.block.promptBody %><br>
         
+        <%= link_to 'Start', edit_user_text_block_user_text_answer_path(block.block, current_user.user_text_answers.find_by(user_text_block_id: block.block.id).id) %>
+        
       <% end %>
     </div>
+    <hr>
   <% end %>
 </div>

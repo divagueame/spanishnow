@@ -1,19 +1,35 @@
 require "test_helper"
 
 class UserTextAnswersControllerTest < ActionDispatch::IntegrationTest
-  # setup do
-  #   @user_text_answer = user_text_answers(:one)
-  # end
+  setup do
+    @user_text_answer = user_text_answers(:one)
+    @user_text_block = user_text_blocks(:first_user_text_block)
+    @right_user = users(:one) 
+    @wrong_user = users(:two) 
+  end
 
   # test "should get index" do
   #   get user_text_answers_url
   #   assert_response :success
   # end
 
-  # test "should get new" do
-  #   get new_user_text_answer_url
-  #   assert_response :success
-  # end
+  test "should get edit if right user" do
+    sign_in(@right_user)
+    get edit_user_text_block_user_text_answer_url(@user_text_block, @user_text_answer)
+    assert_response :success
+  end
+
+
+  test "should not get edit if wrong user" do
+    sign_in(@wrong_user)
+    get edit_user_text_block_user_text_answer_url(@user_text_block, @user_text_answer)
+    assert_redirected_to root_url
+  end
+
+  test "should not get edit if logged out" do
+    get edit_user_text_block_user_text_answer_url(@user_text_block, @user_text_answer)
+    assert_redirected_to root_url
+  end  
 
   # test "should create user_text_answer" do
   #   assert_difference("UserTextAnswer.count") do

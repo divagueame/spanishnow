@@ -9,7 +9,10 @@ class LessonsController < ApplicationController
   end
 
   def show
-    # @user_text_answers
+
+    @lesson_blocks = @lesson.lesson_blocks
+    # @user_text_blocks = @lesson_blocks
+    # @user_text_answers = current_user
   end
 
   def new

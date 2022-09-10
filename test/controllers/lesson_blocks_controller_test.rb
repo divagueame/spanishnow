@@ -4,7 +4,7 @@ class LessonsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @lesson = lessons(:one)
     @lesson_block = lesson_blocks(:one)
-    @lesson_block_2 = lesson_blocks(:seven)
+    @lesson_block_2 = lesson_blocks(:two)
     # @lessons = Lesson.all
     # @lonely_lesson_blocks = LessonBlock.where(lesson_id: nil)
     # @logged_out_user = users(:one)

@@ -1,8 +1,9 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Editing user text answer</h1>
+<div class="pt-4 mx-auto md:w-2/3 w-full">
+<div class="py-4">
+  <h1 class="font-bold text-4xl"><%= @user_text_block.promptTitle%></h1>
+  <p><%= @user_text_block.promptBody %></p>
+</div>
 
-  <%= render "form", user_text_answer: @user_text_answer %>
+  <%= render "form", user_text_block: @user_text_block, user_text_answer: @user_text_answer %>
 
-  <%= link_to "Show this user text answer", @user_text_answer, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to "Back to user text answers", user_text_answers_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
 </div>

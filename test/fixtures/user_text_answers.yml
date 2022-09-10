@@ -1,11 +1,16 @@
 one:
-  title: User text anwser title
-  body: User answer body!!
+  title: User text anwsesr title
+  body: User asnswer body!!
   user: one
-  user_text_block: one
+  user_text_block: first_user_text_block
 
 two:
-  title: Title answer 2
+  title: User text anwser title
   body: User answer body!!
   user: two
-  user_text_block: one
+  user_text_block: first_user_text_block
+three:
+  title: User text anwser title
+  body: User answer body!!
+  user: three
+  user_text_block: first_user_text_block

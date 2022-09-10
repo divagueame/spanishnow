@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  resources :user_text_answers
-  resources :user_text_blocks
+  
+  resources :user_text_blocks do 
+    resources :user_text_answers
+  end
   resources :lessons
 
   resources :rich_blocks, only: [:new, :create, :show, :edit, :update, :index]
