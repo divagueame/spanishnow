@@ -1,5 +1,5 @@
 class LessonsController < ApplicationController
-  before_action :authenticate_admin, only: %i[ new edit create edit update destroy ]
+  before_action :authenticate_admin, only: %i[ new edit create update destroy ]
   before_action :authenticate_user!, only: %i[ index show]
   before_action :set_lesson, only: %i[ show edit update destroy ]
 
@@ -9,10 +9,7 @@ class LessonsController < ApplicationController
   end
 
   def show
-
     @lesson_blocks = @lesson.lesson_blocks
-    # @user_text_blocks = @lesson_blocks
-    # @user_text_answers = current_user
   end
 
   def new
@@ -48,7 +45,7 @@ class LessonsController < ApplicationController
     @lesson.destroy
 
     respond_to do |format|
-      format.html { redirect_to lessons_url, notice: "Lesson was successfully destroyed." }
+      format.html { redirect_to lessons_url, notice: "Lesson was successfully destroyed.", status: 303 }
     end
   end
 

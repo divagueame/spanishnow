@@ -14,6 +14,9 @@
       <strong>Product:</strong>
       <%= lesson.product_id %>
     </p>
+    
+     <%= link_to 'By', lesson_path(@lesson.id),
+         data: {'turbo-method': :delete, confirm: 'Are you sure?'}  %>
   </div>
   <% end %>
   

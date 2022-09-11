@@ -1,6 +1,5 @@
 class LessonBlocksController < ApplicationController
   before_action :authenticate_admin, only: %i[ new create destroy]
-#   before_action :authenticate_user!, only: %i[ index show]
   before_action :set_lesson_block, only: %i[ edit destroy unlink ]
 
 #   def index

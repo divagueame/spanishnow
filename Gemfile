@@ -80,7 +80,7 @@ group :test do
   gem 'webdrivers'
 end
 gem 'stripe'
-gem "font-awesome-sass", "~> 6.1.2"
+# gem "font-awesome-sass"
 gem 'devise'
 gem "tailwindcss-rails", "~> 2.0"
 
@@ -90,5 +90,3 @@ gem 'capistrano', '~> 3.11'
 gem 'capistrano-rails', '~> 1.4'
 gem 'capistrano-passenger', '~> 0.2.0'
 gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
-gem 'ed25519', '~> 1.2'
-gem 'bcrypt_pbkdf', '~> 1'
