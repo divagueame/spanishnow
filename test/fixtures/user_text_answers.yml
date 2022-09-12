@@ -1,16 +1,16 @@
 one:
-  title: User text anwsesr title
-  body: User asnswer body!!
+  title: My first day at school
+  body: I could not believe it!
   user: one
   user_text_block: first_user_text_block
 
 two:
-  title: User text anwser title
-  body: User answer body!!
+  title: Mi primer dia de escuela
+  body: Fue horripilante
   user: two
   user_text_block: first_user_text_block
 three:
-  title: User text anwser title
-  body: User answer body!!
+  title: Increible!
+  body: No me puedo creer lo que veo
   user: three
   user_text_block: first_user_text_block

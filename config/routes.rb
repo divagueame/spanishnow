@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :feedbacks
   
   resources :user_text_blocks do 
     resources :user_text_answers
