@@ -5,43 +5,43 @@ class FeedbacksTest < ApplicationSystemTestCase
     @feedback = feedbacks(:one)
   end
 
-  test "visiting the index" do
-    visit feedbacks_url
-    assert_selector "h1", text: "Feedbacks"
-  end
+  # test "visiting the index" do
+  #   visit feedbacks_url
+  #   assert_selector "h1", text: "Feedbacks"
+  # end
 
-  test "should create feedback" do
-    visit feedbacks_url
-    click_on "New feedback"
+  # test "should create feedback" do
+  #   visit feedbacks_url
+  #   click_on "New feedback"
 
-    fill_in "Body", with: @feedback.body
-    check "Seen" if @feedback.seen
-    fill_in "User", with: @feedback.user_id
-    fill_in "User text answer", with: @feedback.user_text_answer_id
-    click_on "Create Feedback"
+  #   fill_in "Body", with: @feedback.body
+  #   check "Seen" if @feedback.seen
+  #   fill_in "User", with: @feedback.user_id
+  #   fill_in "User text answer", with: @feedback.user_text_answer_id
+  #   click_on "Create Feedback"
 
-    assert_text "Feedback was successfully created"
-    click_on "Back"
-  end
+  #   assert_text "Feedback was successfully created"
+  #   click_on "Back"
+  # end
 
-  test "should update Feedback" do
-    visit feedback_url(@feedback)
-    click_on "Edit this feedback", match: :first
+  # test "should update Feedback" do
+  #   visit feedback_url(@feedback)
+  #   click_on "Edit this feedback", match: :first
 
-    fill_in "Body", with: @feedback.body
-    check "Seen" if @feedback.seen
-    fill_in "User", with: @feedback.user_id
-    fill_in "User text answer", with: @feedback.user_text_answer_id
-    click_on "Update Feedback"
+  #   fill_in "Body", with: @feedback.body
+  #   check "Seen" if @feedback.seen
+  #   fill_in "User", with: @feedback.user_id
+  #   fill_in "User text answer", with: @feedback.user_text_answer_id
+  #   click_on "Update Feedback"
 
-    assert_text "Feedback was successfully updated"
-    click_on "Back"
-  end
+  #   assert_text "Feedback was successfully updated"
+  #   click_on "Back"
+  # end
 
-  test "should destroy Feedback" do
-    visit feedback_url(@feedback)
-    click_on "Destroy this feedback", match: :first
+  # test "should destroy Feedback" do
+  #   visit feedback_url(@feedback)
+  #   click_on "Destroy this feedback", match: :first
 
-    assert_text "Feedback was successfully destroyed"
-  end
+  #   assert_text "Feedback was successfully destroyed"
+  # end
 end

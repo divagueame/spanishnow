@@ -1,28 +1,19 @@
 class FeedbacksController < ApplicationController
-  # before_action :authenticate_admin, only: %i[ index new create edit update destroy]
+  before_action :authenticate_admin, only: %i[ new create edit update destroy]
 
-  before_action :set_user_text_answer, only: %i[ new edit update destroy ]
-  before_action :set_feedback, only: %i[ edit update destroy ]
+  before_action :set_user_text_answer, only: %i[ edit update destroy ]
+  before_action :set_feedback, only: %i[ show edit update destroy ]
 
   before_action only: %i[ show ] do
-    authenticate_owner(@user_text_answer) 
-    p 'PASS AUTHE OWNer'
-  end
-  
-  def index
-    @feedbacks = Feedback.all
+    authenticate_owner(@feedback.user_text_answer)
   end
 
   def show
   end
 
-
   def new
-
-    
-
-p "POPOPO!"
-p @user_text_answer
+    @user_text_answer = UserTextAnswer.find(params[:user_text_answer_id])
+    @answer_owner = @user_text_answer.user
     @feedback = Feedback.new(user_text_answer_id: @user_text_answer.id, user_id: current_user.id)
   end
 
@@ -33,9 +24,6 @@ p @user_text_answer
 
   def create
     @feedback = Feedback.new(feedback_params)
-    p "FEED CREATE"
-    p feedback_params
-    p @feedback.valid?
     respond_to do |format|
       if @feedback.save
         format.html { redirect_to admin_url, notice: "Feedback was successfully created." }
@@ -68,20 +56,12 @@ p @user_text_answer
     def set_user_text_answer
       @user_text_answer = UserTextAnswer.find(params[:user_text_answer_id])
       @answer_owner = @user_text_answer.user
-      p 'USER TEXT ANSWER'
-      p @user_text_answer
     end
     
     def set_feedback
-      # @feedback = Feedback.find(params[:id])
-      @feedback = Feedback.new(user_text_answer_id: @user_text_answer.id)
-      p 'FEEDB'
-      p @feedback
+      @feedback = Feedback.find(params[:id])
     end
 
-
-
-    # Only allow a list of trusted parameters through.
     def feedback_params
       params.require(:feedback).permit(:body, :seen, :user_id, :user_text_answer_id)
     end

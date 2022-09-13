@@ -24,6 +24,7 @@
   <h3>Previous feedback</h3>
   <% @feedbacks.each do |feedback| %>
     <%= feedback.body %>
+    <%= link_to 'See', feedback_url(feedback) %>
     <br>
   <% end %>
 </div>

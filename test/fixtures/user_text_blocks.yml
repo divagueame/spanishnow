@@ -2,3 +2,8 @@ first_user_text_block:
   promptTitle: OriginalTitle
   promptBody: MyText
   promptLength: 1
+
+second_user_text_block:
+  promptTitle: OriginalTitle
+  promptBody: MyText
+  promptLength: 144

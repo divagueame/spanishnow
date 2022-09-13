@@ -13,5 +13,5 @@ two:
 three:
   title: Increible!
   body: No me puedo creer lo que veo
-  user: three
-  user_text_block: first_user_text_block
+  user: one
+  user_text_block: second_user_text_block

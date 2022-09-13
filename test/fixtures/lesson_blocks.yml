@@ -28,3 +28,9 @@ six:
   title: "LessonBlock title - User Text!"
   block: first_user_text_block (UserTextBlock)
   lesson: one
+
+seven:
+  position: 5
+  title: "LessonBlock title - User Text!"
+  block: second_user_text_block (UserTextBlock)
+  lesson: one
