@@ -1,5 +1,5 @@
 class UserTextAnswersController < ApplicationController
-  before_action :set_user_text_block, only: %i[edit update]
+  before_action :set_user_text_block, only: %i[new edit update]
   before_action :set_user_text_answer, only: %i[edit update show  destroy ]
 
   # def index
@@ -11,7 +11,7 @@ class UserTextAnswersController < ApplicationController
   # end
 
   def new
-    @user_text_answer = UserTextAnswer.new(user_id: current_user.id)
+    @user_text_answer = @user_text_block.user_text_answers.build(user_id: current_user.id)
   end
 
   def edit

@@ -30,16 +30,21 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
   #   assert_redirected_to feedback_url(Feedback.last)
   # end
 
-  test "should show feedback to owner user" do
+  test "should show feedback to owner user && should set feedback to seen" do
     sign_in(@user_one)
-    get feedback_url(@feedback.id)
+    assert_equal false, Feedback.find(@feedback.id).seen
+    get feedback_url(@feedback)
+    assert_equal true, Feedback.find(@feedback.id).seen
     assert_response :success
+
   end
 
 
-  test "should show feedback to admin" do
+  test "should show feedback to admin && should not update seen" do
     sign_in(@admin_user)
-    get feedback_url(@feedback.id)
+    assert_equal false, Feedback.find(@feedback.id).seen
+    get feedback_url(@feedback.id)      
+    assert_equal false, Feedback.find(@feedback.id).seen
     assert_response :success
   end
 

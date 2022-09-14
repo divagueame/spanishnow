@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   has_many :user_text_answers, dependent: :destroy
 
-  after_save :create_user_text_answers
+  # after_save :create_user_text_answers
 
   private
   def create_user_text_answers

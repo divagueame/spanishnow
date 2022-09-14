@@ -8,14 +8,14 @@
 
 <br>
 <% if !@user_text_answers.empty? then %>
-  <div class="py-2 container">
+  <div class="py-2 container user_text_answers">
     <h3>These user answers need feedback...</h3>
     <% @user_text_answers.each do |u| %>
-      <div>
-        <%= u.title %>
-        <%= u.body %>
+      <div class="user_text_answer">
+        <h3 class="title"><%= u.title %></h3>
+        <p class="body"><%= u.body %></p>
       </div>
-      <%= link_to 'Go', new_feedback_url(:user_text_answer_id => u.id) %>
+      <%= link_to 'Give feedback', new_feedback_url(:user_text_answer_id => u.id) %>
     <% end %>
   </div>
 <% end %>

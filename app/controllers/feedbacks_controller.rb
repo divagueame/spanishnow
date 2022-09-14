@@ -9,12 +9,16 @@ class FeedbacksController < ApplicationController
   end
 
   def show
+    
+    if !current_user.admin? && !@feedback.seen
+      @feedback.update(seen: true)
+    end
   end
 
   def new
     @user_text_answer = UserTextAnswer.find(params[:user_text_answer_id])
     @answer_owner = @user_text_answer.user
-    @feedback = Feedback.new(user_text_answer_id: @user_text_answer.id, user_id: current_user.id)
+    @feedback = Feedback.new(user_text_answer_id: @user_text_answer.id)
   end
 
 
@@ -63,6 +67,6 @@ class FeedbacksController < ApplicationController
     end
 
     def feedback_params
-      params.require(:feedback).permit(:body, :seen, :user_id, :user_text_answer_id)
+      params.require(:feedback).permit(:body, :seen, :user_text_answer_id)
     end
 end

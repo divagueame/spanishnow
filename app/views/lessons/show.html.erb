@@ -1,5 +1,6 @@
 <%= render @lesson %>
 
+      <% if current_user.admin? %>
 <div>
 
   <%= link_to "New rich block", new_rich_block_path(lesson_id: @lesson.id) %>
@@ -9,3 +10,4 @@
 
   <%= button_to "Destroy this lesson", @lesson, method: :delete if current_user.admin? %>
 </div>
+<% end %>
