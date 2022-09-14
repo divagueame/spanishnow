@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :user_text_answers
   end
   resources :lessons
+  
+  post 'lesson/:id/toggle_active_lesson', to: 'lessons#toggle_active_lesson', as: 'toggle_active_lesson'
 
   resources :rich_blocks, only: [:new, :create, :show, :edit, :update, :index]
   delete '/lesson_block/:id' => 'lesson_blocks#destroy', as: 'lesson_block'

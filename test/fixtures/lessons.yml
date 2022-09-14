@@ -2,12 +2,15 @@ one:
   title: First lesson title
   description: Learning a lot of chiki chiki
   product: one
+  active: true
 
 two:
   title: Second lesson title
   description: MyText Desc
   product: two
+  active: true
 
 three:
   title: Independent Lesson title
   description: MyText
+  active: false

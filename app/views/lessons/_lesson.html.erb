@@ -1,7 +1,7 @@
 <div id="<%= dom_id lesson %>" class="container">
 
   <% if current_user.admin? then %>
-  <div class="flex gap-4">
+  <div class="flex gap-4 py-2">
     <p>
       <strong>Title:</strong>
       <%= lesson.title %>
@@ -13,9 +13,20 @@
     <p>
       <strong>Product:</strong>
       <%= lesson.product_id %>
-    </p>
-    
-     <%= link_to 'By', lesson_path(@lesson.id),
+    </p>||
+      <%= image_tag 'icons/edit', class: "h-8 w-8 bg-green-300 hidden" %>
+
+
+
+      <%= link_to toggle_active_lesson_path(@lesson), data: { 'turbo-method' => :post} do %>
+        <% if  @lesson.active %>
+          <%= image_tag 'icons/active-bg', class: "h-8 w-8" %>
+        <% else %>
+          <%= image_tag 'icons/inactive-bg', class: "h-8 w-8" %>
+        <% end %>
+      <% end %>
+
+     <%= link_to 'Remove Lesson', lesson_path(@lesson.id),
          data: {'turbo-method': :delete, confirm: 'Are you sure?'}  %>
   </div>
   <% end %>
