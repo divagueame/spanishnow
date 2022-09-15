@@ -16,7 +16,9 @@ class UserTextBlocksController < ApplicationController
 
   def new
     @user_text_block = UserTextBlock.new
-    @user_text_block.lesson = @lesson
+    @user_text_block.build_lesson_block
+    
+    # @user_text_block.lesson = @lesson
     # p 'params new'
     # p params
     # p @user_text_block.lesson
@@ -28,15 +30,13 @@ class UserTextBlocksController < ApplicationController
 
 
   def create
-
-    @user_text_block = UserTextBlock.new(user_text_block_params)
-    @user_text_block.lesson = @lesson
+    @lesson = Lesson.find(user_text_block_params[:lesson_block_attributes][:lesson_id])
+    @user_text_block = UserTextBlock.new(promptTitle: user_text_block_params[:promptTitle], promptBody: user_text_block_params[:promptBody], promptLength: user_text_block_params[:promptLength])
+    @lesson_block_title = user_text_block_params[:lesson_block_attributes][:title]
     
-    # p 'params crate'
-    # p params
     respond_to do |format|
-      if @user_text_block.save
-        format.html { redirect_to user_text_block_url(@user_text_block), notice: "User text block was successfully created." }
+      if @lesson.lesson_blocks.create(block: @user_text_block, title:  @lesson_block_title)
+        format.html { redirect_to lesson_path(@lesson), notice: "User text block was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -72,6 +72,6 @@ class UserTextBlocksController < ApplicationController
     end
 
     def user_text_block_params
-      params.require(:user_text_block).permit(:promptTitle, :promptBody, :promptLength, :lesson_id)
+      params.require(:user_text_block).permit(:promptTitle, :promptBody, :promptLength, lesson_block_attributes: [:title, :id, :lesson_id])
     end
 end

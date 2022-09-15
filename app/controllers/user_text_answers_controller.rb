@@ -1,5 +1,5 @@
 class UserTextAnswersController < ApplicationController
-  before_action :set_user_text_block, only: %i[new edit update]
+  before_action :set_user_text_block, only: %i[new create edit update]
   before_action :set_user_text_answer, only: %i[edit update show  destroy ]
 
   # def index
@@ -19,11 +19,18 @@ class UserTextAnswersController < ApplicationController
   end
 
   def create
+
     @user_text_answer = UserTextAnswer.new(user_text_answer_params)
+    @user_text_answer = @user_text_block.user_text_answers.build(user_id: current_user.id)
+    # p '@user_text_block'
+    # p @user_text_block
+    # p '@user_text_answer'
+    # p @user_text_answer
+    # p @user_text_answer.valid?
 
     respond_to do |format|
       if @user_text_answer.save
-        format.html { redirect_to user_text_answer_url(@user_text_answer), notice: "User text answer was successfully created." }
+        format.html { redirect_to lesson_path(@user_text_block.lesson), notice: "Genial! Buen trabajo." }
 
       else
         format.html { render :new, status: :unprocessable_entity }

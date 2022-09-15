@@ -15,7 +15,6 @@ class RichBlocksController < ApplicationController
   def new
     @lesson_id = params[:lesson_id]
     @rich_block = RichBlock.new
-    params[:leson_id] = @lesson_id
     @rich_block.build_lesson_block
   end
 

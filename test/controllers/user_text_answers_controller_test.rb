@@ -19,7 +19,6 @@ class UserTextAnswersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-
   test "should not get edit if wrong user" do
     sign_in(@wrong_user)
     get edit_user_text_block_user_text_answer_url(@user_text_block, @user_text_answer)
@@ -31,13 +30,18 @@ class UserTextAnswersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url
   end  
 
-  # test "should create user_text_answer" do
-  #   assert_difference("UserTextAnswer.count") do
-  #     post user_text_answers_url, params: { user_text_answer: { body: @user_text_answer.body, title: @user_text_answer.title, user_id: @user_text_answer.user_id } }
-  #   end
+  test "should create user_text_answer" do
+    sign_in(@wrong_user) 
+    @second_user_text_block = user_text_blocks(:second_user_text_block)
+    assert_difference("UserTextAnswer.count") do
+    post user_text_block_user_text_answers_path(@second_user_text_block), params: {  user_text_answer: {  body: 'sdf',
+                                                                                                    title: 'asdfsd',
+                                                                                                    user_id: @wrong_user.id,
+                                                                                                    user_text_block_id: @second_user_text_block.id } }
+    end
 
-  #   assert_redirected_to user_text_answer_url(UserTextAnswer.last)
-  # end
+    assert_redirected_to lesson_path(@second_user_text_block.lesson)
+  end
 
   # test "should show user_text_answer" do
   #   get user_text_answer_url(@user_text_answer)
