@@ -60,7 +60,7 @@ class LessonsController < ApplicationController
 
   def toggle_active_lesson
     @lesson.update(active: !@lesson.active)
-    redirect_to lesson_url(@lesson), notice: "Lesson is now #{@lesson.active ? "visible": 'hidden'}."
+    redirect_back(fallback_location: lessons_path)
   end
 
   private

@@ -3,7 +3,18 @@
 <%# Lessons  %>
 <div id="lessons" class="container">
   <% @lessons.each do |lesson| %>
-    <%= link_to lesson.title, lesson_path(lesson) %><br>
+
+  <%= link_to toggle_active_lesson_path(lesson), data: { 'turbo-method' => :post} do %>
+        <% if lesson.active %>
+          <%= image_tag 'icons/active-bg', class: "inline h-4 w-4" %>
+        <% else %>
+          <%= image_tag 'icons/inactive-bg', class: "inline h-4 w-4" %>
+        <% end %>
+        
+    <%= link_to lesson.title, lesson_path(lesson) %>
+     <br>
+    <% end %>
+     
   <% end %>
 </div>
 
@@ -14,7 +25,10 @@
     <h1>Lonely Blocks (<%= @lonely_lesson_blocks.count %>)</h1>
     <div id="lonely-lesson-blocks" class="container">
       <% @lonely_lesson_blocks.each do |block| %>
-        <%= block.block_type %>  / <%= block.title %><br>
+
+        <%= block.block_type %>  / <%= block.title %>
+
+        <br>
       <% end %>
     </div>
   </div>
