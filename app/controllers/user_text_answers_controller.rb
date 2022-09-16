@@ -1,11 +1,17 @@
 class UserTextAnswersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_user_text_block, only: %i[new create edit update]
-  before_action :set_user_text_answer, only: %i[edit update show  destroy ]
+  before_action :set_user_text_answer, only: %i[edit update show destroy ]
+  before_action :create_user_text_answer, only: %i[ create ]
 
-  # def index
-    # @user_text_answers = UserTextAnswer.all
-    # @user_text_block.user_text_answers
-  # end
+   
+  before_action only: %i[ show ] do
+    # p "CHI"
+    # p current_user&.id
+    # p "Cho"
+    # p @user_text_answer
+    authenticate_owner(@user_text_answer)
+  end
 
   # def show
   # end
@@ -19,15 +25,7 @@ class UserTextAnswersController < ApplicationController
   end
 
   def create
-
-    @user_text_answer = UserTextAnswer.new(user_text_answer_params)
     @user_text_answer = @user_text_block.user_text_answers.build(user_id: current_user.id)
-    # p '@user_text_block'
-    # p @user_text_block
-    # p '@user_text_answer'
-    # p @user_text_answer
-    # p @user_text_answer.valid?
-
     respond_to do |format|
       if @user_text_answer.save
         format.html { redirect_to lesson_path(@user_text_block.lesson), notice: "Genial! Buen trabajo." }
@@ -50,13 +48,13 @@ class UserTextAnswersController < ApplicationController
   end
 
 
-  def destroy
-    @user_text_answer.destroy
+  # def destroy
+  #   @user_text_answer.destroy
 
-    respond_to do |format|
-      format.html { redirect_to user_text_answers_url, notice: "User text answer was successfully destroyed." }
-    end
-  end
+  #   respond_to do |format|
+  #     format.html { redirect_to user_text_answers_url, notice: "User text answer was successfully destroyed." }
+  #   end
+  # end
 
   private
     def set_user_text_block
@@ -65,6 +63,10 @@ class UserTextAnswersController < ApplicationController
 
     def set_user_text_answer
       @user_text_answer = UserTextAnswer.find(params[:id])
+    end
+
+    def create_user_text_answer
+      @user_text_answer = UserTextAnswer.new(user_text_answer_params)
     end
 
     def user_text_answer_params

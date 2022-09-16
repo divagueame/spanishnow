@@ -3,14 +3,20 @@ one:
   description: Learning a lot of chiki chiki
   product: one
   active: true
+  course: one
+  position: 1
 
 two:
   title: Second lesson title
   description: MyText Desc
   product: two
   active: true
+  course: one
+  position: 2
 
 three:
   title: Independent Lesson title
   description: MyText
   active: false
+  course: one
+  position: 3

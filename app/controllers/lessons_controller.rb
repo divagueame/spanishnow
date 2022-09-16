@@ -5,7 +5,7 @@ class LessonsController < ApplicationController
   # before_action :filter_active_lesson, only: %i[ show ]
 
   before_action only: %i[ show ] do
-    filter_active_lesson(@lesson)
+    filter_active(@lesson)
   end
   def index
     if current_user.admin?

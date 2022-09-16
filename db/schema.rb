@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_14_181604) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_16_113601) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,6 +52,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_14_181604) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "courses", force: :cascade do |t|
+    t.string "title", null: false
+    t.boolean "active", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "feedbacks", force: :cascade do |t|
     t.text "body"
     t.boolean "seen"
@@ -80,6 +87,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_14_181604) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "active", default: false
+    t.integer "position"
+    t.bigint "course_id"
+    t.index ["course_id"], name: "index_lessons_on_course_id"
     t.index ["product_id"], name: "index_lessons_on_product_id"
   end
 
@@ -137,6 +147,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_14_181604) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "feedbacks", "user_text_answers"
   add_foreign_key "lesson_blocks", "lessons"
+  add_foreign_key "lessons", "courses"
   add_foreign_key "lessons", "products"
   add_foreign_key "user_text_answers", "user_text_blocks"
   add_foreign_key "user_text_answers", "users"

@@ -1,8 +1,10 @@
-<h1>Lessons</h1>
+<%= render @course %>
+
+<br>
 
 <%# Lessons  %>
 <div id="lessons" class="container">
-  <% @lessons.each do |lesson| %>
+  <% @course.lessons.each do |lesson| %>
     <% if current_user.admin? %>
       <%= link_to toggle_active_lesson_path(lesson), data: { 'turbo-method' => :post} do %>
             <% if lesson.active %>
@@ -14,24 +16,6 @@
     <% end %>       
     <%= link_to lesson.title, lesson_path(lesson) %>
      <br>
-    <% end %>
+<% end %>
       
 </div>
-
-<% if current_user.admin? %>
-  <hr class="my-8">
-  <%# Lonely Blocks %>
-  <div class="container">
-    <h1>Lonely Blocks (<%= @lonely_lesson_blocks.count %>)</h1>
-    <div id="lonely-lesson-blocks" class="container">
-      <% @lonely_lesson_blocks.each do |block| %>
-
-        <%= block.block_type %>  / <%= block.title %>
-
-        <br>
-      <% end %>
-    </div>
-  </div>
-
-  <%= link_to "New lesson", new_lesson_path %>
-<% end %>

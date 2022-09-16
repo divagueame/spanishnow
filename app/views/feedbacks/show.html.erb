@@ -3,7 +3,12 @@
     <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
-
+    <div class="p-4 rounded-sm bg-orange-200 my-4 shadow-sm">
+      <h3><%= @feedback.user_text_answer.title %></h3>
+      <p><%= @feedback.user_text_answer.body %></p>
+      <%= link_to 'Go back to lesson', lesson_path(@feedback.user_text_answer.user_text_block.lesson) %>
+    </div>
+   
     <%= render @feedback %>
 
   <% if current_user.admin? %>

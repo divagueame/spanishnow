@@ -4,16 +4,20 @@ class ApplicationController < ActionController::Base
     end
 
     def authenticate_owner(resource)
-        redirect_to root_path, notice: 'Are you chiki chiki?' unless current_user&.admin? || resource.user_id === current_user.id
+        redirect_to root_path, notice: 'Are you chiki chiki?' unless current_user&.admin? || resource.user_id === current_user&.id
     end
 
     def is_user_property(resource)
         redirect_to root_path, notice: 'Are you chiki chiki chiki boom?' unless current_user&.admin? || current_user.id === resource.user_id
     end
 
+    # def filter_active_lesson(lesson)
+    #     redirect_to lessons_path, notice: 'Not ready yet' unless current_user&.admin? || lesson.active
+    # end
 
-    def filter_active_lesson(lesson)
-        redirect_to lessons_path, notice: 'Not ready yet' unless current_user&.admin? || lesson.active
+
+    def filter_active(resource)
+        redirect_to root_path, notice: 'Nope' unless current_user&.admin? || resource.active
     end
     
 end
