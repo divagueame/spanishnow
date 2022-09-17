@@ -6,7 +6,7 @@ class User < ApplicationRecord
   enum role: {basic: 0, premium: 1, admin: 2}
 
   has_many :user_text_answers, dependent: :destroy
-
+  has_many :feedbacks, through: :user_text_answers
   # after_save :create_user_text_answers
 
   private

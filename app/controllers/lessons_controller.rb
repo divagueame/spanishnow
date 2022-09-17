@@ -7,6 +7,7 @@ class LessonsController < ApplicationController
   before_action only: %i[ show ] do
     filter_active(@lesson)
   end
+  
   def index
     if current_user.admin?
       @lessons = Lesson.all

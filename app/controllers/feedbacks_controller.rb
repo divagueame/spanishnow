@@ -31,6 +31,7 @@ class FeedbacksController < ApplicationController
     respond_to do |format|
       if @feedback.save
         format.html { redirect_to admin_url, notice: "Feedback was successfully created." }
+        
       else
         format.html { render :new, status: :unprocessable_entity }
       end

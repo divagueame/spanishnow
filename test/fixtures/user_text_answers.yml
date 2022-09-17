@@ -15,3 +15,9 @@ three:
   body: No me puedo creer lo que veo
   user: one
   user_text_block: second_user_text_block
+
+four:
+  title: Oh Yeah!
+  body: Hard to believe
+  user: one
+  user_text_block: third_user_text_block

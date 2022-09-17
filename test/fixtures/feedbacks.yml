@@ -7,3 +7,8 @@ two:
   body: Not bad at all! Keep working!
   seen: false
   user_text_answer: two
+
+three:
+  body: Great job! Great combination of words! Keep it up!
+  seen: true
+  user_text_answer: four

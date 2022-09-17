@@ -7,3 +7,8 @@ second_user_text_block:
   promptTitle: OriginalTitle
   promptBody: MyText
   promptLength: 144
+
+third_user_text_block:
+  promptTitle: Do something cool
+  promptBody: MyText
+  promptLength: 144
