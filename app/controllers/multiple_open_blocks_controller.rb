@@ -1,4 +1,5 @@
 class MultipleOpenBlocksController < ApplicationController
+  before_action :authenticate_admin, only: %i[index new create destroy edit update]
   before_action :set_multiple_open_block, only: %i[ show edit update destroy ]
 
   def index
@@ -12,7 +13,7 @@ class MultipleOpenBlocksController < ApplicationController
     @multiple_open_block = MultipleOpenBlock.new
     @multiple_open_block.build_lesson_block(lesson_id: params[:lesson_id])
 
-    6.times { @multiple_open_block.multiple_open_pieces.build }
+    15.times { @multiple_open_block.multiple_open_pieces.build }
   end
 
   def edit
@@ -22,7 +23,7 @@ class MultipleOpenBlocksController < ApplicationController
     @multiple_open_block = MultipleOpenBlock.new(multiple_open_block_params)
     respond_to do |format|
       if @multiple_open_block.save
-        format.html { redirect_to multiple_open_block_url(@multiple_open_block), notice: "Multiple open block was successfully created." }
+        format.html { redirect_to lesson_path(@multiple_open_block.lesson), notice: "Multiple open block was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -43,7 +44,7 @@ class MultipleOpenBlocksController < ApplicationController
     @multiple_open_block.destroy
 
     respond_to do |format|
-      format.html { redirect_to multiple_open_3blocks_url, notice: "Multiple open block was successfully destroyed." }
+      format.html { redirect_to multiple_open_blocks_url, notice: "Multiple open block was successfully destroyed." }
     end
   end
 

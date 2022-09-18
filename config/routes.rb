@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   resources :feedbacks
   
-  resources :multiple_open_blocks do 
+  resources :multiple_open_blocks, except: [:index ] do 
     resources :multiple_open_pieces
   end
 
