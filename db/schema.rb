@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_16_113601) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_18_094930) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -93,6 +93,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_16_113601) do
     t.index ["product_id"], name: "index_lessons_on_product_id"
   end
 
+  create_table "multiple_open_blocks", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "multiple_open_pieces", force: :cascade do |t|
+    t.string "full"
+    t.string "shown"
+    t.string "hint"
+    t.bigint "multiple_open_block_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["multiple_open_block_id"], name: "index_multiple_open_pieces_on_multiple_open_block_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.integer "price"
@@ -149,6 +166,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_16_113601) do
   add_foreign_key "lesson_blocks", "lessons"
   add_foreign_key "lessons", "courses"
   add_foreign_key "lessons", "products"
+  add_foreign_key "multiple_open_pieces", "multiple_open_blocks"
   add_foreign_key "user_text_answers", "user_text_blocks"
   add_foreign_key "user_text_answers", "users"
 end

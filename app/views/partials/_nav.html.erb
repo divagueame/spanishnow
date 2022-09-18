@@ -10,7 +10,6 @@
         <%= link_to 'My Lessons', lessons_path(current_user.id), class: "hidden" %>
         <%= link_to 'Course', course_path(Course.last) %> 
  
-        <%= turbo_stream_from "feedback_counter_broadcast" %>
         <div id="feedback_count">
             <%= current_user.feedbacks.where(seen: false).count %>
         </div>

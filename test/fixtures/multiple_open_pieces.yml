@@ -1,0 +1,5 @@
+one:
+  full: MyString
+  shown: MyString
+  hint: MyString
+  multiple_open_block: one

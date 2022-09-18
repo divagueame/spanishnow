@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
+  
   resources :feedbacks
   
+  resources :multiple_open_blocks do 
+    resources :multiple_open_pieces
+  end
+
   resources :user_text_blocks do 
     resources :user_text_answers, except: [:index, :destroy ]
   end
+
   resources :lessons
   
   get '/course/:id', to: 'courses#show', as: 'course'

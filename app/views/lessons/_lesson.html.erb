@@ -67,9 +67,15 @@
       <% end %>
 
       </div>
+      <%# RichBlock %>
       <% if block.block_type === 'RichBlock' %>
         <%= block.block.content %>
       <% end %>
+      <%# Multiple Open Block %>
+      <% if block.block_type === 'MultipleOpenBlockBlock' %>
+        <%= block.block_type %>
+      <% end %>
+      <%# UserTextBlock %>
       <% if block.block_type === 'UserTextBlock' %>
         <%= block.block.promptTitle %><br>
         <%= block.block.promptBody %><br>

@@ -1,0 +1,27 @@
+<div id="<%= dom_id multiple_open_piece %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Full:</strong>
+    <%= multiple_open_piece.full %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Shown:</strong>
+    <%= multiple_open_piece.shown %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Hint:</strong>
+    <%= multiple_open_piece.hint %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Multiple open input block:</strong>
+    <%= multiple_open_piece.multiple_open_input_block_id %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this multiple open piece", multiple_open_piece, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this multiple open piece', edit_multiple_open_piece_path(multiple_open_piece), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

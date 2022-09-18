@@ -34,3 +34,9 @@ seven:
   title: "LessonBlock title - User Text!"
   block: second_user_text_block (UserTextBlock)
   lesson: one
+
+eigth:
+  position: 6
+  title: "LessonBlock of the first multiple open block!"
+  block: two (MultipleOpenBlock)
+  lesson: one
