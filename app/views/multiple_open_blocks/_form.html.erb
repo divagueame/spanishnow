@@ -20,7 +20,37 @@
     <%= form.label :body %>
     <%= form.text_area :body, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
+  <hr>
+   <div>
+  <%= form.fields_for :lesson_block do |lesson_block_form| %> 
+      <%= lesson_block_form.label :title %>
+      <%= lesson_block_form.text_field :title %> 
 
+      <%= lesson_block_form.hidden_field :lesson_id, value: multiple_open_block.lesson_block[:lesson_id] %>
+    <% end %>
+ </div>
+
+
+
+
+  <div class="p-4  bg-purple-200 rounded-sm border-2 border-purple-600"> 
+    <%= form.fields_for :multiple_open_pieces do |multiple_open_pieces_form| %>
+      <div class="py-4 flex gap-4">
+        <div class="">
+          <%= multiple_open_pieces_form.label :full, class:"block" %>
+          <%= multiple_open_pieces_form.text_field :full, class:"rounded-xl w-full" %>
+        </div>
+        <div class="">
+          <%= multiple_open_pieces_form.label :shown, class:"block" %>
+          <%= multiple_open_pieces_form.text_field :shown, class:"w-full" %>
+        </div>
+        <div class="">
+          <%= multiple_open_pieces_form.label :hint, class:"block" %>
+          <%= multiple_open_pieces_form.text_field :hint, class:"w-full" %>
+        </div>
+      </div>
+    <% end %>
+ </div>
   <div class="inline">
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>

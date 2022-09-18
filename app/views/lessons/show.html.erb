@@ -2,8 +2,9 @@
 
 <% if current_user.admin? %>
 <div>
-  <%= link_to "New rich block", new_rich_block_path(lesson_id: @lesson.id) %>
+  <%= link_to "New Rich block", new_rich_block_path(lesson_id: @lesson.id) %>
   <%= link_to "New User Text Block", new_user_text_block_path(lesson_id: @lesson.id) %>
+  <%= link_to "New Multiple Open Block", new_multiple_open_block_path(lesson_id: @lesson.id) %>
 
   <%= link_to "Edit this lesson", edit_lesson_path(@lesson) if current_user.admin? %> |
   <%= link_to "Back to lessons", lessons_path %>
