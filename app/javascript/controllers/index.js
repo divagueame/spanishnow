@@ -12,5 +12,7 @@ eagerLoadControllersFrom("controllers", application)
 
 // Import and register all TailwindCSS Components
 import { Dropdown  } from "tailwindcss-stimulus-components"
-
 application.register('dropdown', Dropdown)
+
+import DragController from "./drag_controller.js"
+application.register("drag", DragController)

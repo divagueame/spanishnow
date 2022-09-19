@@ -1,0 +1,29 @@
+<% dragActions = "  dragstart->drag#dragStart 
+                    dragover->drag#dragOver
+                    dragenter->drag#dragEnter
+                    drop->drag#drop
+                    dragend->drag#dragEnd" %>
+
+<%= content_tag :div,
+    class: "icon draggable",
+    draggable: true,
+    data: {
+        controller: "drag",
+        action: dragActions,
+        resource_id: lesson.id,
+        url: "lessons/lesson",
+        parent: "lesson"
+    } do %>
+
+    <%= image_tag 'icons/grab', class: "h-8 w-8 align-middle inline-block cursor-grab rounded-sm hover:bg-slate-100" %>
+    <%= link_to toggle_active_lesson_path(lesson), data: { 'turbo-method' => :post} do %>
+        <% if lesson.active %>
+            <%= image_tag 'icons/active-bg', class: "inline h-4 w-4" %>
+        <% else %>
+            <%= image_tag 'icons/inactive-bg', class: "inline h-4 w-4" %>
+        <% end %>
+    <% end %>     
+     <%= link_to lesson.title, lesson_path(lesson) %>
+
+
+<% end %>

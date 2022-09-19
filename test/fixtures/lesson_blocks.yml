@@ -38,5 +38,5 @@ seven:
 eigth:
   position: 6
   title: "LessonBlock of the first multiple open block!"
-  block: two (MultipleOpenBlock)
+  block: one (MultipleOpenBlock)
   lesson: one

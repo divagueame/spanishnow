@@ -21,10 +21,10 @@
     <%= form.text_area :body, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
   <hr>
-   <div>
+   <div class="my-4">
   <%= form.fields_for :lesson_block do |lesson_block_form| %> 
       <%= lesson_block_form.label :title %>
-      <%= lesson_block_form.text_field :title %> 
+      <%= lesson_block_form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"  %> 
 
       <%= lesson_block_form.hidden_field :lesson_id, value: multiple_open_block.lesson_block[:lesson_id] %>
     <% end %>
@@ -33,7 +33,7 @@
 
 
 
-  <div class="p-4  bg-purple-200 rounded-sm border-2 border-purple-600"> 
+  <div class="my-4 p-4  bg-purple-200 rounded-sm border-2 border-purple-600"> 
     <%= form.fields_for :multiple_open_pieces do |multiple_open_pieces_form| %>
       <div class="py-4 flex gap-4">
         <div class="">

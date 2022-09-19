@@ -71,13 +71,16 @@
       <% end %>
 
       </div>
+
       <%# RichBlock %>
       <% if block.block_type === 'RichBlock' %>
         <%= block.block.content %>
       <% end %>
       <%# Multiple Open Block %>
-      <% if block.block_type === 'MultipleOpenBlockBlock' %>
-        <%= block.block_type %>
+      <% if block.block_type === 'MultipleOpenBlock' %>
+        <%= block.block.title %><br>
+        <%= block.block.body %><br>
+        <%= block.block.multiple_open_pieces.count %>
       <% end %>
       <%# UserTextBlock %>
       <% if block.block_type === 'UserTextBlock' %>
@@ -91,6 +94,7 @@
             <%= link_to 'Check it out', feedback_path(block.block.user_text_answers.where(user_id: current_user.id).first.feedback.id) %>
           <% end %>
         <% end %>
+        
       <% end %>
     </div>
     <hr>
