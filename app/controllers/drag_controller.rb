@@ -1,7 +1,8 @@
 class DragController < ApplicationController
   def lesson
-    @lesson = Lesson.find(drag_note_params[:id])
-    @lesson.insert_at(lesson[:position].to_i + 1)
+    @lesson = Lesson.find(drag_lesson_params[:id])
+    
+    @lesson.insert_at(drag_lesson_params[:position].to_i + 1)
   end
 
   private

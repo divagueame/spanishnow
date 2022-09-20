@@ -6,12 +6,11 @@
 <div id="lessons" class="container mb-10">
   <% @course.lessons.each do |lesson| %>
      <% if current_user.admin? %>
-      <div class="my-1 p-2">
+
 
         <%= render 'lessons/draggable', lesson: lesson %>
    
         <% end %>       
-       
-      </div>
+ 
   <% end %>
 </div>

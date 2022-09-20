@@ -23,59 +23,64 @@ function showDragActive(e) {
   e.currentTarget.classList.add('hover-active');
   
   // console.log('show', e.target.dataset.resourceId)
-  document.querySelector("#notes").classList.add('active')
+  document.querySelector("#lessons").classList.add('active')
 }
 function hideDragActive() {
   Array.from(document.querySelectorAll('.dragging')).forEach((el) => el.classList.remove('dragging'));
-  document.querySelector("#notes").classList.remove('active')
+  document.querySelector("#lessons").classList.remove('active')
 }
 
 // Connects to data-controller="drag"
-export default class extends Controller {  disconnect(){
-    console.log('disconnect - Element removed from DOM')
+export default class extends Controller {
+  disconnect() {
+    // console.log('disconnect - Element removed from DOM')
   }
-  connect() {
-    
-    console.log('CONNEct')
-   }
+  
   
   dragStart(e) {
-   isDragging = true;
-    showDragActive(e)
-    // console.log('e.currentTarget')
-    // console.log(e.currentTarget) 
+
+    isDragging = true;
+    showDragActive(e);
     e.currentTarget.classList.add('dragging');
     resourceId = e.currentTarget.getAttribute(dataResourceId)
     url = e.currentTarget.getAttribute('data-url')
     e.dataTransfer.effectAllowed = 'move';
-    
+    // console.log(resourceId)
   }
+
   drop(e) {
-    isDragging = false; 
+    // isDragging = false; 
     e.preventDefault(); 
+    // console.log('DROp!')
     hideDragActive();
 
     Array.from(document.querySelectorAll('.hover-active')).forEach((el) => el.classList.remove('hover-active'));
     let parentId = e.currentTarget.getAttribute(dataParent);
     const dropTarget = this.findDropTarget(e.target, parentId)
     const draggedItem = document.querySelector(`[data-resource-id="${resourceId}"]`)
+    // console.log('Drop unsuccessfully', draggedItem)
+    // console.log('Drop unsuccessfully', dropTarget)
     if (draggedItem === null || dropTarget === null) {
-      console.log('Drop unsuccessfully', draggedItem)
-      console.log('Drop unsuccessfully', dropTarget)
+      // console.log('Drop unsuccessfully', draggedItem)
+      // console.log('Drop unsuccessfully', dropTarget)
       return true
     }
     this.setNewPosition(dropTarget, draggedItem, e);
     newPosition = [...this.element.parentElement.children].indexOf(draggedItem)
+    // console.log('New')
+    // console.log(newPosition)
+    
   }
   
   dragEnd(e) {
     e.preventDefault()
+    // console.log('Dragend!')
     Array.from(document.querySelectorAll('.dragging')).forEach((el) => el.classList.remove('dragging'));
     isDragging = false; 
     if (resourceId === null && newPosition === null) {
 
-      console.log('Drop end', resourceId)
-      console.log('Drop end', newPosition)
+      // console.log('Drop end', resourceId)
+      // console.log('Drop end', newPosition)
       return;
     }
     let data = JSON.stringify({
@@ -84,6 +89,9 @@ export default class extends Controller {  disconnect(){
         position: newPosition
       }
     })
+    
+
+    // console.log(data)
     fetch(url, {
       method: "PATCH",
       credentials: "same-origin",
@@ -101,7 +109,7 @@ export default class extends Controller {  disconnect(){
   }
 
   dragEnter(e) {
-    console.log('Drag enter', e.currentTarget); 
+    // console.log('Drag enter', e.currentTarget); 
     showDragActive(e) 
     e.preventDefault()
   }
@@ -122,11 +130,12 @@ export default class extends Controller {  disconnect(){
   
   setNewPosition(dropTarget, draggedItem) {
     const positionComparison = dropTarget.compareDocumentPosition(draggedItem)
+    // console.log(positionComparison)
     if (positionComparison & Node.DOCUMENT_POSITION_FOLLOWING) {
-      console.log('NEXT POSITION')
-      dropTarget.insertAdjacentElement('beforebegin', draggedItem)
+      // console.log('NEXT POSITION')
+    dropTarget.insertAdjacentElement('beforebegin', draggedItem)
     } else if (positionComparison & Node.DOCUMENT_POSITION_PRECEDING){
-      console.log('PREV POSITION')
+      // console.log('PREV POSITION')
       dropTarget.insertAdjacentElement('afterend', draggedItem)
     }
   }
@@ -137,7 +146,7 @@ export default class extends Controller {  disconnect(){
   } 
 }
 
-// document.querySelectorAll('.note').forEach(item => {
+// document.querySelectorAll('.lesson').forEach(item => {
 //   item.addEventListener('mouseenter', e => {
 //     if (!isDragging) { return false };
 //   console.log(e.currentTarget)
@@ -146,5 +155,5 @@ export default class extends Controller {  disconnect(){
 
   
 // function getPosition(el) {
-//   document.querySelectorAll('.note')
+//   document.querySelectorAll('.lesson')
 // }

@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   end
 
   resources :lessons
-  
+  patch 'drag/lesson'
+
   get '/course/:id', to: 'courses#show', as: 'course'
   post 'lesson/:id/toggle_active_lesson', to: 'lessons#toggle_active_lesson', as: 'toggle_active_lesson'
 
