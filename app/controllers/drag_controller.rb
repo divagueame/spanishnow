@@ -1,4 +1,6 @@
 class DragController < ApplicationController
+  before_action :authenticate_admin
+
   def lesson
     @lesson = Lesson.find(drag_lesson_params[:id])
     
