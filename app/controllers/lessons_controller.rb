@@ -2,7 +2,6 @@ class LessonsController < ApplicationController
   before_action :authenticate_admin, only: %i[ new edit create update destroy toggle_active_lesson]
   before_action :authenticate_user!, only: %i[ index show]
   before_action :set_lesson, only: %i[ show edit update destroy toggle_active_lesson]
-  # before_action :filter_active_lesson, only: %i[ show ]
 
   before_action only: %i[ show ] do
     filter_active(@lesson)
