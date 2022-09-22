@@ -20,7 +20,7 @@ class UserTextBlocksControllerTest < ActionDispatch::IntegrationTest
     sign_in(@not_admin)
     patch user_text_block_url(@user_text_block), params: { user_text_block: { promptTitle: 'ChikiUpdated' } }
     assert_redirected_to root_path
-    assert_equal "OriginalTitle", UserTextBlock.find(user_text_blocks(:first_user_text_block).id).promptTitle
+    assert_equal "Write some beautiful words for your grandmother", UserTextBlock.find(user_text_blocks(:first_user_text_block).id).promptTitle
   end
 
   # test "should update user_text_block if user is right owner" do

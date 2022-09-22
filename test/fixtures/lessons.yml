@@ -1,5 +1,5 @@
 one:
-  title: First lesson title
+  title: Yo soy alucinante
   description: Learning a lot of chiki chiki
   product: one
   active: true
@@ -7,16 +7,16 @@ one:
   position: 1
 
 two:
-  title: Second lesson title
-  description: MyText Desc
+  title: Tu sabes de lo que hablas
+  description: We're gonna learn some basic...
   product: two
   active: true
   course: one
   position: 2
 
 three:
-  title: Independent Lesson title
-  description: MyText
+  title: Cuando era pequeno...
+  description: In this lesson we're gonna work on....
   active: false
   course: one
   position: 3

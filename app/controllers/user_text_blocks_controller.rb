@@ -17,11 +17,6 @@ class UserTextBlocksController < ApplicationController
   def new
     @user_text_block = UserTextBlock.new
     @user_text_block.build_lesson_block
-    
-    # @user_text_block.lesson = @lesson
-    # p 'params new'
-    # p params
-    # p @user_text_block.lesson
   end
 
 

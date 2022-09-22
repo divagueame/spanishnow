@@ -1,14 +1,14 @@
 first_user_text_block:
-  promptTitle: OriginalTitle
-  promptBody: MyText
+  promptTitle: Write some beautiful words for your grandmother
+  promptBody: She's the person you love.
   promptLength: 1
 
 second_user_text_block:
-  promptTitle: OriginalTitle
-  promptBody: MyText
+  promptTitle: Your puppy
+  promptBody: You just received a tiny cute-looking puppy
   promptLength: 144
 
 third_user_text_block:
   promptTitle: Do something cool
-  promptBody: MyText
+  promptBody: Don't be a bum
   promptLength: 144

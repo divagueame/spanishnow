@@ -5,12 +5,12 @@
 <%# Lessons  %>
 <div id="lessons" class="container mb-10">
   <% @course.lessons.each do |lesson| %>
-     <% if current_user.admin? %>
-
-
-        <%= render 'lessons/draggable', lesson: lesson %>
-   
-        <% end %>       
- 
+    <% if current_user.admin? %>
+      <%= render 'lessons/draggable', lesson: lesson %>
+    <% else %>
+      <div class="my-1 p-2">
+        <%= link_to lesson.title, lesson_path(lesson) %>
+      </div>
+    <% end %>
   <% end %>
 </div>

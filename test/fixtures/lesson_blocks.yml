@@ -1,6 +1,6 @@
 one:
   position: 1
-  title: "Lesson block 1 has a title"
+  title: ""
   lesson: one
   block: one (RichBlock)
 
