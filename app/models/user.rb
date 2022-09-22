@@ -8,13 +8,13 @@ class User < ApplicationRecord
   has_many :user_text_answers, dependent: :destroy
   has_many :feedbacks, through: :user_text_answers
   # after_save :create_user_text_answers
+  has_one :study_session, dependent: :destroy
 
   private
   def create_user_text_answers
     UserTextBlock.all.each do |single_block|
       user_text_answer = UserTextAnswer.new(user_id: self.id, user_text_block_id: single_block.id)
       if user_text_answer.save
-        p 'SAVED!'
       end
     end
   end

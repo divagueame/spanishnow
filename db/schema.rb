@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_18_094930) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_22_190237) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -89,6 +89,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_18_094930) do
     t.boolean "active", default: false
     t.integer "position"
     t.bigint "course_id"
+    t.integer "target_time"
     t.index ["course_id"], name: "index_lessons_on_course_id"
     t.index ["product_id"], name: "index_lessons_on_product_id"
   end
@@ -122,6 +123,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_18_094930) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "subheader"
+  end
+
+  create_table "study_sessions", force: :cascade do |t|
+    t.time "start"
+    t.bigint "user_id", null: false
+    t.bigint "lesson_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_study_sessions_on_lesson_id"
+    t.index ["user_id"], name: "index_study_sessions_on_user_id"
   end
 
   create_table "user_text_answers", force: :cascade do |t|
@@ -167,6 +178,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_18_094930) do
   add_foreign_key "lessons", "courses"
   add_foreign_key "lessons", "products"
   add_foreign_key "multiple_open_pieces", "multiple_open_blocks"
+  add_foreign_key "study_sessions", "lessons"
+  add_foreign_key "study_sessions", "users"
   add_foreign_key "user_text_answers", "user_text_blocks"
   add_foreign_key "user_text_answers", "users"
 end
