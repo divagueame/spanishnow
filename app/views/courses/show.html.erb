@@ -8,6 +8,7 @@
     <% if current_user.admin? %>
       <%= render 'lessons/draggable', lesson: lesson %>
     <% else %>
+    <% next unless lesson.active %>
       <div class="my-1 p-2">
         <%= link_to lesson.title, lesson_path(lesson) %>
       </div>

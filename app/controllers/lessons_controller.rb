@@ -18,6 +18,14 @@ class LessonsController < ApplicationController
   end
 
   def show
+    @study_session = has_active_study_session
+    if !@study_session.nil? && !current_user.admin?
+      redirect_to lesson_path(@study_session.lesson), notice: "Please, continue with your lesson. You still have #{@study_session.time_left} left" unless @lesson.this_lesson_study_session?(@study_session)
+    elsif !current_user.admin?
+      p 'DOES NOT have acitve'
+      StudySession.create(user_id: current_user.id, lesson_id: @lesson.id)
+    end
+    
     @lesson_blocks = @lesson.lesson_blocks
   end
 

@@ -14,5 +14,11 @@ class ApplicationController < ActionController::Base
     def filter_active(resource)
         redirect_to root_path, notice: 'Nope' unless current_user&.admin? || resource.active
     end
-    
+
+    def has_active_study_session
+        return nil if current_user.study_session.nil?
+        return nil if current_user.study_session.session_ended?
+        current_user.study_session
+    end
+
 end
