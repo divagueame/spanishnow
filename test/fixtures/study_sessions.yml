@@ -1,3 +1,6 @@
 one:
-  user: one
+  user: has_active_study_session
+  lesson: one
+two:
+  user: has_expired_study_session
   lesson: one

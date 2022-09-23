@@ -8,14 +8,11 @@ class StudySession < ApplicationRecord
   
 
   def session_ended?
-    (Time.now.utc > self.get_target_time) ? true : false
+    (self.time_left === 0) ? true : false
   end
 
   def time_left
-    # ((self.get_target_time - Time.now)).round
-
-    distance_of_time_in_words(Time.now, self.get_target_time, include_seconds: true )       
-    #  ((date_2 - date_1) / 3600).round
+    ((self.get_target_time - Time.now) < 0 ) ? 0 : distance_of_time_in_words(Time.now, self.get_target_time, include_seconds: true )
   end
 
   private

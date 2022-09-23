@@ -13,3 +13,13 @@ three:
   encrypted_password: <%= Devise::Encryptor.digest(User, 'chikipassword') %>
   confirmed_at: <%= Time.now - 1.hour %>
   role: 2
+has_active_study_session:
+  email: mike1@mike.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'chikipassword') %>
+  confirmed_at: <%= Time.now - 1.hour %>
+  role: 0
+has_expired_study_session:
+  email: mike2@mike.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'chikipassword') %>
+  confirmed_at: <%= Time.now - 1.hour %>
+  role: 0
