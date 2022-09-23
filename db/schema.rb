@@ -126,7 +126,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_22_190237) do
   end
 
   create_table "study_sessions", force: :cascade do |t|
-    t.time "start"
     t.bigint "user_id", null: false
     t.bigint "lesson_id", null: false
     t.datetime "created_at", null: false

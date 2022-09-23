@@ -13,6 +13,7 @@ two:
   active: true
   course: one
   position: 2
+  target_time: 1800
 
 three:
   title: Cuando era pequeno...
