@@ -1,4 +1,4 @@
-  <header class="bg-yellow-100 flex py-1 justify-between px-2 gap-2">
+<header class="bg-yellow-100 flex py-1 justify-between px-2 gap-2">
     <%= link_to  root_path, class: 'main-logo mr-auto' do %>
     <h1 class="hidden">Mambo Spanish</h1>
 
@@ -7,14 +7,18 @@
     
     <%= link_to 'Home', root_path %>
     <% if user_signed_in?  %>
-        <%= link_to 'My Lessons', lessons_path(current_user.id), class: "hidden" %>
-        <%= link_to 'Course', course_path(Course.last) %> 
- 
+        <% if active_study_session.nil? || active_study_session.session_ended? %>
+            <%= link_to 'Course', course_path(Course.last) %>
+        <% elsif action_name === 'show' && controller.controller_name === 'lessons' %>
+            <%= active_study_session.time_left %>
+        <% elsif  %>
+          <%= link_to 'Back to the lesson', lesson_path(active_study_session.lesson) %>
+        <% end %>  
         <div id="feedback_count">
-            <%= current_user.feedbacks.where(seen: false).count %>
+            Unseen Feedback: <%= current_user.feedbacks.where(seen: false).count %>
         </div>
-
     <% end %>
+    
     <%= link_to 'FAQ', faq_path %>
 
     <div class="right">

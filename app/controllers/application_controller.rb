@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+    helper_method :active_study_session
+    
     def authenticate_admin
         redirect_to root_path, notice: 'Are you chiki chiki?' unless current_user&.admin?
     end
