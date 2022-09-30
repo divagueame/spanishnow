@@ -10,6 +10,11 @@ class User < ApplicationRecord
   # after_save :create_user_text_answers
   has_one :study_session, dependent: :destroy
 
+
+  def unseen_feedbacks 
+    self.feedbacks.where(seen: false).count
+  end
+
   private
   def create_user_text_answers
     UserTextBlock.all.each do |single_block|
