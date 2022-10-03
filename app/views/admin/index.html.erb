@@ -8,20 +8,20 @@
 
 <br>
 <% if !@user_text_answers.empty? then %>
-  <div class="py-2 container user_text_answers">
-    <h3>These user answers need feedback...</h3>
+  <h3>These user answers need feedback...</h3>
+  <div class="py-2 container user_text_answers" id="user_text_answers">
     <% @user_text_answers.each do |u| %>
-      <div class="user_text_answer">
+      <div class="user_text_answer" id="user_text_answer_<%= u.id %>">
         <h3 class="title"><%= u.title %></h3>
         <p class="body"><%= u.body %></p>
+        <%= link_to 'Give feedback', new_feedback_url(:user_text_answer_id => u.id), data: {turbo_frame: 'modal'} %>
       </div>
-      <%= link_to 'Give feedback', new_feedback_url(:user_text_answer_id => u.id), data: {turbo_frame: 'modal'} %>
     <% end %>
   </div>
 <% end %>
 <br>
+<h3>Previous feedback</h3>
 <div class="py-2 container">
-  <h3>Previous feedback</h3>
   <% @feedbacks.each do |feedback| %>
     <%= feedback.body %>
     <%= link_to 'See', feedback_url(feedback) %>

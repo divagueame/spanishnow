@@ -1,0 +1,3 @@
+<%= turbo_stream.remove "user_text_answer_#{@feedback.user_text_answer.id}" %>
+<%= turbo_stream.update "flashes", partial: "partials/flash" %>
+<%= turbo_stream.update "modal" %>

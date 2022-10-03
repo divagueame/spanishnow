@@ -28,7 +28,7 @@ class FeedbacksTest < ApplicationSystemTestCase
 
     assert_text "Feedback was successfully created"
     assert_selector "h1", text: "Admin Panel"
-    assert_no_selector ".user_text_answers"
+    assert_no_selector ".user_text_answer"
     
   end
 

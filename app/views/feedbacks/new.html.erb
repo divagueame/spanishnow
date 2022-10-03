@@ -1,11 +1,10 @@
 <%= turbo_frame_tag "modal" do %>
   <div class="bg-white shadow-xl rounded-sm px-4 py-8" data-controller="turbo-modal">
-
       <h1 class="font-bold text-4xl">Feedback for <%= @answer_owner.email %></h1>
       <h3><%= @user_text_answer.title %></h3>
       <p><%= @user_text_answer.body %></p>
-      <hr>      <%= render "form", feedback: @feedback %>
+      <hr>
+      <%= render "form", feedback: @feedback %>
       <%= button_tag "Close", data: { action: "turbo-modal#hideModal" }, type: "button", class: "rounded-lg py-3 px-5 bg-red-600 text-white" %>
-
   </div>
 <% end %>
