@@ -15,7 +15,7 @@
         <h3 class="title"><%= u.title %></h3>
         <p class="body"><%= u.body %></p>
       </div>
-      <%= link_to 'Give feedback', new_feedback_url(:user_text_answer_id => u.id) %>
+      <%= link_to 'Give feedback', new_feedback_url(:user_text_answer_id => u.id), data: {turbo_frame: 'modal'} %>
     <% end %>
   </div>
 <% end %>
