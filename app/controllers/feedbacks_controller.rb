@@ -7,6 +7,7 @@ class FeedbacksController < ApplicationController
   before_action only: %i[ show ] do
     authenticate_owner(@feedback.user_text_answer)
   end
+  before_action :ensure_frame_response, only: [:new]
 
   def show
     if !current_user.admin? && !@feedback.seen
@@ -29,7 +30,7 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new(feedback_params)
     respond_to do |format|
       if @feedback.save
-        format.html { redirect_to admin_url, notice: "Feedback was successfully created." }
+          format.turbo_stream { flash.now[:notice] = "Feedback was successfully created" }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -67,5 +68,10 @@ class FeedbacksController < ApplicationController
 
     def feedback_params
       params.require(:feedback).permit(:body, :seen, :user_text_answer_id)
+    end
+
+    def ensure_frame_response
+      return unless Rails.env.development?
+      redirect_to root_path unless turbo_frame_request?
     end
 end
