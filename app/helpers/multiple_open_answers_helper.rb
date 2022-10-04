@@ -1,0 +1,2 @@
+module MultipleOpenAnswersHelper
+end

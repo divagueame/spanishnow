@@ -1,0 +1,2 @@
+module MultipleOpenAnswerBlockHelper
+end

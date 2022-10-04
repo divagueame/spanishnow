@@ -1,0 +1,22 @@
+<div id="<%= dom_id multiple_open_answer %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">User answer:</strong>
+    <%= multiple_open_answer.user_answer %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Multiple open piece:</strong>
+    <%= multiple_open_answer.multiple_open_piece_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">User:</strong>
+    <%= multiple_open_answer.user_id %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this multiple open answer", multiple_open_answer, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this multiple open answer', edit_multiple_open_answer_path(multiple_open_answer), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

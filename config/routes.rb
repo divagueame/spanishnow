@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   
   # Lesson_blocks
   delete '/lesson_block/:id' => 'lesson_blocks#destroy', as: 'lesson_block'
@@ -7,12 +8,15 @@ Rails.application.routes.draw do
 
   resources :multiple_open_blocks, except: [:index ] do 
     resources :multiple_open_pieces
+    get '/multiple_open_answer_block/new', to: 'multiple_open_answer_block#new'
   end
 
   resources :user_text_blocks do 
-    resources :user_text_answers, except: [:index, :destroy ]
+    resources :user_text_answers, except: [:index, :destroy ] do
+      resources :multiple_open_answers
+    end
   end
-  
+
   resources :rich_blocks, only: [:new, :create, :show, :edit, :update, :index]
   
   resources :feedbacks

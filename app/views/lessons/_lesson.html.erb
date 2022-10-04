@@ -82,7 +82,10 @@
 
         <%# Multiple Open Block %>
         <div class="">
-          <% if block.block_type === 'MultipleOpenBlock' %>
+          <% if block.block_type === 'MultipleOpenBlock' %>Multiple
+          <%= block.block.id %>
+
+          <%= link_to  'Chi', multiple_open_block_multiple_open_answer_block_new_url(block.block.id) %>
             <%= block.block.title %><br>
             <%= block.block.body %><br>
             <%= block.block.multiple_open_pieces.count %>

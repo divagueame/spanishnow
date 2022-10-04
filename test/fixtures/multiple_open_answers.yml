@@ -1,0 +1,9 @@
+one:
+  user_answer: MyText
+  multiple_open_piece: one
+  user: one
+
+two:
+  user_answer: MyText
+  multiple_open_piece: two
+  user: two
