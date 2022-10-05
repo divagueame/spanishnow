@@ -1,13 +1,13 @@
 class Feedback < ApplicationRecord
+include ActionView::RecordIdentifier
 
   belongs_to :user_text_answer
   has_one :user, through: :user_text_answer
    
-  # after_create_commit -> {
-  #   broadcast_update_to "feedbacks_counter_#{self.user_text_answer.user_id}", 
-  #   html: "joder man!!",
-  #   # locals: { current_feedback_counter: self.user.unseen_feedbacks, user_id: self.user.id},'
-  #   target: "feedbacks_counter"
-  # }
-
+  after_create_commit -> {
+    broadcast_update_to dom_id(self.user, 'unseen_feedback'),
+    partial: "feedbacks/unseen_feedbacks_count",
+    target: "unseen_feedback",
+    locals: {user: self.user}
+  }
 end

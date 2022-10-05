@@ -61,7 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_22_190237) do
 
   create_table "feedbacks", force: :cascade do |t|
     t.text "body"
-    t.boolean "seen"
+    t.boolean "seen", default: false, null: false
     t.bigint "user_text_answer_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

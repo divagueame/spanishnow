@@ -36,9 +36,7 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
     get feedback_url(@feedback)
     assert_equal true, Feedback.find(@feedback.id).seen
     assert_response :success
-
   end
-
 
   test "should show feedback to admin && should not update seen" do
     sign_in(@admin_user)
