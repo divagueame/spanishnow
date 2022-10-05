@@ -4,6 +4,7 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
   setup do
     @feedback = feedbacks(:one)
     @user_text_answer = user_text_answers(:three)
+    @user_text_answer_already_with_feedback = user_text_answers(:one)
     @admin_user = users(:three)
     @user_one = users(:one)
     @user_two = users(:two)
@@ -21,14 +22,21 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_path
   end
 
+  test "should create feedback if user text answer has no feedback" do
+    sign_in(@admin_user)
+    assert_difference("Feedback.count") do
+      post feedbacks_url(format: :turbo_stream), params: { feedback: { body: 'Venga ya', user_text_answer_id: @user_text_answer.id } }
+    end
+    assert_equal flash[:notice], "Feedback was successfully created"
+  end
 
-  # test "should create feedback" do
-  #   assert_difference("Feedback.count") do
-  #     post feedbacks_url, params: { feedback: { body: @feedback.body, seen: @feedback.seen, user_id: @feedback.user_id, user_text_answer_id: @feedback.user_text_answer_id } }
-  #   end
-
-  #   assert_redirected_to feedback_url(Feedback.last)
-  # end
+  test "should not create feedback if user text answer already has feedback" do
+    sign_in(@admin_user)
+    assert_difference("Feedback.count", 0) do
+      post feedbacks_url(format: :turbo_stream), params: { feedback: { body: 'Venga ya', user_text_answer_id: @user_text_answer_already_with_feedback.id } }
+    end
+    assert_equal flash[:notice], "Feedback already exists"
+  end
 
   test "should show feedback to owner user && should set feedback to seen" do
     sign_in(@user_one)

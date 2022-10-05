@@ -28,11 +28,13 @@ class FeedbacksController < ApplicationController
 
   def create
     @feedback = Feedback.new(feedback_params)
+
     respond_to do |format|
       if @feedback.save
-          format.turbo_stream { flash.now[:notice] = "Feedback was successfully created" }
+        format.turbo_stream { flash.now[:notice] = "Feedback was successfully created" }
       else
         format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream { flash.now[:notice] = "Feedback already exists" }
       end
     end
   end

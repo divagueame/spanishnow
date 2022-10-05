@@ -14,8 +14,8 @@
         <% elsif  %>
           <%= link_to 'Back to the lesson', lesson_path(active_study_session.lesson) %>
         <% end %>  
-        <%= turbo_stream_from "feedbacks_counter_#{current_user.id}" unless current_user.admin? %>
-        <%= render partial: 'feedbacks/feedback_count', locals: {current_feedback_counter: current_user.unseen_feedbacks, user_id: current_user.id } unless current_user.admin? %>
+
+        
     <% end %>
     
     <%= link_to 'FAQ', faq_path %>
