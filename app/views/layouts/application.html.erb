@@ -13,13 +13,6 @@
   </head>
 
   <body class="flex flex-col min-h-screen">
-    <% if current_user && !current_user.admin? %>
-      <%= turbo_stream_from dom_id(current_user, 'unseen_feedback') %>
-      <div class="text-3xl" id="unseen_feedback">
-        <%= render partial: 'feedbacks/unseen_feedbacks_count', locals: { user: current_user } unless !current_user %>
-      </div>
-    <% end %>
-    
     <%= turbo_frame_tag "modal", class: "absolute left-2/4 top-2/4 z-10 -translate-x-2/4 -translate-y-2/4 " %>
     <%= render partial: 'partials/nav/nav' %>
     <main class="mb-auto">
