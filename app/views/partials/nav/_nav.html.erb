@@ -1,0 +1,18 @@
+<header class="bg-yellow-100 flex py-1 justify-between px-2 gap-2">
+    <%= link_to root_path, class: 'main-logo' do %>
+        <h1 class="hidden">Mambo Spanish</h1>
+        <%= image_tag 'logo_bg', class: "logo" %>
+    <% end %>
+    <div>
+        <%= link_to 'Home', root_path %>
+        <%= link_to 'FAQ', faq_path %>
+
+        <% if !user_signed_in? %>
+            <%= render partial: 'partials/nav/unauthenticated' %>
+        <% elsif current_user.admin? %>
+            <%= render partial: 'partials/nav/admin' %>
+        <% else %>
+            <%= render partial: 'partials/nav/authenticated' %>
+        <% end %>
+    </div>
+</header>

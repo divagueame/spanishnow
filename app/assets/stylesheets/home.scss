@@ -7,18 +7,4 @@
   h6 {
     margin-top: 0;
   }
-  .not_logged_in {
-    display: flex;
-    gap: 1rem;
-    .left {
-      display: flex;
-      flex-direction: column;
-    }
-    .right {
-      display: flex;
-      img {
-        object-fit: cover;
-      }
-    }
-  }
 }

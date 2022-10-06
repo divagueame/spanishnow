@@ -1,0 +1,8 @@
+<% if active_study_session.nil? || active_study_session.session_ended? %>
+    <%= link_to 'Course', course_path(Course.last) %>
+<% elsif action_name === 'show' && controller.controller_name === 'lessons' %>
+    <%= active_study_session.time_left %>
+<% elsif  %>
+    <%= link_to 'Back to the lesson', lesson_path(active_study_session.lesson) %>
+<% end %>  
+<%= link_to "Sign Out", destroy_user_session_path, data: { "turbo-method": :delete } %>
