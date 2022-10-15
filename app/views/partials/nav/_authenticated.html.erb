@@ -3,6 +3,7 @@
 <div class="inline-block" id="unseen_feedback">
     <%= render partial: 'feedbacks/unseen_feedbacks_count', locals: { user: current_user } %>
 </div>
+<%= link_to 'Notifications' , notifications_path %>
 <%# Links %>
 <% if active_study_session.nil? || active_study_session.session_ended? %>
     <%= link_to 'Course', course_path(Course.last) %>

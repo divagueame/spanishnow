@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_22_190237) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_15_215936) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -111,6 +111,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_22_190237) do
     t.index ["multiple_open_block_id"], name: "index_multiple_open_pieces_on_multiple_open_block_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "notifeable_type", null: false
+    t.bigint "notifeable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["notifeable_type", "notifeable_id"], name: "index_notifications_on_notifeable"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.integer "price"
@@ -177,6 +187,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_22_190237) do
   add_foreign_key "lessons", "courses"
   add_foreign_key "lessons", "products"
   add_foreign_key "multiple_open_pieces", "multiple_open_blocks"
+  add_foreign_key "notifications", "users"
   add_foreign_key "study_sessions", "lessons"
   add_foreign_key "study_sessions", "users"
   add_foreign_key "user_text_answers", "user_text_blocks"

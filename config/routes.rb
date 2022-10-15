@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'notifications', to: 'notifications#index', as: 'notifications'
   
   # Lesson_blocks
   delete '/lesson_block/:id' => 'lesson_blocks#destroy', as: 'lesson_block'

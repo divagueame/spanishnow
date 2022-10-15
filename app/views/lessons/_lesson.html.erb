@@ -1,4 +1,5 @@
-<div id="<%= dom_id lesson %>" class="pb-12">  
+<div id="<%= dom_id lesson %>" class="pb-12">
+
   <div class="py-8 px-32">
     <% @lesson_blocks.each do |block| %> 
       <div class="container shadow-sm rounded-lg bg-pink-50 mb-4 px-4 py-6">
@@ -38,6 +39,10 @@
             </div>
 
           </div>
+        <% else %>
+            <h1 class="inline-block"> 
+              <%= block.title %>
+            </h1>
         <% end %>
 
         <%= block.position %>  

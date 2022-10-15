@@ -1,3 +1,19 @@
-<%= render 'lessons/lesson_admin' if current_user.admin?%>
+
+
+<%# Top Card %>
+<div class="gap-4 p-6 container mx-auto mt-8 shadow-lg rounded-md w-1/2 flex justify-between">
+    <div>
+        <h1 class="text-center">
+        <%= @lesson.title %>
+        </h1>
+        <p>
+        <%= @lesson.description %>
+        </p>
+    </div>
+    <%= render 'lessons/lesson_admin' if current_user.admin?%>
+    
+</div>
+
+
 <%= render @lesson %>
 <%= render 'lessons/show_admin' if current_user.admin?%>
