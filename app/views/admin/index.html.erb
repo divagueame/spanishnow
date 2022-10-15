@@ -1,12 +1,13 @@
-<div class="container mx-auto px-4 py-2 text-center">
-  <h1 class="font-bold text-4xl">Admin Panel</h1>
-  <% Lesson.all.each do |lesson| %>
-    <%= lesson.title %>
-    <br>
-  <% end %>
+<div class="container mx-auto px-4 py-12 text-center">
+  <h1 class="font-bold text-4xl mb-4">Admin Panel</h1>
+  <div class="flex flex-col gap-2">
+    <% Lesson.all.each do |lesson| %>
+        <%= link_to lesson.title, lesson_url(lesson), class: "" %>
+    <% end %>
+  </div>
 </div>
 
-<br>
+<hr>
 <% if !@user_text_answers.empty? then %>
   <h3>These user answers need feedback...</h3>
   <div class="py-2 container user_text_answers" id="user_text_answers">
@@ -19,9 +20,11 @@
     <% end %>
   </div>
 <% end %>
-<br>
-<h3>Previous feedback</h3>
-<div class="py-2 container">
+<hr>
+
+
+<div class="py-2 container mx-auto">
+  <h3>Previous feedback</h3>
   <% @feedbacks.each do |feedback| %>
     <%= feedback.body %>
     <%= link_to 'See', feedback_url(feedback) %>

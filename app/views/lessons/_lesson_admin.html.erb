@@ -1,0 +1,29 @@
+
+<div class="gap-4 py-2 container mx-auto shadow-lg rounded-md w-1/2">
+    <h1 class="text-center">
+    <%= @lesson.title %>
+    </h1>
+    <p>
+    <%= @lesson.description %>
+    </p>
+    <p>
+    <div class="flex gap-2">
+    <%= link_to edit_lesson_path(@lesson) do %>
+        <%= image_tag 'icons/edit', class: "h-8 w-8 bg-purple-300 hover:bg-purple-100" %>
+    <% end %>
+    
+
+    <%= link_to toggle_active_lesson_path(@lesson), data: { 'turbo-method' => :post} do %>
+        <% if  @lesson.active %>
+        <%= image_tag 'icons/active-bg', class: "h-8 w-8" %>
+        <% else %>
+        <%= image_tag 'icons/inactive-bg', class: "h-8 w-8" %>
+        <% end %>
+    <% end %>
+
+    <%= link_to lesson_path(@lesson.id), data: {'turbo-method': :delete, confirm: 'Are you sure?'}  do %>
+        <%= image_tag 'icons/delete', class: "h-8 w-8 " %>
+    <% end %>
+    </div>
+    
+</div>
