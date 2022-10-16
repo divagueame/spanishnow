@@ -112,6 +112,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_15_215936) do
   end
 
   create_table "notifications", force: :cascade do |t|
+    t.string "title"
     t.bigint "user_id", null: false
     t.string "notifeable_type", null: false
     t.bigint "notifeable_id", null: false

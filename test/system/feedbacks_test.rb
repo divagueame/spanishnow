@@ -4,7 +4,7 @@ class FeedbacksTest < ApplicationSystemTestCase
   setup do
     @feedback = feedbacks(:one)
     # @logged_out_user = users(:one)
-    # @logged_in_user = users(:two)
+    @logged_in_user = users(:two)
     @admin_user = users(:three)
   end
 
@@ -32,6 +32,16 @@ class FeedbacksTest < ApplicationSystemTestCase
     
   end
 
+  test "should open feedback panel" do
+      sign_in(@logged_in_user)
+      visit root_path
+      assert_selector "#unseen_feedback"
+
+
+
+      # assert_select "#unseen_feedback span"#, {count: 1, text: "Welcome"}
+
+  end
   # test "should update Feedback" do
   #   visit feedback_url(@feedback)
   #   click_on "Edit this feedback", match: :first
