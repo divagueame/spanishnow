@@ -1,9 +1,12 @@
 one:
   notifeable: one (Feedback)
+  seen: false
   user: one
 two:
   notifeable: two (Feedback)
   user: two
+  seen: false
 three:
   notifeable: two (Feedback)
   user: one
+  seen: false
