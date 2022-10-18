@@ -7,7 +7,7 @@ class NotificationsController < ApplicationController
   end
     
   def show
-
+    @notification.update(seen: true)
   end
 
   private
@@ -23,9 +23,7 @@ class NotificationsController < ApplicationController
   end
 
   def set_notifications
-    notifications = current_user.notifications
-    @unseen_notifications = notifications.where(seen: false)
-    @seen_notifications = notifications.where(seen: true)
+    @notifications = current_user.notifications
   end
 
 end

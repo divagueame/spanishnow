@@ -1,4 +1,3 @@
-show 
-<%= @notification.seen %>
-
-<%= @notification.id %>
+<%= turbo_frame_tag 'show_notification' do %>
+    <%= render @notification.partial_path, locals: @notification %>
+<% end %>
