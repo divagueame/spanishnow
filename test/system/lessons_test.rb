@@ -14,7 +14,7 @@ class LessonsTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Lessons"
   end
 
-  test "should create lesson" do
+  test "should create lesson and it should be inactive" do
     sign_in(@admin_user)
     visit lessons_url
     click_on "New lesson"
@@ -25,21 +25,22 @@ class LessonsTest < ApplicationSystemTestCase
     click_on "Create Lesson"
 
     assert_text "Lesson was successfully created"
-    click_on "Back"
+    assert_text "Learning a lot of chiki chiki"
+    assert_selector ".inactive-lesson"
   end
 
   test "should update Lesson" do
     sign_in(@admin_user)
     visit lesson_url(@lesson)
-    click_on "Edit this lesson", match: :first
 
-    fill_in "Description", with: @lesson.description
-    # fill_in "Product", with: @lesson.product_id
+    find('.edit-lesson-btn').click
+    
+    fill_in "Description", with: 'Chikipun'
     fill_in "Title", with: @lesson.title
     click_on "Update Lesson"
 
     assert_text "Lesson was successfully updated"
-    click_on "Back"
+    assert_text "Chikipun"
   end
 
 
@@ -52,9 +53,18 @@ class LessonsTest < ApplicationSystemTestCase
 
   test "should destroy Lesson" do
     sign_in(@admin_user)
+    visit lessons_url
+    assert_selector('#lessons', count: 1)
+    assert_selector('.lesson_link', count: 3)
+    
     visit lesson_url(@lesson)
-    click_on "Destroy this lesson", match: :first
+
+    find('#destroy-lesson-btn').click
+    assert_no_selector "a#destroy-lesson-btn"
 
     assert_text "Lesson was successfully destroyed"
+    
+    assert_selector('#lessons', count: 1)
+    assert_selector('.lesson_link', count: 2)
   end
 end
