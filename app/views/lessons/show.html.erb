@@ -1,5 +1,3 @@
-
-
 <%# Top Card %>
 <div class="gap-4 p-6 container mx-auto mt-8 shadow-lg rounded-md w-1/2 flex justify-between">
     <div>
@@ -16,4 +14,7 @@
 
 
 <%= render @lesson %>
+
+
+
 <%= render 'lessons/show_admin' if current_user.admin?%>

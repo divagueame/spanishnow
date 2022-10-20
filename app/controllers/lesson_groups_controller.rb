@@ -24,11 +24,10 @@ class LessonGroupsController < ApplicationController
 
 
   def create
-    @lesson_group = @lesson.lesson_groups.build(lesson_group_params)
-    
+    @lesson_group = LessonGroup.new(lesson_group_params)
     respond_to do |format|
       if @lesson_group.save
-        format.html { redirect_to lesson_group_url(@lesson_group), notice: "Lesson group was successfully created." }
+        format.html { redirect_to lesson_url(@lesson_group.lesson_id), notice: "Lesson group was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end

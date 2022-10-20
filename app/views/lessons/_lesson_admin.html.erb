@@ -14,4 +14,9 @@
     <%= link_to lesson_path(@lesson.id), id: "destroy-lesson-btn", data: {'turbo-method': :delete, confirm: 'Are you sure?'}  do %>
         <%= image_tag 'icons/delete', class: "h-8 w-8 " %>
     <% end %>
+
+    <%= link_to new_lesson_group_path(lesson_id: @lesson.id), id: "add-lesson-group-btn", class: "relative" do %>
+                <span class="absolute -right-2 -top-2 text-xs bg-slate-200 rounded-lg p-1 flex items-center justify-center"><%= @lesson.lesson_groups.count %></span>
+        <%= image_tag 'icons/add', class: "h-8 w-8 " %>
+    <% end %>
 </div>

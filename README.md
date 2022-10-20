@@ -36,4 +36,4 @@ Integrated payment system with Stripe
 ###
 
 Testing Suite
-58 runs, 133 assertions
+62 runs, 152 assertions, 0 failures, 0 errors, 0 skips

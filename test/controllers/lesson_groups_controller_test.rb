@@ -13,10 +13,11 @@ class LessonGroupsControllerTest < ActionDispatch::IntegrationTest
   #   assert_response :success
   # end
 
-  # test "should get new" do
-  #   get new_lesson_group_url
-  #   assert_response :success
-  # end
+  test "should get new" do
+    sign_in(@admin)
+    get new_lesson_group_url
+    assert_response :success
+  end
 
   test "should create lesson_group if admin" do
     sign_in(@admin)
@@ -24,13 +25,13 @@ class LessonGroupsControllerTest < ActionDispatch::IntegrationTest
       post lesson_groups_url, params: { lesson_group: 
                                         {
                                           description: 'Description of new lesson group',
-                                          lesson_id: '',
+                                          lesson_id: lessons(:one).id,
                                           title: "Amazing new title" 
                                         }
                                     }
     end
 
-    assert_redirected_to lesson_group_url(LessonGroup.last)
+    assert_redirected_to lesson_url(lessons(:one))
   end
 
   # test "should show lesson_group if logged in" do
