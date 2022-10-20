@@ -3,6 +3,7 @@ require "test_helper"
 class LessonsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @lesson = lessons(:one)
+    @lesson_group = lesson_groups(:one)
     @lesson_block = lesson_blocks(:one)
     @lesson_block_2 = lesson_blocks(:two)
     # @lessons = Lesson.all
@@ -25,9 +26,9 @@ class LessonsControllerTest < ActionDispatch::IntegrationTest
     assert_equal "Lesson block has been removed entirely.", flash[:notice] 
   end
 
-  test "should remove link to lesson" do
+  test "should remove link to lesson group" do
     sign_in(@admin_user)
-    previous_lesson_blocks = @lesson.lesson_blocks.count
+    previous_lesson_blocks = @lesson_group.lesson_blocks.count
 
     assert_difference("LessonBlock.count", 0) do
       assert_difference("RichBlock.count", 0) do
@@ -35,25 +36,33 @@ class LessonsControllerTest < ActionDispatch::IntegrationTest
       end
     end
 
-    after_lesson_blocks = @lesson.lesson_blocks.count
+    after_lesson_blocks = @lesson_group.lesson_blocks.count
     assert_equal after_lesson_blocks + 1, previous_lesson_blocks
 
     assert_redirected_to lesson_url(@lesson)
-    assert_equal "Lesson block has been unlinked to the lesson.", flash[:notice] 
+    assert_equal "Lesson block has been unlinked from the lesson group.", flash[:notice] 
   end
+
+
+
+
+
+
+
+
 
   # test "should show lonely blocks if admin" do
   #   sign_in(@admin_user)
-  #   get lessons_url
+  #   get lesson_groups_url
   #   assert_response :success
-  #   assert_equal(@lessons.count, 3)
-  #   assert_equal(@lonely_lesson_blocks.count, 1)
+    # assert_equal(@lessons.count, 3)
+    # assert_equal(@lonely_lesson_blocks.count, 1)
   # end
 
-  # test "should redirect to root if logged out" do
-  #   get lessons_url
-  #   assert_redirected_to new_user_session_path
-  # end
+  test "lesson block should redirect to root if logged out" do
+    get lessons_url
+    assert_redirected_to new_user_session_path
+  end
 
   # test "should get new if admin" do
   #   sign_in(@admin_user)

@@ -28,7 +28,7 @@ class UserTextAnswersController < ApplicationController
     @user_text_answer = @user_text_block.user_text_answers.build(user_id: current_user.id)
     respond_to do |format|
       if @user_text_answer.save
-        format.html { redirect_to lesson_path(@user_text_block.lesson), notice: "Genial! Buen trabajo." }
+        format.html { redirect_to lesson_path(@user_text_block.lesson_group.lesson), notice: "Genial! Buen trabajo." }
 
       else
         format.html { render :new, status: :unprocessable_entity }

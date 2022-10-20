@@ -7,5 +7,5 @@ class MultipleOpenBlock < ApplicationRecord
     has_one :lesson_block, as: :block, dependent: :destroy
     accepts_nested_attributes_for :lesson_block
 
-    has_one :lesson, through: :lesson_block
+    has_one :lesson_group, through: :lesson_block
 end

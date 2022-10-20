@@ -37,7 +37,7 @@ class UserTextAnswersControllerTest < ActionDispatch::IntegrationTest
                                       user_text_block_id: @second_user_text_block.id } }
     end
     
-    assert_redirected_to lesson_path(@second_user_text_block.lesson)
+    assert_redirected_to lesson_path(@second_user_text_block.lesson_group.lesson)
 
     assert_equal "Genial! Buen trabajo.", flash[:notice] 
   end

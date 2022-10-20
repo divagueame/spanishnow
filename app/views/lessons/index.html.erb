@@ -22,11 +22,11 @@
   <hr class="my-8">
   <%# Lonely Blocks %>
   <div class="container">
-    <h1>Lonely Blocks (<%= @lonely_lesson_blocks.count %>)</h1>
+    <h1>Lonely Lesson Groups (<%= @lonely_lesson_groups.count %>)</h1>
     <div id="lonely-lesson-blocks" class="container">
-      <% @lonely_lesson_blocks.each do |block| %>
+      <% @lonely_lesson_groups.each do |lesson_group| %>
 
-        <%= block.block_type %>  / <%= block.title %>
+        <%= lesson_group.title %>
 
         <br>
       <% end %>

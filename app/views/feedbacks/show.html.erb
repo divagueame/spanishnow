@@ -6,7 +6,7 @@
     <div class="p-4 rounded-sm bg-orange-200 my-4 shadow-sm">
       <h3><%= @feedback.user_text_answer.title %></h3>
       <p><%= @feedback.user_text_answer.body %></p>
-      <%= link_to 'Go back to lesson', lesson_path(@feedback.user_text_answer.user_text_block.lesson) %>
+      <%= link_to 'Go back to lesson', lesson_path(@feedback.user_text_answer.user_text_block.lesson_group.lesson) %>
     </div>
    
     <%= render @feedback %>

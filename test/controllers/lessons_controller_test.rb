@@ -4,7 +4,7 @@ class LessonsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @lesson = lessons(:one)
     @lessons = Lesson.all
-    @lonely_lesson_blocks = LessonBlock.where(lesson_id: nil)
+    @lonely_lesson_groups = LessonGroup.where(lesson_id: nil)
     @logged_out_user = users(:one)
     @logged_in_user = users(:two)
     @admin_user = users(:three)
@@ -21,7 +21,7 @@ class LessonsControllerTest < ActionDispatch::IntegrationTest
     get lessons_url
     assert_response :success
     assert_equal(@lessons.count, 3)
-    assert_equal(@lonely_lesson_blocks.count, 1)
+    assert_equal(@lonely_lesson_groups.count, 1)
   end
 
   test "should redirect to root if logged out" do

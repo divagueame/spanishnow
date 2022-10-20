@@ -23,7 +23,10 @@ class MultipleOpenBlocksController < ApplicationController
     @multiple_open_block = MultipleOpenBlock.new(multiple_open_block_params)
     respond_to do |format|
       if @multiple_open_block.save
-        format.html { redirect_to lesson_path(@multiple_open_block.lesson), notice: "Multiple open block was successfully created." }
+        format.html {
+          redirect_to lessons_path
+          # redirect_to lesson_path(@multiple_open_block.lesson_group.lesson), notice: "Multiple open block was successfully created."
+        }
       else
         format.html { render :new, status: :unprocessable_entity }
       end

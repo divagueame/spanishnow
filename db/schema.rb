@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_15_215936) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_20_175250) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -76,8 +76,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_15_215936) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
+    t.bigint "lesson_group_id"
     t.index ["block_type", "block_id"], name: "index_lesson_blocks_on_block"
+    t.index ["lesson_group_id"], name: "index_lesson_blocks_on_lesson_group_id"
     t.index ["lesson_id"], name: "index_lesson_blocks_on_lesson_id"
+  end
+
+  create_table "lesson_groups", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "position"
+    t.bigint "lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_lesson_groups_on_lesson_id"
   end
 
   create_table "lessons", force: :cascade do |t|
@@ -184,7 +196,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_15_215936) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "feedbacks", "user_text_answers"
+  add_foreign_key "lesson_blocks", "lesson_groups"
   add_foreign_key "lesson_blocks", "lessons"
+  add_foreign_key "lesson_groups", "lessons"
   add_foreign_key "lessons", "courses"
   add_foreign_key "lessons", "products"
   add_foreign_key "multiple_open_pieces", "multiple_open_blocks"

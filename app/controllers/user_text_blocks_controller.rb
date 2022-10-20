@@ -41,7 +41,7 @@ class UserTextBlocksController < ApplicationController
   def update
     respond_to do |format|
       if @user_text_block.update(user_text_block_params)
-        format.html { redirect_to lesson_path(@user_text_block.lesson), notice: "User text block was successfully updated." }
+        format.html { redirect_to lesson_path(@user_text_block.lesson_group.lesson), notice: "User text block was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
         

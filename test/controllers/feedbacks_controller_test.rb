@@ -61,6 +61,26 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_path
   end
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
   # test "should get edit" do
   #   get edit_feedback_url(@feedback)
   #   assert_response :success

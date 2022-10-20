@@ -1,22 +1,22 @@
 one:
   position: 1
   title: ""
-  lesson: one
+  lesson_group: one
   block: one (RichBlock)
 
 two:
   position: 2
-  lesson: one
+  lesson_group: one
   block: two (RichBlock)
 
 three:
   position: 3
-  lesson: one
+  lesson_group: one
   block: three (RichBlock)
 
 four:
   position: 1
-  lesson: two
+  lesson_group: two
   block: four (RichBlock)
 
 five:
@@ -27,16 +27,16 @@ six:
   position: 4
   title: "LessonBlock title - User Text!"
   block: first_user_text_block (UserTextBlock)
-  lesson: one
+  lesson_group: one
 
 seven:
   position: 5
   title: "LessonBlock title - User Text!"
   block: second_user_text_block (UserTextBlock)
-  lesson: one
+  lesson_group: one
 
 eigth:
   position: 6
   title: "LessonBlock of the first multiple open block!"
   block: one (MultipleOpenBlock)
-  lesson: one
+  lesson_group: one

@@ -64,7 +64,7 @@ end
 #   end
 
   def destroy
-    @lesson = Lesson.find(@lesson_block.lesson_id)
+    @lesson = Lesson.find(@lesson_block.lesson_group.lesson_id)
     
     @lesson_block.destroy!
 
@@ -75,12 +75,12 @@ end
 
   def unlink
 
-    @lesson = Lesson.find(@lesson_block.lesson_id)
-    @lesson_block.lesson_id = nil
+    @lesson = Lesson.find(@lesson_block.lesson_group.lesson_id)
+    @lesson_block.lesson_group_id = nil
     @lesson_block.save!
     
     respond_to do |format|
-      format.html { redirect_to lesson_path(@lesson), notice: "Lesson block has been unlinked to the lesson.", status: 303  }
+      format.html { redirect_to lesson_path(@lesson), notice: "Lesson block has been unlinked from the lesson group.", status: 303  }
     end
   end
 
@@ -91,7 +91,7 @@ end
     end
 
     def lesson_block_params
-      params.require(:lesson_block).permit(:id, :position, :lesson_id, :block_type, :block_id, :title)
+      params.require(:lesson_block).permit(:id, :position, :lesson_group_id, :block_type, :block_id, :title)
     end
 
 end

@@ -10,7 +10,7 @@ class LessonsController < ApplicationController
   before_action only: %i[ show ] do
     filter_study_session(@lesson) unless current_user.admin?
   end
-  
+
   def index
     if current_user.admin?
       @lessons = Lesson.all
@@ -18,11 +18,11 @@ class LessonsController < ApplicationController
       @lessons = Lesson.where(active: true)
     end
 
-    @lonely_lesson_blocks = LessonBlock.where(lesson_id: nil)
+    @lonely_lesson_groups = LessonGroup.where(lesson_id: nil)
   end
 
   def show
-    @lesson_blocks = @lesson.lesson_blocks
+    @lesson_groups = @lesson.lesson_groups
   end
 
   def new

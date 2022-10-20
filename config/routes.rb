@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'notifications', to: 'notifications#index', as: 'notifications'
   get 'notifications/:id', to: 'notifications#show', as: 'notification'
   
@@ -20,7 +21,11 @@ Rails.application.routes.draw do
   resources :feedbacks
   
   # Lessons
-  resources :lessons
+  resources :lessons do
+    # resources :lesson_groups#, only: [:create, :update], as: 'lesson_group'
+  end
+  resources :lesson_groups
+
   patch 'drag/lesson'
   post 'lesson/:id/toggle_active_lesson', to: 'lessons#toggle_active_lesson', as: 'toggle_active_lesson'
 

@@ -43,7 +43,8 @@ class MultipleOpenBlocksControllerTest < ActionDispatch::IntegrationTest
         end
       end
     end
-    assert_redirected_to lesson_path(MultipleOpenBlock.last.lesson)
+    # assert_redirected_to lesson_path(MultipleOpenBlock.last.lesson_group.lesson)
+    assert_redirected_to lessons_path
   end
 
   # test "should show multiple_open_block" do
