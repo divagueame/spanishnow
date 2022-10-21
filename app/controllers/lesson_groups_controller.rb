@@ -38,7 +38,7 @@ class LessonGroupsController < ApplicationController
   def update
     respond_to do |format|
       if @lesson_group.update(lesson_group_params)
-        format.html { redirect_to lesson_group_url(@lesson_group), notice: "Lesson group was successfully updated." }
+        format.html { redirect_to lesson_url(@lesson_group.lesson), notice: "Lesson group was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end

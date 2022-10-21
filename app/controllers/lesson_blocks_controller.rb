@@ -64,23 +64,23 @@ end
 #   end
 
   def destroy
-    @lesson = Lesson.find(@lesson_block.lesson_group.lesson_id)
+    @lesson_group = LessonGroup.find(@lesson_block.lesson_group.id)
     
     @lesson_block.destroy!
 
     respond_to do |format|
-      format.html { redirect_to lesson_path(@lesson), notice: "Lesson block has been removed entirely.", status: 303  }
+      format.html { redirect_to lesson_group_path(@lesson_group), notice: "Lesson block has been removed entirely.", status: 303  }
     end
   end
 
   def unlink
 
-    @lesson = Lesson.find(@lesson_block.lesson_group.lesson_id)
+    @lesson_group = LessonGroup.find(@lesson_block.lesson_group.id)
     @lesson_block.lesson_group_id = nil
     @lesson_block.save!
     
     respond_to do |format|
-      format.html { redirect_to lesson_path(@lesson), notice: "Lesson block has been unlinked from the lesson group.", status: 303  }
+      format.html { redirect_to lesson_group_path(@lesson_group), notice: "Lesson block has been unlinked from the lesson group.", status: 303  }
     end
   end
 

@@ -1,5 +1,5 @@
 <%# Top Card %>
-<div class="gap-4 p-6 container mx-auto mt-8 shadow-lg rounded-md w-1/2 flex justify-between">
+<div class="gap-4 p-6 container mx-auto mt-8 shadow-lg rounded-md w-2/3 flex justify-between items-center">
     <div>
         <h1 class="text-center">
         <%= @lesson.title %>
@@ -14,7 +14,11 @@
 
 
 <%= render @lesson %>
-
-
-
+ 
+<div class="hidden">
 <%= render 'lessons/show_admin' if current_user.admin?%>
+</div>
+
+<div class="container pb-8">
+    <%= link_to '< All lessons', lessons_path if current_user.admin?%>
+</div>
