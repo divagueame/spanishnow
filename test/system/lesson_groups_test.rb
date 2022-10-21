@@ -21,7 +21,7 @@ class LessonGroupsTest < ApplicationSystemTestCase
     assert_text "Yo soy alucinante"
 
     within '#add-lesson-group-btn' do
-        find("span").assert_text("1")
+        find("span").assert_text("3")
     end
     find("#add-lesson-group-btn").click
 
@@ -34,25 +34,28 @@ class LessonGroupsTest < ApplicationSystemTestCase
     assert_text "Yo soy alucinante"
 
     within '#add-lesson-group-btn' do
-        find("span").assert_text("2")
+        find("span").assert_text("4")
     end
   end
 
-  # test "should update Lesson group" do
-  #   visit lesson_group_url(@lesson_group)
-  #   click_on "Edit this lesson group", match: :first
+  test "should update Lesson group" do
+    sign_in(@admin_user) 
+    visit lesson_group_url(@lesson_group)
+    assert_no_text 'New Chikititle'
+    assert_text @lesson_group.title
+    click_on "Edit this lesson group"#, match: :first
 
-  #   fill_in "Description", with: @lesson_group.description
-  #   fill_in "Lesson", with: @lesson_group.lesson_id
-  #   fill_in "Position", with: @lesson_group.position
-  #   fill_in "Title", with: @lesson_group.title
-  #   click_on "Update Lesson group"
+    fill_in "Description", with: @lesson_group.description
+    fill_in "Title", with: 'New Chikititle'
+    click_on "Update Lesson group"
 
-  #   assert_text "Lesson group was successfully updated"
-  #   click_on "Back"
-  # end
+    assert_text "Lesson group was successfully updated"
+    assert_text 'New Chikititle'
+    assert_no_text @lesson_group.title
+  end
 
   # test "should destroy Lesson group" do
+  #   sign_in(@admin_user)
   #   visit lesson_group_url(@lesson_group)
   #   click_on "Destroy this lesson group", match: :first
 

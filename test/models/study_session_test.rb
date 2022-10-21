@@ -10,7 +10,7 @@ class StudySessionTest < ActiveSupport::TestCase
   end
 
   test "should be return the right session expiration time of 60 minutes if lesson has not target_time set" do
-    new_study_session = StudySession.new(user_id: @user_one.id, lesson_id: @lesson.id)
+    new_study_session = StudySession.new(user_id: @user_one.id, lesson_group_id: @lesson.lesson_groups.first.id)
     assert new_study_session.valid?
 
     new_study_session = new_study_session.save
@@ -31,7 +31,7 @@ class StudySessionTest < ActiveSupport::TestCase
 
   test "should be return the right session expiration time of the lesson target_time" do
     
-    new_study_session = StudySession.new(user_id: @user_one.id, lesson_id: @lesson_with_target_time.id)
+    new_study_session = StudySession.new(user_id: @user_one.id, lesson_group_id: @lesson_with_target_time.lesson_groups.first.id)
     assert new_study_session.valid?
 
     new_study_session.save

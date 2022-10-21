@@ -16,3 +16,15 @@ three:
   description: When expected, it's great, otherise I would not believe it.
   position: 1
   active: false
+
+four:
+  title: A little joky
+  description: Always chiki chiki
+  position: 2
+  lesson: one
+
+five:
+  title: A little joky
+  description: Always chiki chiki
+  position: 3
+  lesson: one
