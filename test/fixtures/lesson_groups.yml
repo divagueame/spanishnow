@@ -1,17 +1,18 @@
 one:
-  title: MyString
-  description: MyText
+  title: A journey into infinity...
+  description: A look at the amazing universe around you...
   position: 1
   lesson: one
 
 two:
-  title: MyString
-  description: MyText
+  title: Could not be more true...
+  description: Triki kiki pun. Chispis los cos.
   position: 1
   lesson: two
 
 # Orphan Lesson Group
 three:
-  title: MyString
-  description: MyText
+  title: A hidden gem in the ocean...
+  description: When expected, it's great, otherise I would not believe it.
   position: 1
+  active: false
