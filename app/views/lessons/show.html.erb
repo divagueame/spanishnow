@@ -1,17 +1,10 @@
-<%# Top Card %>
-<div class="gap-4 p-6 container mx-auto mt-8 shadow-lg rounded-md w-2/3 flex justify-between items-center">
-    <div>
-        <h1 class="text-center">
-        <%= @lesson.title %>
-        </h1>
-        <p>
-        <%= @lesson.description %>
-        </p>
-    </div>
-    <%= render 'lessons/lesson_admin' if current_user.admin?%>
-    
-</div>
-
+<%= render 'lessons/admin/lesson_header' if current_user.admin? %>
+<%= render partial: 'lessons/default/lesson_header',
+    locals: 
+        { lesson: @lesson,
+        study_session: current_user.study_session
+        } if !current_user.admin?
+%>
 
 <%= render @lesson %>
  
