@@ -7,6 +7,11 @@
   "resolved" "https://registry.npmjs.org/@hotwired/stimulus/-/stimulus-3.1.0.tgz"
   "version" "3.1.0"
 
+"es-module-shims@^1.6.2":
+  "integrity" "sha512-VISkM/sF/TlQzFY3WlyCXj3Fkv7+L3pErEFmrDHj0URx54EMY9GpSbW3CE04ZqWk6qrC/YsRDBTu9QvU2n0dZw=="
+  "resolved" "https://registry.npmjs.org/es-module-shims/-/es-module-shims-1.6.2.tgz"
+  "version" "1.6.2"
+
 "tailwindcss-stimulus-components@^3.0.4":
   "integrity" "sha512-kv4CHEcTvZSmthV6PseSdnW/QqKh237fZrvbNKNhWeYsTuEnOrKvdbR+3CmpuTok7L4XgEXk+XOFfo7AMhhtAA=="
   "resolved" "https://registry.npmjs.org/tailwindcss-stimulus-components/-/tailwindcss-stimulus-components-3.0.4.tgz"
