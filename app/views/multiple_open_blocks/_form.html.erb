@@ -1,4 +1,4 @@
-<%= form_with(model: multiple_open_block, class: "contents") do |form| %>
+<%= form_with(model: multiple_open_block, class: "contents", data: {controller: "nested"}) do |form| %>
   <%# Errors %>
   <% if multiple_open_block.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
@@ -35,27 +35,33 @@
  </div>
 
   <%# Multiple Pieces %>
-  <div class="my-4 p-4  bg-purple-200 rounded-sm border-2 border-purple-600"> 
-    <%= form.fields_for :multiple_open_pieces do |multiple_open_pieces_form| %>
-      <div class="py-4 flex gap-4">
-        <div class="">
-          <%= multiple_open_pieces_form.label :full, class:"block" %>
-          <%= multiple_open_pieces_form.text_field :full, class:"rounded-xl w-full" %>
-        </div>
-        <div class="">
-          <%= multiple_open_pieces_form.label :shown, class:"block" %>
-          <%= multiple_open_pieces_form.text_field :shown, class:"w-full" %>
-        </div>
-        <div class="">
-          <%= multiple_open_pieces_form.label :hint, class:"block" %>
-          <%= multiple_open_pieces_form.text_field :hint, class:"w-full" %>
-        </div>
-      </div>
-    <% end %>
-  </div>
+  <div class="multiple-wrapper">
   
-  <%# Submit %>
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <div class="my-4 p-4 bg-purple-50 rounded-sm border-2 border-purple-600" data-nested-target="piece"> 
+      <%= form.fields_for :multiple_open_pieces, class: "bg-green-200 py-8" do |multiple_open_pieces_form| %>
+        <div class="py-4 flex gap-4">
+          <div class="">
+            <%= multiple_open_pieces_form.label :full, class:"block" %>
+            <%= multiple_open_pieces_form.text_field :full, class:"rounded-xl w-full" %>
+          </div>
+          <div class="">
+            <%= multiple_open_pieces_form.label :shown, class:"block" %>
+            <%= multiple_open_pieces_form.text_field :shown, class:"w-full" %>
+          </div>
+          <div class="">
+            <%= multiple_open_pieces_form.label :hint, class:"block" %>
+            <%= multiple_open_pieces_form.text_field :hint, class:"w-full" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
+
+  <%# Submit %>
+  <div class="flex gap-4">
+    <button data-action="nested#addField" class="rounded-lg py-3 px-5 font-medium cursor-pointer bg-indigo-50 text-indigo-900">+ Answer</button>
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white font-medium cursor-pointer" %>
+  </div>
+
+  
 <% end %>
