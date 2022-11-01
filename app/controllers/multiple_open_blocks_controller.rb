@@ -10,10 +10,13 @@ class MultipleOpenBlocksController < ApplicationController
   end
 
   def new
+    p "NEw!"
+    @lesson_group_id = params[:lesson_group_id] 
     @multiple_open_block = MultipleOpenBlock.new
-    @multiple_open_block.build_lesson_block(lesson_id: params[:lesson_id])
+    @multiple_open_block.build_lesson_block
+    # @multiple_open_block.build_lesson_block(lesson_id: params[:lesson_id])
 
-    15.times { @multiple_open_block.multiple_open_pieces.build }
+    # 15.times { @multiple_open_block.multiple_open_pieces.build }
   end
 
   def edit
@@ -57,6 +60,9 @@ class MultipleOpenBlocksController < ApplicationController
     end
 
     def multiple_open_block_params
-      params.require(:multiple_open_block).permit(:title, :body, multiple_open_pieces_attributes: [:id, :full, :shown, :hint], lesson_block_attributes: [:title, :id, :lesson_id])
+      params.require(:multiple_open_block)
+            .permit(:title, :body,
+              multiple_open_pieces_attributes: [:id, :full, :shown, :hint],
+              lesson_block_attributes: [:title, :id, :lesson_group_id])
     end
 end

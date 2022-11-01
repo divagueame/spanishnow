@@ -11,17 +11,13 @@
     </div>
   <% end %>
 
-
-  
  <div>
   <%= form.fields_for :lesson_block do |lesson_block_form| %> 
       <%= lesson_block_form.label :title %>
       <%= lesson_block_form.text_field :title %> 
-
-      <%= lesson_block_form.hidden_field :lesson_id, value: @lesson.id %>
+      <%= lesson_block_form.hidden_field :lesson_group_id, value: @lesson_group_id %>
     <% end %>
  </div>
-
 
 
 

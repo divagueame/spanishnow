@@ -8,9 +8,7 @@
 
 <%= render @lesson %>
  
-<div class="hidden">
-<%= render 'lessons/show_admin' if current_user.admin?%>
-</div>
+ 
 
 <div class="container pb-8">
     <%= link_to '< All lessons', lessons_path if current_user.admin?%>

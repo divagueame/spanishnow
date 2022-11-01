@@ -20,18 +20,5 @@
 
 <% if current_user.admin? %>
   <hr class="my-8">
-  <%# Lonely Blocks %>
-  <div class="container">
-    <h1>Lonely Lesson Groups (<%= @lonely_lesson_groups.count %>)</h1>
-    <div id="lonely-lesson-blocks" class="container">
-      <% @lonely_lesson_groups.each do |lesson_group| %>
-
-        <%= lesson_group.title %>
-
-        <br>
-      <% end %>
-    </div>
-  </div>
-
   <%= link_to "New lesson", new_lesson_path %>
 <% end %>

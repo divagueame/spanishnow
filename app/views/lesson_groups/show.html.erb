@@ -4,5 +4,6 @@
     <%= link_to "Edit this lesson group", edit_lesson_group_path(@lesson_group), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to "Back to lesson", lesson_path(@lesson_group.lesson), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
 
-    <%= link_to 'Rich', new_rich_block_path(lesson_group_id: @lesson_group.id) %>
+    <%= render 'lesson_groups/add_blocks', locals: {lesson_group: @lesson_group} if current_user.admin?%>
+
 </div>

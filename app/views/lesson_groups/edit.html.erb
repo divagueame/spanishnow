@@ -3,7 +3,6 @@
 
   <%= render "form", lesson_group: @lesson_group %>
   
-  <%= render 'lesson_groups/add_blocks', locals: {lesson_group: @lesson_group} if current_user.admin?%>
 
   <br>
   <%= link_to "Back to the lesson", lesson_path(@lesson_group.lesson), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>

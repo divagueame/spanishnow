@@ -4,6 +4,6 @@ class UserTextBlock < ApplicationRecord
   has_many :user_text_answers, dependent: :destroy
   has_many :users, through: :user_text_answers
 
-
   accepts_nested_attributes_for :lesson_block
+
 end

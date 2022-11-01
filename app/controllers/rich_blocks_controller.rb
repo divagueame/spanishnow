@@ -16,34 +16,21 @@ class RichBlocksController < ApplicationController
     @lesson_group_id = params[:lesson_group_id]
     @rich_block = RichBlock.new
     @rich_block.build_lesson_block
-    # p "RICH!"
-    # p @rich_block
-    # p @rich_block.lesson_block
-    # p params
   end
 
   def edit
-    # p 'POO'
-    # p @rich_block.lesson
-    
-    # p @lesson_id
-    # @lesson_id = params[:lesson_id]
-    # @rich_block = RichBlock.new
-    # params[:leson_id] = @lesson_id
-    # @rich_block.build_lesson_block
   end
 
   def create
-    @rich_block = RichBlock.new(subheader:  rich_block_params[:subheader], content: rich_block_params[:content])
-    @lesson_group = LessonGroup.find(rich_block_params[:lesson_group_id])
+    # @rich_block = RichBlock.new(subheader:  rich_block_params[:subheader], content: rich_block_params[:content])
+    @rich_block = RichBlock.new(rich_block_params)
+    @lesson_group = LessonGroup.find(rich_block_params[:lesson_block_attributes][:lesson_group_id])
     
-    @lesson_block_title = rich_block_params[:lesson_block_attributes][:title]
-    # p "POLI"
-    # p @rich_block.lesson_block
+    # @lesson_block_title = rich_block_params[:lesson_block_attributes][:title]
     
-    # p @lesson_block_title.valid?
     respond_to do |format|
-    if @lesson_group.lesson_blocks.create(block: @rich_block, title:  @lesson_block_title)
+      # if @lesson_group.lesson_blocks.create(block: @rich_block, title:  @lesson_block_title)
+      if @rich_block.lesson_block.save
         format.html { redirect_to lesson_group_path(@lesson_group), notice: "Rich block was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -96,6 +83,8 @@ class RichBlocksController < ApplicationController
     end
 
     def rich_block_params
-      params.require(:rich_block).permit(:content, :lesson_group_id, :subheader, lesson_block_attributes: [:title, :id])
+      params.require(:rich_block)
+            .permit(:content, :subheader,
+              lesson_block_attributes: [:title, :id, :lesson_group_id])
     end
 end
