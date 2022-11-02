@@ -16,7 +16,7 @@
   <div>
     <div class="my-5">
       <%= form.label :title %>
-      <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      <%= form.text_field :title, required: true, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
     </div>
 
     <div class="my-5">
@@ -42,11 +42,11 @@
         <div class="py-4 flex gap-4 items-center piece" data-nested-target="piece" data-action="keyup->nested#removeField:prevent">
           <div>
             <%= multiple_open_pieces_form.label :full, class:"block" %>
-            <%= multiple_open_pieces_form.text_field :full, class:"rounded-xl w-full" %>
+            <%= multiple_open_pieces_form.text_field :full, required: true, class:"rounded-xl w-full" %>
           </div>
           <div class="">
             <%= multiple_open_pieces_form.label :shown, class:"block" %>
-            <%= multiple_open_pieces_form.text_field :shown, class:"w-full" %>
+            <%= multiple_open_pieces_form.text_field :shown, required: true, class:"w-full" %>
           </div>
           <div class="">
             <%= multiple_open_pieces_form.label :hint, class:"block" %>

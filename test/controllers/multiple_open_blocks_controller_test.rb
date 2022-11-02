@@ -4,8 +4,9 @@ class MultipleOpenBlocksControllerTest < ActionDispatch::IntegrationTest
   setup do
     # @multiple_open_block = multiple_open_blocks(:one)
     @lesson = lessons(:one)
+    @lesson_group = lesson_groups(:one)
     @admin_user = users(:three)
-    @not_admin = users(:one) 
+    @not_admin = users(:one)
   end
 
   # test "should not get index" do
@@ -32,7 +33,7 @@ class MultipleOpenBlocksControllerTest < ActionDispatch::IntegrationTest
                 {
                   body: @multiple_open_block.body,
                   title: @multiple_open_block.title,
-                  lesson_block_attributes: { title: "LessonBlockTitle", lesson_id: @lesson.id},
+                  lesson_block_attributes: { title: "LessonBlockTitle", lesson_group_id: @lesson_group.id},
                   multiple_open_pieces_attributes: [
                   {"full"=>"asdf", "shown"=>"asdf", "hint"=>"asd"}, 
                   {"full"=>"adsfsd", "shown"=>"asd", "hint"=>""},
@@ -43,8 +44,7 @@ class MultipleOpenBlocksControllerTest < ActionDispatch::IntegrationTest
         end
       end
     end
-    # assert_redirected_to lesson_path(MultipleOpenBlock.last.lesson_group.lesson)
-    assert_redirected_to lessons_path
+    assert_redirected_to lesson_group_path(@lesson_group)
   end
 
   # test "should show multiple_open_block" do

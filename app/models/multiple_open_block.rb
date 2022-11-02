@@ -5,6 +5,6 @@ class MultipleOpenBlock < ApplicationRecord
 
   accepts_nested_attributes_for :lesson_block
 
-  accepts_nested_attributes_for :multiple_open_pieces
-  #     reject_if: lambda {|attributes| attributes['full'].blank? || attributes['shown'].blank? }
+  accepts_nested_attributes_for :multiple_open_pieces,
+      reject_if: lambda {|attributes| attributes['full'].blank? || attributes['shown'].blank? }
 end
