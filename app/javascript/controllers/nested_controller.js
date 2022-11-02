@@ -6,8 +6,6 @@ export default class extends Controller {
   static targets = [ "piece" ]
 
   addField(e) {
-    e.preventDefault()
-
     // Allows add field on enter key
     if(e.type==='keyup' && e.key!=='Enter'){ return }
 
@@ -21,25 +19,21 @@ export default class extends Controller {
        newPiece.getElementsByTagName('input')[i].value = "";
     } 
 
-    
-
-    // // Insert last to the form
+    // Insert last to the form
     lastPiece.after(newPiece)
-    // console.log(newField)
-    // newField.firstElementChild.focus()
-
+    newPiece.getElementsByTagName('input')[0].focus()
   }
-  // removeField(e) {
-  //   // Allows remove field on escape key
-  //   if(e.type==='keyup' && e.key!=='Escape'){ return }
 
-  //   e.preventDefault()
-  //   if(this.answerFieldTargets.length>1){
-  //     let lastFieldText = this.answerFieldTargets[this.answerFieldTargets.length - 2];
-  //     e.target.closest('fieldset').remove()
-  //     lastFieldText.firstElementChild.focus()
-  //   }
-  // }
+  removeField(e) {
+    // Allows remove field on escape key
+    if(e.type==='keyup' && e.key!=='Escape'){ return }
+  
+    if(this.pieceTargets.length>1){
+      e.target.closest('.piece').remove()
+      let lastPiece = this.pieceTargets[this.pieceTargets.length - 1];      
+      lastPiece.getElementsByTagName('input')[0].focus()
+    }
+  }
 
 
 

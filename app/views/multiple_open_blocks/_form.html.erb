@@ -37,10 +37,10 @@
   <%# Multiple Pieces %>
   <div class="multiple-wrapper">
   
-    <div class="my-4 p-4 bg-purple-50 rounded-sm border-2 border-purple-600" data-nested-target="piece"> 
+    <div class="my-4 p-4 bg-purple-50 rounded-sm border-2 border-purple-600">
       <%= form.fields_for :multiple_open_pieces, class: "bg-green-200 py-8" do |multiple_open_pieces_form| %>
-        <div class="py-4 flex gap-4">
-          <div class="">
+        <div class="py-4 flex gap-4 items-center piece" data-nested-target="piece" data-action="keyup->nested#removeField:prevent">
+          <div>
             <%= multiple_open_pieces_form.label :full, class:"block" %>
             <%= multiple_open_pieces_form.text_field :full, class:"rounded-xl w-full" %>
           </div>
@@ -52,6 +52,9 @@
             <%= multiple_open_pieces_form.label :hint, class:"block" %>
             <%= multiple_open_pieces_form.text_field :hint, class:"w-full" %>
           </div>
+          <div data-action="click->nested#removeField:prevent" class="mt-6 cursor-pointer block w-8 ml-auto border-transparent border-2 hover:border-sky-600 rounded-full" >
+            <%= image_tag "icons/remove.svg", class: "block w-full" %>
+          </div>
         </div>
       <% end %>
     </div>
@@ -59,7 +62,7 @@
 
   <%# Submit %>
   <div class="flex gap-4">
-    <button data-action="nested#addField" class="rounded-lg py-3 px-5 font-medium cursor-pointer bg-indigo-50 text-indigo-900">+ Answer</button>
+    <button data-action="nested#addField:prevent" class="rounded-lg py-3 px-5 font-medium cursor-pointer bg-indigo-50 text-indigo-900">+ Answer</button>
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white font-medium cursor-pointer" %>
   </div>
 
