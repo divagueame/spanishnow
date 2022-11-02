@@ -7,7 +7,14 @@
 %>
 
 <%= render @lesson %>
- 
+<%= turbo_frame_tag 'lesson_group' do %>
+anda
+<% end %>
+<%= render partial: 'lessons/default/lesson_group',
+    locals: 
+        { lesson_group: @active_lesson_group
+        } if !current_user.admin?
+%>
  
 
 <div class="container pb-8">

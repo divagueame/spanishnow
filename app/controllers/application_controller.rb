@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
                 notice: 'Are you chiki chiki chiki boom?'
   end
 
-  def filter_active(resource) # "You have about 1 hour left to complete this lesson."
+  def filter_active(resource)
     redirect_to root_path, notice: 'Nope' unless current_user&.admin? || resource.active
   end
 
