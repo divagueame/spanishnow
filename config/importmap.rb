@@ -8,3 +8,4 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 pin "trix"
 pin "@rails/actiontext", to: "actiontext.js"
 pin "tailwindcss-stimulus-components" # @3.0.4
+pin_all_from "app/javascript/custom", under: "custom"

@@ -1,20 +1,21 @@
-<%= render 'lessons/admin/lesson_header' if current_user.admin? %>
-<%= render partial: 'lessons/default/lesson_header',
-    locals: 
-        { lesson: @lesson,
-        study_session: current_user.study_session
-        } if !current_user.admin?
-%>
+<div>
+        <%= render 'lessons/admin/lesson_header' if current_user.admin? %>
 
-<%= render @lesson %>
+        <%= render partial: 'lessons/default/lesson_header',
+            locals: 
+                { lesson: @lesson,
+                study_session: current_user.study_session
+                } if !current_user.admin?
+        %>
+    
+        <%= render partial: 'lessons/default/lesson_group',
+            locals: 
+                { lesson_group: @active_lesson_group
+                } if !current_user.admin?
+        %>
 
-<%= render partial: 'lessons/default/lesson_group',
-    locals: 
-        { lesson_group: @active_lesson_group
-        } if !current_user.admin?
-%>
+        <div class="container pb-8">
+            <%= link_to '< All lessons', lessons_path if current_user.admin?%>
+        </div>
  
-
-<div class="container pb-8">
-    <%= link_to '< All lessons', lessons_path if current_user.admin?%>
 </div>
