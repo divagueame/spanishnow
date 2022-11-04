@@ -1,6 +1,6 @@
 one:
   position: 1
-  title: ""
+  title: "Chikipin"
   lesson_group: one
   block: one (RichBlock)
 

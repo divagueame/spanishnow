@@ -23,8 +23,10 @@ class LessonsController < ApplicationController
 
   def show
     @lesson_groups = @lesson.lesson_groups
-    @study_session = current_user.study_session
-    @active_lesson_group = LessonGroup.find(@study_session.lesson_group_id)
+    if !current_user.admin?
+      @study_session = current_user.study_session
+      @active_lesson_group = LessonGroup.find(@study_session.lesson_group_id)
+    end
   end
 
   def new

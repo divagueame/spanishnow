@@ -19,17 +19,13 @@ class RichBlocksController < ApplicationController
   end
 
   def edit
+    @lesson_group_id = @rich_block.lesson_block.lesson_group_id
   end
 
   def create
-    # @rich_block = RichBlock.new(subheader:  rich_block_params[:subheader], content: rich_block_params[:content])
     @rich_block = RichBlock.new(rich_block_params)
-    @lesson_group = LessonGroup.find(rich_block_params[:lesson_block_attributes][:lesson_group_id])
-    
-    # @lesson_block_title = rich_block_params[:lesson_block_attributes][:title]
-    
+    @lesson_group = @rich_block.lesson_block.lesson_group
     respond_to do |format|
-      # if @lesson_group.lesson_blocks.create(block: @rich_block, title:  @lesson_block_title)
       if @rich_block.lesson_block.save
         format.html { redirect_to lesson_group_path(@lesson_group), notice: "Rich block was successfully created." }
       else
@@ -39,34 +35,18 @@ class RichBlocksController < ApplicationController
   end
 
   def update
+    @lesson_group_id = @rich_block.lesson_block.lesson_group_id
 
-
-    # p params
-    # p "PARAMS:"
-    # p @rich_block
-    # p "RICH BLOCk:"
-    # @lesson = @rich_block.lesson
-    # p @lesson
-    # @lesson_block_title = rich_block_params[:lesson_block_attributes][:title]
-    # @lesson_block_title
-    # @rich_block.update(content: rich_block_params[:content])
-    # @lesson.lesson_blocks.update(block: @rich_block, title: @lesson_block_title)
-  #  redirect_to lesson_path(@lesson), notice: "Rich block was successfully created." 
-    # p @lesson
-    # @lesson.update(comments_attributes: [{id: 4, content: 'bob'}]
-    # p rich_block_params
-    # p '@rich_block !!!!!!!'
-    # p rich_block_params
-    # @lesson = Lesson.find(@rich_block.lesson.id)
-    # p @lesson
-    # @lesson.lesson_blocks.update(block: @rich_block, title: )
-    # respond_to do |format|
-    #   if @lesson.update(lesson_params)
-    #     format.html { redirect_to lesson_url(@lesson), notice: "Lesson was successfully updated." }
-    #   else
-    #     format.html { render :edit, status: :unprocessable_entity }
-    #   end
-    # end
+    respond_to do |format|
+      if @rich_block.update(rich_block_params)
+        format.html {
+          redirect_to lesson_group_path(@lesson_group_id), notice: "Rich block was successfully updated."
+        }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
+    end
+ 
   end
 
 #   def destroy
