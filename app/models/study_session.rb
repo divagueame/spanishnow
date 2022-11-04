@@ -23,12 +23,13 @@ class StudySession < ApplicationRecord
 
   def update_next_group
     if !(self.lesson_group.last?)
-      # p self.lesson_group.lower_item
       self.update(lesson_group_id: self.lesson_group.lower_item.id)
-    else
-      p 'NOT!'
-      # p self.lesson_group.lower_item
+    end
+  end
 
+  def update_previous_group
+    if !(self.lesson_group.first?)
+      self.update(lesson_group_id: self.lesson_group.higher_item.id)
     end
   end
 
