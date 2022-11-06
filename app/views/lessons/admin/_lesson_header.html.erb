@@ -1,16 +1,18 @@
 <div class="gap-4 p-6 container mx-auto mt-8 shadow-lg rounded-md w-2/3 flex justify-between items-center">
-    <div>
-        <h1 class="text-center">
-        <%= @lesson.title %>
-        </h1>
-        <p>
-        <%= @lesson.description %>
-        </p>
-    </div>
 
+    <%= turbo_frame_tag 'lesson_data_form' do %>
+        <div>
+            <h1 class="text-center">
+            <%= @lesson.title %>
+            </h1>
+            <p>
+            <%= @lesson.description %>
+            </p>
+        </div>
+    <% end %>    
 
 <div class="flex gap-2">
-    <%= link_to edit_lesson_path(@lesson) do %>
+    <%= link_to edit_lesson_path(@lesson), data: { turbo_frame: "lesson_data_form" } do %>
         <%= image_tag 'icons/edit', class: "edit-lesson-btn h-8 w-8 hover:bg-purple-100" %>
     <% end %>
     
@@ -36,3 +38,4 @@
 
     
 </div>
+

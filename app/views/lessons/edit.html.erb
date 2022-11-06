@@ -1,6 +1,7 @@
 <h1>Editing lesson</h1>
-
-<%= render "form", lesson: @lesson %> 
+  <%= turbo_frame_tag 'lesson_data_form' do %>
+    <%= render "form", lesson: @lesson %>  
+  <% end %>
 
 <div>
   <%= link_to "Show this lesson", @lesson %>
