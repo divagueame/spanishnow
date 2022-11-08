@@ -3,7 +3,7 @@
         <h1><%= lesson_group.title %></h1>
         <p><%= lesson_group.description unless lesson_group.description.blank? %></p>
         <p>Blocks: <%= lesson_group.lesson_blocks.count %></p>
-        <div class="blocks bg-rose-100 roudned-sm p-2">
+        <div class="blocks bg-rose-100 rounded-sm p-2">
             <% lesson_group.lesson_blocks.each do |block| %>
                 <% type = block.block_type.underscore.to_sym %> 
                  <%= render :partial => "#{block.block_type.underscore.pluralize}/#{block.block_type.underscore}", :locals => {  type => block.block } %>

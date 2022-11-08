@@ -1,11 +1,10 @@
 <%# Lesson Group %>
 <div id="<%= dom_id lesson_group %>">
-  <h1 class="text-center my-5"><%= lesson_group.title %></h1>
+  <h1 class="text-center my-5"><%= lesson_group.position %>: <%= lesson_group.title %></h1>
   <p class="my-5">
     <%= lesson_group.description %>
   </p>
 </div>
-
 <%# Blocks %>
 <div>
   <% @lesson_group.lesson_blocks.each do |block| %>

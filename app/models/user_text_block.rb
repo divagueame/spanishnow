@@ -6,4 +6,7 @@ class UserTextBlock < ApplicationRecord
 
   accepts_nested_attributes_for :lesson_block
 
+  def answered?(user)
+    self.user_text_answers.where(user_id: user.id).any?
+  end
 end

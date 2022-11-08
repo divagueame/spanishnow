@@ -1,16 +1,13 @@
 <div id="<%= dom_id user_text_block %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Prompttitle:</strong>
+  <h3 class="my-5">
     <%= user_text_block.promptTitle %>
-  </p>
+  </h3>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Promptbody:</strong>
     <%= user_text_block.promptBody %>
   </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Promptlength:</strong>
+  <p class="my-5">Recommended word count:
     <%= user_text_block.promptLength %>
   </p>
 
@@ -21,3 +18,5 @@
     <hr class="mt-6">
   <% end %>
 </div>
+
+<%= answers_links(user_text_block) %>
