@@ -3,4 +3,6 @@
                 { lesson_group: @current_lesson_group
                 }
         %>
+
+<%= turbo_stream.update "lesson_group_position", html: @current_lesson_group.position %>
 <%= turbo_stream.update "flashes", partial: "partials/flash" %>

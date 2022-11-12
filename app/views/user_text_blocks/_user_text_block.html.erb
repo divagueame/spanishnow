@@ -1,4 +1,4 @@
-<div id="<%= dom_id user_text_block %>">
+<div id="<%= dom_id user_text_block %>" class="bg-red-200">
   <h3 class="my-5">
     <%= user_text_block.promptTitle %>
   </h3>
@@ -10,13 +10,6 @@
   <p class="my-5">Recommended word count:
     <%= user_text_block.promptLength %>
   </p>
-
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this user text block", user_text_block, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this user text block', edit_user_text_block_path(user_text_block), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
 </div>
 
 <%= answers_links(user_text_block) %>
