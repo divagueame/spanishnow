@@ -59,11 +59,18 @@ class LessonsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_path
   end
 
-  test "should show lesson if user has active study session and has time left" do
-    sign_in(users(:has_active_study_session))
+  test "should show lesson with the right lesson group" do
+    @has_active_study_sesion_user = users(:has_active_study_session)
+    sign_in(@has_active_study_sesion_user)
+    @active_lesson_group = LessonGroup.find(@has_active_study_sesion_user.study_session.lesson_group_id)
+
+    assert_not_nil @has_active_study_sesion_user.study_session
+    
     get lesson_url(@lesson)
     assert_response :success
     assert_equal "You have about 1 hour left to complete this lesson.", flash[:notice]
+    assert_equal @active_lesson_group.position, 1
+    
   end
 
   test "should directed to right lesson if user has active study session but asks for the wrong lesson" do
