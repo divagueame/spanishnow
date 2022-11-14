@@ -1,15 +1,15 @@
 <div id="current_lesson_group" data-stream-enter-class="fadein" data-stream-exit-class="fadeout" class="min-h-[77vh]">
+          
     <div class="container">
         <h1><%= lesson_group.title %></h1>
         <p><%= lesson_group.description unless lesson_group.description.blank? %></p>
         <p>Blocks: <%= lesson_group.lesson_blocks.count %></p>
         <div class="blocks bg-rose-100 rounded-sm p-2">
             <% lesson_group.lesson_blocks.each do |block| %>
-                <% type = block.block_type.underscore.to_sym %> 
-                 <%= render :partial => "#{block.block_type.underscore.pluralize}/#{block.block_type.underscore}", :locals => {  type => block.block } %>
+                <% type = block.block_type.underscore.to_sym %>
+                <%= render :partial => "#{block.block_type.underscore.pluralize}/#{block.block_type.underscore}", :locals => {  type => block.block } %>
             <% end %>
         </div>
-        
-        <%= render partial: "lessons/default/controls", locals: {lesson_group: lesson_group} %>
+        <%= render partial: "lessons/default/controls", locals: {lesson_group: lesson_group, total_lesson_groups: lesson_group.lesson.lesson_groups.count} %>
     </div>
 </div>
