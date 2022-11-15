@@ -1,0 +1,21 @@
+<% dragActions = "dragstart->drag#dragStart 
+                  dragover->drag#dragOver
+                  dragenter->drag#dragEnter
+                  drop->drag#drop
+                  dragend->drag#dragEnd" %>
+
+<%= content_tag :div,
+    class: "icon draggable my-1 p-2 flex gap-2",
+    draggable: true,
+    data: {
+        controller: "drag",
+        action: dragActions,
+        resource_id: lesson_group.id,
+        url: "../drag/lesson_group",
+        parent: "lesson_groups"
+    } do %>
+    <%= image_tag 'icons/grab', class: "h-8 w-8 align-middle inline-block cursor-grab rounded-sm" %>
+    <h1><%= lesson_group.title %></h1>
+    <%= render 'lesson_groups/admin/dropdown', lesson_group: lesson_group %>
+<% end %>     
+ 

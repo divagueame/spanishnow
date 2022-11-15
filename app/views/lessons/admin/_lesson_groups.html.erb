@@ -1,0 +1,5 @@
+<div id="lesson_groups" class="container py-10">
+  <% lesson_groups.each do |lesson_group| %> 
+      <%= render 'lesson_groups/draggable', lesson_group: lesson_group %>
+  <% end %>
+</div>

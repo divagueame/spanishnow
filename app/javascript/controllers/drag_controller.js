@@ -22,41 +22,36 @@ function showDragActive(e) {
   Array.from(document.querySelectorAll('.hover-active')).forEach((el) => el.classList.remove('hover-active'));
   e.currentTarget.classList.add('hover-active');
   
-  // console.log('show', e.target.dataset.resourceId)
-  document.querySelector("#lessons").classList.add('active')
+  // console.log('show', e.currentTarget)
+  // document.querySelector(e.target.dataset.parent).classList.add('active')
 }
 function hideDragActive() {
   Array.from(document.querySelectorAll('.dragging')).forEach((el) => el.classList.remove('dragging'));
-  document.querySelector("#lessons").classList.remove('active')
+  // document.querySelector(e.target.dataset.parent).classList.remove('active')
 }
 
 // Connects to data-controller="drag"
 export default class extends Controller {
-  disconnect() {
-    // console.log('disconnect - Element removed from DOM')
-  }
-  
   
   dragStart(e) {
-
     isDragging = true;
-    showDragActive(e);
+    showDragActive(e); 
     e.currentTarget.classList.add('dragging');
+    
     resourceId = e.currentTarget.getAttribute(dataResourceId)
     url = e.currentTarget.getAttribute('data-url')
     e.dataTransfer.effectAllowed = 'move';
-    // console.log(resourceId)
   }
 
   drop(e) {
     // isDragging = false; 
     e.preventDefault(); 
-    // console.log('DROp!')
     hideDragActive();
 
     Array.from(document.querySelectorAll('.hover-active')).forEach((el) => el.classList.remove('hover-active'));
     let parentId = e.currentTarget.getAttribute(dataParent);
     const dropTarget = this.findDropTarget(e.target, parentId)
+
     const draggedItem = document.querySelector(`[data-resource-id="${resourceId}"]`)
     // console.log('Drop unsuccessfully', draggedItem)
     // console.log('Drop unsuccessfully', dropTarget)
@@ -89,7 +84,8 @@ export default class extends Controller {
         position: newPosition
       }
     })
-    
+    //   console.log('Drop end', resourceId)
+    //   console.log('Drop end', newPosition)
 
     // console.log(data)
     fetch(url, {
