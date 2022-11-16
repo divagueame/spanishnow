@@ -3,13 +3,13 @@
 <div class="inline-block" id="unseen_feedback">
     <%= render partial: 'feedbacks/unseen_feedbacks_count', locals: { user: current_user } %>
 </div>
-<%= link_to 'Notifications' , notifications_path %>
+<%= link_to 'Notifications' , notifications_path, class: "btn btn-4" %>
 <%# Links %>
 <% if active_study_session.nil? || active_study_session.session_ended? %>
-    <%= link_to 'Course', course_path(Course.last) %>
+    <%= link_to 'Course', course_path(Course.last), class: "btn btn-3" %>
 <% elsif action_name === 'show' && controller.controller_name === 'lessons' %>
     <%= active_study_session.time_left %>
 <% elsif  %>
-    <%= link_to 'Back to the lesson', lesson_path(active_study_session.lesson) %>
+    <%= link_to 'Back to the lesson', lesson_path(active_study_session.lesson), class: "btn btn-4" %>
 <% end %>  
-<%= link_to "Sign Out", destroy_user_session_path, data: { "turbo-method": :delete } %>
+<%= link_to "Sign Out", destroy_user_session_path, data: { "turbo-method": :delete }, class: "btn btn-4" %>

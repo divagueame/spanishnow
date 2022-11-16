@@ -15,7 +15,7 @@
             parent: "lessons"
         } do %>
         <%= image_tag 'icons/grab', class: "h-8 w-8 align-middle inline-block cursor-grab rounded-sm" %>  
-        <h1><%= link_to lesson.title, lesson_path(lesson), class: "lesson_link"  %></h1>
+        <h2><%= link_to lesson.title, lesson_path(lesson), class: "lesson_link no-underline" %></h2>
         <%= render 'lessons/admin/dropdown', lesson: lesson %>
     <% end %>
  

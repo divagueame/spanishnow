@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   
   # Lesson_blocks
   delete '/lesson_block/:id' => 'lesson_blocks#destroy', as: 'lesson_block'
-  delete '/lesson_block/:id/unlink' => 'lesson_blocks#unlink', as: 'unlink'
   get '/lesson_block/:id/edit', to: 'lesson_blocks#edit', as: 'edit_lesson_block'
 
   resources :multiple_open_blocks, except: [:index ] do 

@@ -26,30 +26,6 @@ class LessonBlocksControllerTest < ActionDispatch::IntegrationTest
     assert_equal "Lesson block has been removed entirely.", flash[:notice] 
   end
 
-  test "should remove link to lesson group" do
-    sign_in(@admin_user)
-    previous_lesson_blocks = @lesson_group.lesson_blocks.count
-
-    assert_difference("LessonBlock.count", 0) do
-      assert_difference("RichBlock.count", 0) do
-          delete unlink_url(@lesson_block)
-      end
-    end
-
-    # after_lesson_blocks = @lesson_group.lesson_blocks.count
-    # assert_equal after_lesson_blocks + 1, previous_lesson_blocks
-
-    # assert_redirected_to lesson_group_url(@lesson_group)
-    # assert_equal "Lesson block has been unlinked from the lesson group.", flash[:notice] 
-  end
-
-
-
-
-
-
-
-
 
   # test "should show lonely blocks if admin" do
   #   sign_in(@admin_user)

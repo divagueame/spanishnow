@@ -1,6 +1,6 @@
 class LessonBlocksController < ApplicationController
   before_action :authenticate_admin, only: %i[ new create destroy]
-  before_action :set_lesson_block, only: %i[ edit destroy unlink ]
+  before_action :set_lesson_block, only: %i[ edit destroy ]
 
 #   def index
 #     @lessons = Lesson.all
@@ -72,18 +72,6 @@ end
       format.html { redirect_to lesson_group_path(@lesson_group), notice: "Lesson block has been removed entirely.", status: 303  }
     end
   end
-
-  def unlink
-
-    @lesson_group = LessonGroup.find(@lesson_block.lesson_group.id)
-    @lesson_block.lesson_group_id = nil
-    @lesson_block.save!
-    
-    respond_to do |format|
-      format.html { redirect_to lesson_group_path(@lesson_group), notice: "Lesson block has been unlinked from the lesson group.", status: 303  }
-    end
-  end
-
 
   private
     def set_lesson_block

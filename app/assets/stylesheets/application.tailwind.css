@@ -9,15 +9,15 @@
         src: url("/assets/Poppins-Regular.ttf");
   }  
   h1 {
-    @apply text-2xl;
+    @apply text-5xl;
   }
 
   h2 {
-    @apply text-xl;
+    @apply text-3xl;
   }
 
   h3 {
-    @apply text-lg;
+    @apply text-xl;
   }
 
   a {
@@ -37,25 +37,45 @@
     @apply font-medium text-sm inline-flex items-center justify-center px-3 py-2 border border-transparent rounded leading-5 shadow-sm transition duration-150 ease-in-out bg-indigo-500 focus:outline-none focus-visible:ring-2 hover:bg-indigo-600 text-white w-full
   }
   .btn {
-    @apply  font-medium no-underline text-xl
-            items-center justify-center
-            px-6 py-3
-            rounded leading-5
+    @apply px-6 py-3 block w-fit font-bold no-underline text-xl hover:bg-opacity-90 rounded border-2 border-transparent flex items-center justify-center
+  }
+  .btn-1 {
+    @apply  
+             leading-5
             transition duration-150 ease-in-out
             focus:outline-none focus-visible:ring-2
           text-white
           bg-emerald-500
   }
   .btn-2 {
-    @apply  font-medium no-underline text-xl
+    @apply 
             items-center justify-center
-            px-6 py-3
-            rounded leading-5
+            leading-5
             transition duration-150 ease-in-out
             focus:outline-none focus-visible:ring-2
             text-emerald-600
             border-emerald-600
-            border-2
+            bg-white
+  }
+  .btn-3 {
+    @apply 
+            items-center justify-center
+            leading-5
+            transition duration-150 ease-in-out
+            focus:outline-none focus-visible:ring-2
+            text-emerald-400
+            hover:border-emerald-400
+  }
+  .btn-4 {
+    @apply  
+            items-center justify-center
+            leading-5
+            transition duration-150 ease-in-out
+            focus:outline-none focus-visible:ring-2
+            text-neutral-800
+            hover:bg-neutral-200
+            hover:border-neutral-300
+            hover:text-neutral-900
   }
 }
 

@@ -11,10 +11,6 @@
                 <%= image_tag 'icons/edit', class: "icon-small" %>
                 Edit lesson group
             <% end %>
-            <%= link_to unlink_path(lesson_group.id), class: 'w-auto no-underline px-10 py-3 text-gray-900 bg-white hover:bg-gray-300 whitespace-nowrap flex  items-center   gap-2',   data: {action: "click->dropdown#toggle", 'turbo-method': :delete, confirm: 'Are you sure?'}  do %>
-                <%= image_tag 'icons/unlink', class: "icon-small" %>
-                Unlink lesson group
-            <% end %>
             <hr>
             <%= link_to lesson_block_path(lesson_group.id), class: 'w-auto no-underline px-10 py-3 text-gray-900 bg-white hover:bg-gray-300 whitespace-nowrap flex items-center   gap-2',  data: {action: "click->dropdown#toggle", 'turbo-method': :delete, confirm: 'Are you sure?'}  do  %>
                 <%= image_tag 'icons/delete', class: "icon-small" %>

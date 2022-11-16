@@ -1,11 +1,10 @@
-<header class="bg-yellow-100 flex py-1 justify-between px-2 gap-2 items-center">
+<header class=" s flex py-2 justify-between px-2 gap-8 items-center">
     <%= link_to root_path, class: 'main-logo' do %>
         <h1 class="hidden">Mambo Spanish</h1>
         <%= image_tag 'logo_bg', class: "logo h-10" %>
     <% end %>
-    <div class="flex items-center gap-2"> 
+    <div class="flex items-center gap-3"> 
         
-        <%= link_to 'Home', root_path %>
         <%= link_to 'FAQ', faq_path unless true %>
 
         <% if !user_signed_in? %>
