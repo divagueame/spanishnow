@@ -6,6 +6,7 @@ class LessonsTest < ApplicationSystemTestCase
     @logged_out_user = users(:one)
     @logged_in_user = users(:two)
     @admin_user = users(:three)
+    @course = courses(:one)
   end
 
   test "visiting the index" do
@@ -16,8 +17,8 @@ class LessonsTest < ApplicationSystemTestCase
 
   test "should create lesson and it should be inactive" do
     sign_in(@admin_user)
-    visit lessons_url
-    click_on "New lesson"
+    visit course_url(@course)
+    click_on "Add lesson to course"
 
     fill_in "Description", with: @lesson.description
     # fill_in "Product", with: @lesson.product_id

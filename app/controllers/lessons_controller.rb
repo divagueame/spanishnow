@@ -30,14 +30,15 @@ class LessonsController < ApplicationController
   end
 
   def new
-    @lesson = Lesson.new
+    @course = Course.find(params[:course_id])
+    @lesson = Lesson.new(course_id: @course.id)
   end
 
   def edit; end
 
   def create
     @lesson = Lesson.new(lesson_params)
-
+    
     respond_to do |format|
       if @lesson.save
         format.html { redirect_to lesson_url(@lesson), notice: 'Lesson was successfully created.' }
@@ -78,6 +79,6 @@ class LessonsController < ApplicationController
   end
 
   def lesson_params
-    params.require(:lesson).permit(:title, :description, :position, :product_id, :active)
+    params.require(:lesson).permit(:title, :description, :position, :product_id, :active, :course_id)
   end
 end

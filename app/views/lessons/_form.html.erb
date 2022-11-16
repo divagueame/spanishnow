@@ -21,10 +21,7 @@
     <%= form.text_area :description %>
   </div>
 
-  <div class="hidden">
-    <%= form.label :product_id, style: "display: block" %>
-    <%= form.text_field :product_id %>
-  </div>
+    <%= form.hidden_field :course_id, value: (lesson.course_id || @course.id) %>
 
   <div>
     <%= form.submit %>

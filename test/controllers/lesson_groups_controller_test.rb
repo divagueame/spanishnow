@@ -15,7 +15,7 @@ class LessonGroupsControllerTest < ActionDispatch::IntegrationTest
 
   test "should get new" do
     sign_in(@admin)
-    get new_lesson_group_url
+    get new_lesson_group_url(lesson_id: @lesson.id)
     assert_response :success
   end
 

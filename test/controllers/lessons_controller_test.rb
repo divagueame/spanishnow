@@ -8,6 +8,7 @@ class LessonsControllerTest < ActionDispatch::IntegrationTest
     @logged_out_user = users(:one)
     @logged_in_user = users(:two)
     @admin_user = users(:three)
+    @course = courses(:one)
   end
 
   test "should get index if logged in" do
@@ -31,7 +32,8 @@ class LessonsControllerTest < ActionDispatch::IntegrationTest
 
   test "should get new if admin" do
     sign_in(@admin_user)
-    get new_lesson_url
+
+    get new_lesson_url(course_id: @course.id)
     assert_response :success
   end
 
@@ -44,7 +46,7 @@ class LessonsControllerTest < ActionDispatch::IntegrationTest
   test "should create lesson if admin" do
     sign_in(@admin_user)
     assert_difference("Lesson.count") do
-      post lessons_url, params: { lesson: { description: @lesson.description, product_id: @lesson.product_id, title: @lesson.title } }
+      post lessons_url, params: { lesson: { description: @lesson.description, product_id: @lesson.product_id, title: @lesson.title} }
     end
 
     assert_redirected_to lesson_url(Lesson.last)

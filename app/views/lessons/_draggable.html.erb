@@ -5,7 +5,7 @@
                     dragend->drag#dragEnd" %>
 
     <%= content_tag :div,
-        class: "icon draggable my-1 p-2",
+        class: "icon draggable flex gap-2 items-center my-8 p-2 rounded-xl",
         draggable: true,
         data: {
             controller: "drag",
@@ -16,12 +16,12 @@
         } do %>
         <%= image_tag 'icons/grab', class: "h-8 w-8 align-middle inline-block cursor-grab rounded-sm" %>
         <%= link_to toggle_active_lesson_path(lesson), data: { 'turbo-method' => :post} do %>
-        <% if lesson.active %>
-            <%= image_tag 'icons/active-bg', class: "inline h-4 w-4" %>
-        <% else %>
-            <%= image_tag 'icons/inactive-bg', class: "inline h-4 w-4" %>
-        <% end %>
-    <% end %>     
-    <%= link_to lesson.title, lesson_path(lesson) %>
+            <% if lesson.active %>
+                <%= image_tag 'icons/active-bg', class: "inline h-4 w-4" %>
+            <% else %>
+                <%= image_tag 'icons/inactive-bg', class: "inline h-4 w-4" %>
+            <% end %>
+        <% end %>     
+        <h1><%= link_to lesson.title, lesson_path(lesson) %></h1>    
     <% end %>
  
