@@ -5,7 +5,7 @@
                   dragend->drag#dragEnd" %>
 
 <%= content_tag :div,
-    class: "icon draggable my-1 p-2 flex gap-2",
+    class: "icon draggable my-8 p-2 flex gap-2 flex-wrap",
     draggable: true,
     data: {
         controller: "drag",
@@ -15,7 +15,14 @@
         parent: "lesson_groups"
     } do %>
     <%= image_tag 'icons/grab', class: "h-8 w-8 align-middle inline-block cursor-grab rounded-sm" %>
-    <h1><%= lesson_group.title %></h1>
+    <div class="flex flex-col">
+        <%= link_to lesson_group_path(lesson_group.id), class: 'w-auto no-underline px-10 text-gray-900' do %>
+            <h1><%= lesson_group.title %></h1>
+        <% end %>
+        <p class="ml-10 text-gray-500"><%= lesson_group.description %></p>
+    </div>
+
+    
     <%= render 'lesson_groups/admin/dropdown', lesson_group: lesson_group %>
 <% end %>     
  
