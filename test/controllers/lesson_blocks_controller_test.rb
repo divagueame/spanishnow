@@ -59,10 +59,7 @@ class LessonBlocksControllerTest < ActionDispatch::IntegrationTest
     # assert_equal(@lonely_lesson_blocks.count, 1)
   # end
 
-  test "lesson block should redirect to root if logged out" do
-    get lessons_url
-    assert_redirected_to new_user_session_path
-  end
+
 
   # test "should get new if admin" do
   #   sign_in(@admin_user)

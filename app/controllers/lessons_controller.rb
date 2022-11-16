@@ -1,6 +1,6 @@
 class LessonsController < ApplicationController
   before_action :authenticate_admin, only: %i[new edit create update destroy toggle_active_lesson]
-  before_action :authenticate_user!, only: %i[index show]
+  before_action :authenticate_user!, only: %i[show]
   before_action :set_lesson, only: %i[show edit update destroy toggle_active_lesson]
 
   before_action only: %i[show] do
@@ -11,15 +11,6 @@ class LessonsController < ApplicationController
     filter_study_session(@lesson) unless current_user.admin?
   end
 
-  def index
-    @lessons = if current_user.admin?
-                 Lesson.all
-               else
-                 Lesson.where(active: true)
-               end
-
-    @lonely_lesson_groups = LessonGroup.where(lesson_id: nil)
-  end
 
   def show
     @lesson_groups = @lesson.lesson_groups
@@ -60,10 +51,11 @@ class LessonsController < ApplicationController
   end
 
   def destroy
+    @course = @lesson.course_id
     @lesson.destroy
 
     respond_to do |format|
-      format.html { redirect_to lessons_url, notice: 'Lesson was successfully destroyed.', status: 303 }
+      format.html { redirect_to course_url(@course), notice: 'Lesson was successfully destroyed.', status: 303 }
     end
   end
 

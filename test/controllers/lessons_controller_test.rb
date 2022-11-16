@@ -11,24 +11,6 @@ class LessonsControllerTest < ActionDispatch::IntegrationTest
     @course = courses(:one)
   end
 
-  test "should get index if logged in" do
-    sign_in(@logged_in_user)
-    get lessons_url
-    assert_response :success
-  end
-
-  test "should show lonely blocks if admin" do
-    sign_in(@admin_user)
-    get lessons_url
-    assert_response :success
-    assert_equal(@lessons.count, 3)
-    assert_equal(@lonely_lesson_groups.count, 1)
-  end
-
-  test "should redirect to root if logged out" do
-    get lessons_url
-    assert_redirected_to new_user_session_path
-  end
 
   test "should get new if admin" do
     sign_in(@admin_user)
@@ -129,7 +111,7 @@ class LessonsControllerTest < ActionDispatch::IntegrationTest
       delete lesson_url(@lesson)
     end
 
-    assert_redirected_to lessons_url
+    assert_redirected_to course_url(@lesson.course_id)
   end
 
   test "should not destroy lesson if logged in" do

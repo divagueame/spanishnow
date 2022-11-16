@@ -22,9 +22,7 @@ Rails.application.routes.draw do
   resources :feedbacks
   
   # Lessons
-  resources :lessons do
-    # resources :lesson_groups#, only: [:create, :update], as: 'lesson_group'
-  end
+  resources :lessons, except: [ :index ]
   resources :lesson_groups
 
   patch 'drag/lesson'

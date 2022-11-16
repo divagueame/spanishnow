@@ -14,14 +14,8 @@
             url: "../drag/lesson",
             parent: "lessons"
         } do %>
-        <%= image_tag 'icons/grab', class: "h-8 w-8 align-middle inline-block cursor-grab rounded-sm" %>
-        <%= link_to toggle_active_lesson_path(lesson), data: { 'turbo-method' => :post} do %>
-            <% if lesson.active %>
-                <%= image_tag 'icons/active-bg', class: "inline h-4 w-4" %>
-            <% else %>
-                <%= image_tag 'icons/inactive-bg', class: "inline h-4 w-4" %>
-            <% end %>
-        <% end %>     
-        <h1><%= link_to lesson.title, lesson_path(lesson) %></h1>    
+        <%= image_tag 'icons/grab', class: "h-8 w-8 align-middle inline-block cursor-grab rounded-sm" %>  
+        <h1><%= link_to lesson.title, lesson_path(lesson), class: "lesson_link"  %></h1>
+        <%= render 'lessons/admin/dropdown', lesson: lesson %>
     <% end %>
  
