@@ -16,7 +16,7 @@ class MultipleOpenBlocksControllerTest < ActionDispatch::IntegrationTest
 
   test "should get new and initialize a lesson block" do
     sign_in(@admin_user)
-    get new_multiple_open_block_url, params: { lesson_id: @lesson.id}
+    get new_multiple_open_block_url, params: { lesson_group_id: @lesson_group.id}
     assert_response :success
   end
 

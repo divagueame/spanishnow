@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  answer: MyText
+  user: one
+  multiple_open_piece: one
+
+two:
+  answer: MyText
+  user: two
+  multiple_open_piece: two

@@ -1,3 +1,5 @@
-<div id="<%= dom_id rich_block %>">
-    <%= rich_block.content %>
-</div>
+<%= turbo_frame_tag "block" do %>
+    <div id="<%= dom_id rich_block %>">
+        <%= rich_block.content %>
+    </div>
+<% end %>

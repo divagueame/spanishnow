@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_21_201617) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_17_184526) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -105,6 +105,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_21_201617) do
     t.integer "target_time"
     t.index ["course_id"], name: "index_lessons_on_course_id"
     t.index ["product_id"], name: "index_lessons_on_product_id"
+  end
+
+  create_table "multiple_open_answers", force: :cascade do |t|
+    t.text "answer"
+    t.bigint "user_id", null: false
+    t.bigint "multiple_open_piece_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["multiple_open_piece_id"], name: "index_multiple_open_answers_on_multiple_open_piece_id"
+    t.index ["user_id"], name: "index_multiple_open_answers_on_user_id"
   end
 
   create_table "multiple_open_blocks", force: :cascade do |t|
@@ -202,6 +212,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_21_201617) do
   add_foreign_key "lesson_groups", "lessons"
   add_foreign_key "lessons", "courses"
   add_foreign_key "lessons", "products"
+  add_foreign_key "multiple_open_answers", "multiple_open_pieces"
+  add_foreign_key "multiple_open_answers", "users"
   add_foreign_key "multiple_open_pieces", "multiple_open_blocks"
   add_foreign_key "notifications", "users"
   add_foreign_key "study_sessions", "lesson_groups"

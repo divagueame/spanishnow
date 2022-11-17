@@ -1,15 +1,17 @@
-<div id="<%= dom_id user_text_block %>" class="bg-red-200">
-  <h3 class="my-5">
-    <%= user_text_block.promptTitle %>
-  </h3>
+<%= turbo_frame_tag "block" do %>
+  <div id="<%= dom_id user_text_block %>" class="bg-red-200">
+    <h3 class="my-5">
+      <%= user_text_block.promptTitle %>
+    </h3>
 
-  <p class="my-5">
-    <%= user_text_block.promptBody %>
-  </p>
+    <p class="my-5">
+      <%= user_text_block.promptBody %>
+    </p>
 
-  <p class="my-5">Recommended word count:
-    <%= user_text_block.promptLength %>
-  </p>
-</div>
+    <p class="my-5">Recommended word count:
+      <%= user_text_block.promptLength %>
+    </p>
+  </div>
 
-<%= answers_links(user_text_block) %>
+  <%= answers_links(user_text_block) %>
+<% end %>
