@@ -77,6 +77,10 @@
             hover:border-neutral-300
             hover:text-neutral-900
   }
+  .btn-back {
+    @apply bg-gradient-to-l bg-cyan-600
+
+  }
 }
 
 
