@@ -1,0 +1,89 @@
+<%# Lesson Group %>
+<div id="<%= dom_id lesson_group %>">
+  <h1 class="text-center my-5"><%= lesson_group.position %>: <%= lesson_group.title %></h1>
+  <p class="my-5">
+    <%= lesson_group.description %>
+  </p>
+</div>
+<%# Blocks %>
+<div>
+  <% @lesson_group.lesson_blocks.each do |block| %>
+    <div class="shadow-sm rounded-lg bg-pink-50 mb-4 px-4 py-6">
+      <% if current_user.admin? %>
+        <div class="relative">
+          <%= image_tag 'icons/grab', class: "h-8 w-8 align-middle absolute -left-14 cursor-grab rounded-sm hover:bg-slate-100"%>
+          <h2 class="inline-block">
+            <%= image_tag "lesson_blocks/#{block.block_type}", class: "inline-block w-8 h-8" %>
+            <%= block.title %>
+          </h2>
+        
+          <div class="ml-4 inline-block text-sm leading-none rounded no-underline text-gray hover:text-gray-900 hover:bg-white mt-4 lg:mt-0">
+            <div class="relative" data-controller="dropdown">
+              <div data-action="click->dropdown#toggle click@window->dropdown#hide" role="button" data-dropdown-target="button" tabindex="0" class="inline-block select-none  px-2 py-2 hover:opacity-80">
+                <span class="appearance-none inline-block text-gray-700">
+                    <%= image_tag  'icons/more', class: "h-4 w-4 align-middle" %>
+                </span>
+              </div>
+              <div data-dropdown-target="menu" class="absolute right-0 mt-2 z-50">
+                <div class="bg-white shadow rounded border overflow-hidden block">
+                      <%= link_to edit_lesson_block_path(block.id), class: 'w-auto no-underline px-10 py-3 text-gray-900 bg-white hover:bg-gray-300 whitespace-nowrap flex  items-center   gap-2',   data: {action: "click->dropdown#toggle" }  do %>
+                        <%= image_tag 'icons/edit', class: "icon-small" %>
+                        Edit block
+                      <% end %>
+                      <hr>
+                      <%= link_to lesson_block_path(block.id), class: 'w-auto no-underline px-10 py-3 text-gray-900 bg-white hover:bg-gray-300 whitespace-nowrap flex items-center   gap-2',  data: {action: "click->dropdown#toggle", 'turbo-method': :delete, confirm: 'Are you sure?'}  do  %>
+                        <%= image_tag 'icons/delete', class: "icon-small" %>
+                          Delete Block
+                      <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      <% else %>
+          <h1 class="inline-block"> 
+            <%= block.title %>
+          </h1>
+      <% end %>
+
+      <div>
+      <%= block.position %>  
+
+      <%# RichBlock %>
+      <div class="">
+      <% if block.block_type === 'RichBlock' %>
+        <%= block.block.content %>
+      <% end %>
+      </div>
+
+      <%# Multiple Open Block %>
+      <div class="">
+      <% if block.block_type === 'MultipleOpenBlock' %>
+        <%= block.block.title %><br>
+        <%= block.block.body %><br>
+        <%= block.block.multiple_open_pieces.count %>
+      <% end %>
+      </div>
+
+      <%# UserTextBlock %>
+      <div class="">
+      <% if block.block_type === 'UserTextBlock' %>
+        <%= block.block.promptTitle %><br>
+        <%= block.block.promptBody %><br>
+        <% if (!block.block.user_text_answers.where(user_id: current_user.id, user_text_block_id: block.block.id).present?) %>
+          <%= link_to 'Start', new_user_text_block_user_text_answer_path(block.block) %>
+        <% else %>
+        <h3>Done</h3>
+          <% if block.block.user_text_answers.where(user_id: current_user.id).first.feedback.present? %>
+            <%= link_to 'Check it out', feedback_path(block.block.user_text_answers.where(user_id: current_user.id).first.feedback.id) %>
+          <% end %>
+        <% end %>
+        
+      <% end %>
+      </div>
+
+      </div>
+    </div>
+  <% end %>
+</div>
