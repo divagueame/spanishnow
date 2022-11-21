@@ -1,14 +1,16 @@
-<div id="current_lesson_group" data-stream-enter-class="fadein" data-stream-exit-class="fadeout" class="min-h-[77vh]">
-      <div id="<%= dom_id lesson_group %>" class="container"> 
-        <h1><%= lesson_group.title %></h1>
-        <p><%= lesson_group.description unless lesson_group.description.blank? %></p>
-        
-        <div class="blocks border-2 border-rose-100 rounded-md px-4 py-8">
-            <% lesson_group.lesson_blocks.each do |block| %>
-                <% type = block.block_type.underscore.to_sym %>
-                <%= render :partial => "#{block.block_type.underscore.pluralize}/#{block.block_type.underscore}", :locals => {  type => block.block } %>
-            <% end %>
+<%= turbo_frame_tag "lesson_group_frame" do %>
+    <div id="current_lesson_group" data-stream-enter-class="fadein" data-stream-exit-class="fadeout" class="min-h-[77vh]">
+        <div id="<%= dom_id lesson_group %>" class="container"> 
+            <h1><%= lesson_group.title %></h1>
+            <p><%= lesson_group.description unless lesson_group.description.blank? %></p>
+            
+            <div class="blocks border-2 border-rose-100 rounded-md px-4 py-8">
+                <% lesson_group.lesson_blocks.each do |block| %>
+                    <% type = block.block_type.underscore.to_sym %>
+                    <%= render :partial => "#{block.block_type.underscore.pluralize}/#{block.block_type.underscore}", :locals => {  type => block.block } %>
+                <% end %>
+            </div> 
+            <%= render partial: "lesson_groups/controls", locals: {lesson_group: lesson_group, total_lesson_groups: lesson_group.lesson.lesson_groups.count} %>
         </div>
-        <%= render partial: "lesson_groups/controls", locals: {lesson_group: lesson_group, total_lesson_groups: lesson_group.lesson.lesson_groups.count} %>
     </div>
-</div>
+<% end %>

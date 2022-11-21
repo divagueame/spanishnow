@@ -1,26 +1,18 @@
 <div>
-        <% if current_user.admin? %>
-
+    <% if current_user.admin? %>
             <%= render 'lessons/admin/lesson_header' %>
-            <%= render @lesson %>
+            <%= render 'lessons/admin/lesson_groups', lesson_groups: @lesson_groups %>
             <div class="container pb-8">
                 <%= link_to '< All lessons', course_path(@lesson.course), class: "btn btn-2" %>
             </div>
-        <% else %>
-        <%= render partial: 'lessons/default/lesson_header',
+    <% else %>
+        <%= render partial: 'lessons/lesson_header',
             locals: 
                 { lesson: @lesson,
                 study_session: current_user.study_session
                 } 
         %>
+        <%= turbo_frame_tag "lesson_group_frame", src: "/lesson_groups/#{@lesson.lesson_groups.first.id}" %>
 
-
-        <%= render partial: 'lesson_groups/lesson_group',
-            locals: 
-                { lesson_group: @active_lesson_group
-                }
-        %>
-        <% end %>
-
- 
+    <% end %>
 </div>

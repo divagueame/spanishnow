@@ -1,0 +1,19 @@
+<div class="flex gap-2  bg-white rounded-full fixed bottom-8 right-8 items-center shadow-xl text-xl overflow-hidden">
+
+    
+    <% if lesson_group.first? %>
+        <div href="#" class="h-full px-12 py-3  bg-slate-100 text-slate-400 cursor-default opacity-80">Previous</div>
+    <% else %>
+        <%= link_to 'Previous', lesson_group_path(lesson_group.higher_item), class: "px-12 py-3 bg-orange-100 hover:bg-orange-200 transition-all no-underline" %>
+    <% end %>
+
+
+    <div class="px-2 font-bold">
+        <span><%= lesson_group.position %></span>
+        /
+        <span><%= total_lesson_groups %></span>
+    </div>
+    <%= link_to 'Next', lesson_group_path(lesson_group.lower_item), class: "px-12 py-3 bg-orange-100 hover:bg-orange-200 transition-all no-underline" unless lesson_group.last? %>
+    <%= link_to 'End', lesson_path(lesson_group.lesson), class: "px-12 py-3 bg-orange-100 hover:bg-orange-200 transition-all no-underline" if lesson_group.last? %>
+ 
+</div>

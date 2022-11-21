@@ -1,13 +1,13 @@
-<div class="flex gap-4 mt-4">
-    <%= link_to new_rich_block_path(lesson_group_id: @lesson_group.id), class:"px-5 py-2 bg-green-100" do %>
+<div class="flex gap-4 my-4">
+    <%= link_to new_rich_block_path(lesson_group_id: lesson_group.id), class:"px-5 py-2 bg-green-100" do %>
         <%= image_tag "lesson_blocks/RichBlock", class: "inline-block w-8 h-8" %>
         New Rich
     <% end %>
-    <%= link_to new_user_text_block_path(lesson_group_id: @lesson_group.id), class: "px-5 py-2 bg-green-100" do %>
+    <%= link_to new_user_text_block_path(lesson_group_id: lesson_group.id), class: "px-5 py-2 bg-green-100" do %>
         <%= image_tag "lesson_blocks/UserTextBlock", class: "inline-block w-8 h-8" %>
         New User Text
     <% end %>
-    <%= link_to new_multiple_open_block_path(lesson_group_id: @lesson_group.id), class: "px-5 py-2 bg-green-100" do %>
+    <%= link_to new_multiple_open_block_path(lesson_group_id: lesson_group.id), class: "px-5 py-2 bg-green-100" do %>
         <%= image_tag "lesson_blocks/MultipleOpenBlock", class: "inline-block w-8 h-8" %>
         New Multiple Open
     <% end %>

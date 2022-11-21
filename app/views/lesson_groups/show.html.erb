@@ -1,7 +1,7 @@
 <div class="container py-12">
-<% if current_user.admin? %>
-    <%= render partial: 'lesson_groups/admin/lesson_group', locals: {lesson_group: @lesson_group } %>
-<% else %>
-    <%= render @lesson_group %>
-<% end %>
+    <% if current_user.admin? %>
+        <%= render partial: 'lesson_groups/admin/lesson_group', locals: {lesson_group: @lesson_group } %>
+    <% else %>
+        <%= render @lesson_group %>
+    <% end %>
 </div>
