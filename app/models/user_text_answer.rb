@@ -4,4 +4,6 @@ class UserTextAnswer < ApplicationRecord
   has_one :feedback, dependent: :destroy
 
   validates :user_id, presence: true, uniqueness: { scope: :user_text_block_id }
+  validates :title, presence: true
+  validates :body, presence: true
 end

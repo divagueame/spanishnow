@@ -6,7 +6,8 @@ class MultipleOpenBlocksController < ApplicationController
     @multiple_open_blocks = MultipleOpenBlock.all
   end
 
-  def show; end
+  def show
+  end
 
   def new
     @lesson_group_id = params[:lesson_group_id]

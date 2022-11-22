@@ -2,19 +2,15 @@ class UserTextAnswersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user_text_block, only: %i[new create edit update]
   before_action :set_user_text_answer, only: %i[edit update show destroy ]
-  before_action :create_user_text_answer, only: %i[ create ]
+  # before_action :create_user_text_answer, only: %i[ create ]
 
    
   before_action only: %i[ show ] do
-    # p "CHI"
-    # p current_user&.id
-    # p "Cho"
-    # p @user_text_answer
     authenticate_owner(@user_text_answer)
   end
 
-  # def show
-  # end
+  def show
+  end
 
   def new
     @user_text_answer = @user_text_block.user_text_answers.build(user_id: current_user.id)
@@ -25,10 +21,16 @@ class UserTextAnswersController < ApplicationController
   end
 
   def create
-    @user_text_answer = @user_text_block.user_text_answers.build(user_id: current_user.id)
+    
+    @user_text_answer = UserTextAnswer.new(user_text_answer_params)
+    @user_text_answer.update(user_text_block_id: params[:user_text_block_id], user_id: current_user.id)
+    
     respond_to do |format|
       if @user_text_answer.save
+        
         format.html { redirect_to lesson_path(@user_text_block.lesson_group.lesson), notice: "Genial! Buen trabajo." }
+        
+        format.turbo_stream { flash.now[:notice] = "Sweet! Good job!" }
 
       else
         format.html { render :new, status: :unprocessable_entity }
