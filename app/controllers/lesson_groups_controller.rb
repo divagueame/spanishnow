@@ -49,7 +49,7 @@ class LessonGroupsController < ApplicationController
     @lesson_group.destroy
 
     respond_to do |format|
-      format.html { redirect_to lesson_groups_url, notice: "Lesson group was successfully destroyed." }
+      format.html { redirect_to lesson_path(@lesson_group.lesson), notice: "Lesson group was successfully destroyed.", status: 303 }
     end
   end
 

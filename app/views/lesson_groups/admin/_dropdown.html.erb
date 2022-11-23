@@ -1,8 +1,8 @@
 <div class="ml-auto inline-block text-sm leading-none rounded no-underline text-gray hover:text-gray-900 hover:bg-white mt-4 lg:mt-0">
     <div class="relative" data-controller="dropdown">
     <div data-action="click->dropdown#toggle click@window->dropdown#hide" role="button" data-dropdown-target="button" tabindex="0" class="inline-block select-none  px-2 py-2 hover:opacity-80">
-        <span class="appearance-none inline-block text-gray-700">
-            <%= image_tag  'icons/more', class: "h-4 w-4 align-middle" %>
+        <span class="icons-more appearance-none inline-block text-gray-700">
+            <%= image_tag 'icons/more', class: "h-4 w-4 align-middle" %>
         </span>
     </div>
     <div data-dropdown-target="menu" class="absolute right-0 mt-2 z-50">
@@ -12,7 +12,8 @@
                 Edit lesson group
             <% end %>
             <hr>
-            <%= link_to lesson_block_path(lesson_group.id), class: 'w-auto no-underline px-10 py-3 text-gray-900 bg-white hover:bg-gray-300 whitespace-nowrap flex items-center   gap-2',  data: {action: "click->dropdown#toggle", 'turbo-method': :delete, confirm: 'Are you sure?'}  do  %>
+
+            <%= link_to lesson_group_path(lesson_group), class: 'w-auto no-underline px-10 py-3 text-gray-900 bg-white hover:bg-gray-300 whitespace-nowrap flex items-center   gap-2',  data: {action: "click->dropdown#toggle", 'turbo-method': :delete, confirm: 'Are you sure?'}  do  %>
                 <%= image_tag 'icons/delete', class: "icon-small" %>
                 Delete Lesson Group
             <% end %>

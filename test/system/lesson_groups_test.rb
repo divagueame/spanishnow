@@ -40,10 +40,11 @@ class LessonGroupsTest < ApplicationSystemTestCase
 
   test "should update Lesson group" do
     sign_in(@admin_user) 
-    visit lesson_group_url(@lesson_group)
+    visit lesson_url(@lesson_group.lesson)
     assert_no_text 'New Chikititle'
     assert_text @lesson_group.title
-    click_on "Edit this lesson group"#, match: :first
+    first(".icons-more").click
+    click_on "Edit lesson group"#, match: :first
 
     fill_in "Description", with: @lesson_group.description
     fill_in "Title", with: 'New Chikititle'
@@ -54,11 +55,16 @@ class LessonGroupsTest < ApplicationSystemTestCase
     assert_no_text @lesson_group.title
   end
 
-  # test "should destroy Lesson group" do
-  #   sign_in(@admin_user)
-  #   visit lesson_group_url(@lesson_group)
-  #   click_on "Destroy this lesson group", match: :first
+  test "should destroy Lesson group" do
+    sign_in(@admin_user)
 
-  #   assert_text "Lesson group was successfully destroyed"
-  # end
+    visit lesson_url(@lesson_group.lesson)
+    assert_text @lesson_group.title
+
+    first(".icons-more").click
+    click_on "Delete Lesson Group"#, match: :first
+
+    assert_no_text @lesson_group.title
+    assert_text "Lesson group was successfully destroyed"
+  end
 end
