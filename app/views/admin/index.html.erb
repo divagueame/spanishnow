@@ -1,13 +1,14 @@
 <div class="container mx-auto px-4 py-12 text-center">
   <h1 class="font-bold text-4xl mb-4">Admin Panel</h1>
   <div class="flex flex-col gap-2">
-  <%= link_to course_url(Course.first) do %>
-    <h1><%= Course.first.title %></h1>
-  <% end %>
+    <%= link_to course_url(Course.first) do %>
+      <h1><%= Course.first.title %></h1>
+    <% end %>
   </div>
 </div>
 
 <hr>
+
 <% if !@user_text_answers.empty? then %>
   <h3>These user answers need feedback...</h3>
   <div class="py-2 container user_text_answers" id="user_text_answers">
@@ -20,8 +21,8 @@
     <% end %>
   </div>
 <% end %>
-<hr>
 
+<hr>
 
 <div class="py-2 container mx-auto">
   <h3>Previous feedback</h3>
@@ -30,4 +31,16 @@
     <%= link_to 'See', feedback_url(feedback) %>
     <br>
   <% end %>
+</div>
+
+<hr>
+<%# Students %>
+<div class="container py-2">
+  <div class="flex flex-col gap-2">
+    <% @students.each do |student| %>
+    <div>
+    <%= student.email %>
+    </div>
+    <% end %> 
+  </div>
 </div>

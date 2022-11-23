@@ -1,11 +1,5 @@
-<div id="<%= dom_id feedback %>">
+<div id="<%= dom_id feedback %>" class="rounded-full bg-sky-200 px-3 py-1">
   <p class="my-5">
     <%= feedback.body %>
   </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this feedback", feedback, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this feedback', edit_feedback_path(feedback), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
 </div>

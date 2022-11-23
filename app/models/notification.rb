@@ -9,7 +9,7 @@ class Notification < ApplicationRecord
 
   def partial_path
     if self.notifeable_type === 'Feedback'
-      return 'notifications/feedback_content'
+      'notifications/feedback_content'
     end
   end
 end

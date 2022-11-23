@@ -54,6 +54,18 @@ class UserTextAnswersControllerTest < ActionDispatch::IntegrationTest
     assert_template :new
   end
 
+  test "should not create user_text_answer if titile is empty" do
+    sign_in(@right_user)  
+    assert_no_difference("UserTextAnswer.count") do
+      post user_text_block_user_text_answers_path(@user_text_block),
+      params: {  user_text_answer: {  body: 'sdf',
+                                      title: '',
+                                      user_id: @right_user.id,
+                                      user_text_block_id: @user_text_block.id } }
+    end
+    assert_template :new
+  end
+
   test "should not create user_text_answer if not logged in" do
      
     assert_no_difference("UserTextAnswer.count") do

@@ -18,6 +18,9 @@
   <%= turbo_frame_tag 'user_text_answer' do %>
     <%= render user_text_block.user_text_answers.where(user_id: current_user) %>
   <% end %>
+  <% if user_text_block.user_text_answers.where(user_id: current_user).first.feedback.present? %>
+    <%= render user_text_block.user_text_answers.where(user_id: current_user).first.feedback %>
+  <% end %>
 <% else %>
   <%= turbo_frame_tag 'user_text_answer', src: new_user_text_block_user_text_answer_path(user_text_block) %>
 <% end %>
