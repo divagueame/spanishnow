@@ -1,10 +1,3 @@
-<%= turbo_frame_tag "lesson_group_frame" do %>
-  <div class="mx-auto md:w-2/3 w-full">
-    <h1 class="font-bold text-4xl">New user text answer</h1>
-
+<%= turbo_frame_tag "user_text_answer" do %>
     <%= render "form", user_text_block: @user_text_block, user_text_answer: @user_text_answer %>
-
-    <%= link_to '< Lesson Group', lesson_group_path(@user_text_block.lesson_group), class: "btn btn-2" %>
-    
-  </div>
 <% end %>
