@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   patch 'study_session/update'
+  delete '/study_session/:id' => 'study_session#destroy', as: 'study_session'
 
   get 'notifications', to: 'notifications#index', as: 'notifications'
   get 'notifications/:id', to: 'notifications#show', as: 'notification'
