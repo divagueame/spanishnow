@@ -71,6 +71,6 @@ class LessonsController < ApplicationController
   end
 
   def lesson_params
-    params.require(:lesson).permit(:title, :description, :position, :product_id, :active, :course_id)
+    params.require(:lesson).permit(:title, :description, :position, :product_id, :active, :course_id, :image)
   end
 end
