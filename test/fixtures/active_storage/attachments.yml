@@ -1,0 +1,4 @@
+ones_image:
+  name: image 
+  record: one (Lesson)
+  blob: ones_image_blob

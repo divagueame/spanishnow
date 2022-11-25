@@ -1,0 +1,7 @@
+<div class="container grid grid-cols-4 gap-8">
+  <% lessons.each do |lesson| %>
+        <%= link_to lesson_path(lesson), class: "shadow-xl rounded-sm h-48 bg-purple-200 no-underline flex justify-center items-center text-center items-center" do %>
+          <%= lesson.title %>
+        <% end %>
+  <% end %>
+ </div>

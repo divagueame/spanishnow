@@ -1,26 +1,16 @@
-
 <%= render @course %>
 
 <br>
 
 <%# Lessons  %>
+<% if current_user.admin? %>
 <div id="lessons" class="container mb-10">
   <% @course.lessons.each do |lesson| %>
-    <% if current_user.admin? %>
       <%= render 'lessons/draggable', lesson: lesson %>
-    <% else %>
-    <% next unless lesson.active %>
-      <div class="my-1 p-2">
-        <%= link_to lesson.title, lesson_path(lesson) %>
-      </div>
-    <% end %>
   <% end %>
-</div>
-
-<% if current_user.admin? %>
-
-<div class="container">
-  <hr>
-  <%= link_to 'Add lesson to course', new_lesson_path(course_id: @course), class: "btn btn-1 mt-8" %>
-</div>
+      <hr>
+      <%= link_to 'Add lesson to course', new_lesson_path(course_id: @course), class: "btn btn-1 mt-8" %>
+  </div>
+<% else %>
+  <%= render partial: 'lessons_grid', locals: {lessons: @course.lessons} %>
 <% end %>
