@@ -1,13 +1,17 @@
-  <% if @lesson.image.attached? %>
+
   <div class="container flex justify-center relative">
+  <% if @lesson.image.attached? %>
      <%= image_tag @lesson.image.variant(resize_to_fill: [1280, 120]), class: 'sepia-[.25] ' %>
+   <% else %>
+    <%= image_tag 'lessons/default_header.jpg', class: "h-48 w-full object-cover" %>
+  <% end %>
 
     <div class="bg-green-200 opacity-20 absolute left-0 top-0 bottom-0 w-full"></div>
      <h1 class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-max">
         <%= lesson.title %> 
       <h1>
   </div>
-  <% end %>
+
 
 
 <div class="bg-white flex gap-2 items-center justify-center py-12 text-3xl mb-8">

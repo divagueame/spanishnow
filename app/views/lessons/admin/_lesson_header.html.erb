@@ -31,9 +31,8 @@
 
  
 <% if @lesson.image.attached? %>
-  <div>
-
-     <%= image_tag @lesson.image.variant(resize_to_fill: [900, 200]), class: '' %>
+  <div class="container">
+     <%= image_tag @lesson.image.variant(resize_to_fill: [1280, 200]), class: '' %>
   </div>
 <% end %>
 
