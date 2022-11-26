@@ -22,6 +22,7 @@ class UserTextBlocksController < ApplicationController
 
 
   def edit
+    @lesson_group_id = @user_text_block.lesson_block.lesson_group_id
   end
 
 
@@ -39,9 +40,10 @@ class UserTextBlocksController < ApplicationController
   end
 
   def update
+    @lesson_group_id = @user_text_block.lesson_block.lesson_group_id
     respond_to do |format|
       if @user_text_block.update(user_text_block_params)
-        format.html { redirect_to lesson_path(@user_text_block.lesson_group.lesson), notice: "User text block was successfully updated." }
+         format.html { redirect_to lesson_group_path(@lesson_group_id), notice: "User text block was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
         

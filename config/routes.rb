@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :youtube_blocks, except: [ :index ]
   patch 'study_session/update'
   delete '/study_session/:id' => 'study_session#destroy', as: 'study_session'
 
@@ -17,7 +18,7 @@ Rails.application.routes.draw do
     resources :user_text_answers, except: [:index, :destroy ]
   end
   
-  resources :rich_blocks, only: [:new, :create, :show, :edit, :update, :index]
+  resources :rich_blocks, only: [:new, :create, :show, :edit, :update]
   
   resources :feedbacks
   

@@ -28,3 +28,9 @@ five:
   description: Always chiki chiki
   position: 3
   lesson: one
+
+six:
+  title: YoutubeChiki
+  description: Chikipin
+  position: 1
+  lesson: three

@@ -71,15 +71,6 @@
       <% if block.block_type === 'UserTextBlock' %>
         <%= block.block.promptTitle %><br>
         <%= block.block.promptBody %><br>
-        <% if (!block.block.user_text_answers.where(user_id: current_user.id, user_text_block_id: block.block.id).present?) %>
-          <%= link_to 'Start', new_user_text_block_user_text_answer_path(block.block) %>
-        <% else %>
-        <h3>Done</h3>
-          <% if block.block.user_text_answers.where(user_id: current_user.id).first.feedback.present? %>
-            <%= link_to 'Check it out', feedback_path(block.block.user_text_answers.where(user_id: current_user.id).first.feedback.id) %>
-          <% end %>
-        <% end %>
-        
       <% end %>
       </div>
 

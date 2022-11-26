@@ -5,10 +5,6 @@ class RichBlocksController < ApplicationController
   ]
   ## edit update destroy 
 
-  def index
-    @rich_blocks = RichBlock.all
-  end
-
   def show
   end
 

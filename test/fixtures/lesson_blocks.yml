@@ -40,3 +40,9 @@ eigth:
   title: "LessonBlock of the first multiple open block!"
   block: one (MultipleOpenBlock)
   lesson_group: one
+
+nine:
+  position: 1
+  lesson_group: six
+  title: "LessonBlock of Youtub!"
+  block: one (YoutubeBlock)
