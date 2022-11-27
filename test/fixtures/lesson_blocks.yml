@@ -8,38 +8,47 @@ two:
   position: 2
   lesson_group: one
   block: two (RichBlock)
+  title: "Poski"
 
 three:
   position: 3
   lesson_group: one
   block: three (RichBlock)
+  title: "Pols Poski"
 
 four:
   position: 1
   lesson_group: two
   block: four (RichBlock)
+  title: "Jolisjyy"
 
 five:
   title: "Lesson block 1 has a title"
   block: five (RichBlock)
+  lesson_group: two
+  position: 2
+  title: "Jolisjyy"
 
 six:
   position: 4
   title: "LessonBlock title - User Text!"
   block: first_user_text_block (UserTextBlock)
   lesson_group: one
+  title: "Jolisjyy"
 
 seven:
   position: 5
   title: "LessonBlock title - User Text!"
   block: second_user_text_block (UserTextBlock)
   lesson_group: one
+  title: "Jolisjyy"
 
 eigth:
   position: 6
   title: "LessonBlock of the first multiple open block!"
   block: one (MultipleOpenBlock)
   lesson_group: one
+  title: "Jolisjyy"
 
 nine:
   position: 1

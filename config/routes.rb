@@ -28,7 +28,9 @@ Rails.application.routes.draw do
 
   patch 'drag/lesson'
   patch 'drag/lesson_group'
-  
+  patch 'drag/lesson_block'
+
+
   post 'lesson/:id/toggle_active_lesson', to: 'lessons#toggle_active_lesson', as: 'toggle_active_lesson'
 
   resources :products

@@ -12,5 +12,5 @@
       <%= link_to 'Add lesson to course', new_lesson_path(course_id: @course), class: "btn btn-1 mt-8" %>
   </div>
 <% else %>
-  <%= render partial: 'lessons_grid', locals: {lessons: @course.lessons} %>
+  <%= render partial: 'lessons_grid', locals: {lessons: @course.active_lessons} %>
 <% end %>

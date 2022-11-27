@@ -12,7 +12,7 @@ class UserTextBlocksControllerTest < ActionDispatch::IntegrationTest
   test "should update user_text_block if admin" do
     sign_in(@admin_user)
     patch user_text_block_url(@user_text_block), params: { user_text_block: { promptTitle: 'ChikiUpdated' } }
-    assert_redirected_to lesson_path(@user_text_block.lesson_group.lesson)
+    assert_redirected_to lesson_group_path(@user_text_block.lesson_group.id)
     assert_equal "ChikiUpdated", UserTextBlock.find(user_text_blocks(:first_user_text_block).id).promptTitle
   end
 

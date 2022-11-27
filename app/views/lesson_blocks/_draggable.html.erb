@@ -1,0 +1,23 @@
+<% dragActions = "  dragstart->drag#dragStart 
+                    dragover->drag#dragOver
+                    dragenter->drag#dragEnter
+                    drop->drag#drop
+                    dragend->drag#dragEnd" %>
+
+    <%= content_tag :div,
+        class: "icon draggable flex gap-2 items-center my-8 p-2 rounded-xl",
+        draggable: true,
+        data: {
+            controller: "drag",
+            action: dragActions,
+            resource_id: lesson_block.id,
+            url: "../drag/lesson_block",
+            parent: "lessons"
+        } do %>
+        <%= image_tag 'icons/grab', class: "h-8 w-8 align-middle inline-block cursor-grab rounded-sm" %>  
+        <h2><%= lesson_block.title %></h2>
+        <%= render 'lesson_blocks/admin/blocks_info', block: lesson_block  %>
+        <%= render 'lesson_blocks/admin/dropdown', lesson_block: lesson_block  %>
+        
+    <% end %>
+ 

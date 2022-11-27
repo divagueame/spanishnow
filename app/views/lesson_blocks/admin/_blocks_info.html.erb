@@ -1,0 +1,34 @@
+<div class="hidden">
+      <%= block.position %>  
+
+      <%# RichBlock %>
+      <div class="">
+      <% if block.block_type === 'RichBlock' %>
+        <%= block.block.content %>
+      <% end %>
+      </div>
+
+      <%# Multiple Open Block %>
+      <div class="">
+      <% if block.block_type === 'MultipleOpenBlock' %>
+        <%= block.block.title %><br>
+        <%= block.block.body %><br>
+        <%= block.block.multiple_open_pieces.count %>
+      <% end %>
+      </div>
+
+      <%# UserTextBlock %>
+      <div class="">
+      <% if block.block_type === 'UserTextBlock' %>
+        <%= block.block.promptTitle %><br>
+        <%= block.block.promptBody %><br>
+      <% end %>
+      </div>
+ 
+      <%# YoutubeBlock %>
+      <div class="">
+      <% if block.block_type === 'YoutubeBlock' %>
+        <%= block.block.url %><br>
+      <% end %>
+      </div>
+  </div>
