@@ -1,11 +1,20 @@
   <div id="<%= dom_id multiple_open_block %>">
     <p class="my-5">
-      <strong class="block font-medium mb-1">Title:</strong>
       <%= multiple_open_block.title %>
     </p>
 
     <p class="my-5">
-      <strong class="block font-medium mb-1">Body:</strong>
       <%= multiple_open_block.body %>
     </p> 
-  </div>
+    P
+  </div>:
+
+
+
+<% if multiple_open_block.answered?(current_user) %>
+  User has answers!
+<% else %>
+  <%= turbo_frame_tag 'multiple_open_answers', src: new_multiple_open_block_multiple_open_answer_path(multiple_open_block) %>
+<% end %>
+
+
