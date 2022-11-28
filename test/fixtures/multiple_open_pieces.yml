@@ -11,3 +11,16 @@ three:
   full: El profesor me dijo la noticia.
   shown: El profesor me dijo
   multiple_open_block: one
+four:
+  full: Mi madre es muy simpatica.
+  shown: Mi madre es muy
+  hint: MyString
+  multiple_open_block: two
+five:
+  full: Mi perro no es muy listo.
+  shown: Mi perro no es muy
+  multiple_open_block: two 
+six:
+  full: El profesor me dijo la noticia.
+  shown: El profesor me dijo
+  multiple_open_block: two 

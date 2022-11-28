@@ -34,3 +34,9 @@ six:
   description: Chikipin
   position: 1
   lesson: three
+
+seven:
+  title: Multi Group
+  description: pochismulti
+  position: 1
+  lesson: four

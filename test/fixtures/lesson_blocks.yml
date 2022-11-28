@@ -55,3 +55,11 @@ nine:
   lesson_group: six
   title: "LessonBlock of Youtub!"
   block: one (YoutubeBlock)
+
+ten:
+  position: 1
+  title: "second multiple open block!"
+  block: two (MultipleOpenBlock)
+  lesson_group: seven 
+  title: "Chiki"
+

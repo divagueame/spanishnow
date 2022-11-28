@@ -21,3 +21,10 @@ three:
   active: false
   course: one
   position: 3
+
+four:
+  title: Lesson for multiple
+  description: chikipin
+  active: true
+  course: one
+  position: 4
