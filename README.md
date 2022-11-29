@@ -6,6 +6,7 @@ MAMBO Spanish
 A self-studying platform for Spanish-language learners.
 www.mambo-spanish.com
 
+Ruby 3.1.3
 ####
 
 Load the fixtures for the TestSuite
