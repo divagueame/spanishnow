@@ -1,3 +1,12 @@
   <%= turbo_frame_tag 'multiple_open_answers' do %>
-    Forms for pieces
+    <div class="bg-green-300 flex flex-col">
+    <% @multiple_open_pieces.each do |piece| %>
+      <div>
+      <%= piece.get_hidden_field.first %>
+      _______
+
+      <%= piece.get_hidden_field.last %>
+      </div>
+    <% end %>
+    </div>
   <% end %>
