@@ -12,10 +12,12 @@ class MultipleOpenAnswersController < ApplicationController
   end
 
   def new
-#    @user_text_answer = @user_text_block.user_text_answers.build(user_id: current_user.id)
-    p params
-    p @multiple_open_block
     p  @multiple_open_pieces 
+    
+    @multiple_open_answers = [] 
+    @multiple_open_pieces.each do |piece|
+      @multiple_open_answers << piece.multiple_open_answers.build(user_id: current_user.id)
+    end
   end
 
 #  def edit

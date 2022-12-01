@@ -1,5 +1,16 @@
   <%= turbo_frame_tag 'multiple_open_answers' do %>
     <div class="bg-green-300 flex flex-col">
+     
+      gt
+
+      <%= form_tag '/bank_account', html: { id: 'edit_bank_accounts' } do %>
+        <% @multiple_open_answers.each do |answer| %>
+          
+          <%= text_field_tag :answer, answer.answer, name: "multiple_open_pieces[#{answer.id}][answer]" %>
+        <% end %>
+      <% end %>
+
+
     <% @multiple_open_pieces.each do |piece| %>
       <div>
       <%= piece.get_hidden_field.first %>
