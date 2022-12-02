@@ -1,3 +1,4 @@
+
 class MultipleOpenAnswersController < ApplicationController
   before_action :authenticate_user!
 #  before_action :set_multiple_open_answers, only: %i[new create edit update]
@@ -12,8 +13,6 @@ class MultipleOpenAnswersController < ApplicationController
   end
 
   def new
-    p  @multiple_open_pieces 
-    
     @multiple_open_answers = [] 
     @multiple_open_pieces.each do |piece|
       @multiple_open_answers << piece.multiple_open_answers.build(user_id: current_user.id)
@@ -24,8 +23,11 @@ class MultipleOpenAnswersController < ApplicationController
 ##    redirect_to root_path unless current_user&.id === @user_text_answer.user_id
 #  end
 #
-#  def create
-#    
+  def create
+     p multiple_open_answers_params
+       
+     
+
 #    @user_text_answer = UserTextAnswer.new(user_text_answer_params)
 #    @user_text_answer.update(user_text_block_id: params[:user_text_block_id], user_id: current_user.id)
 #    
@@ -40,7 +42,7 @@ class MultipleOpenAnswersController < ApplicationController
 #        format.html { render :new, status: :unprocessable_entity }
 #      end
 #    end
-#  end
+  end
 #  
 #  def update
 #    respond_to do |format|
@@ -80,6 +82,10 @@ class MultipleOpenAnswersController < ApplicationController
 #    end
 #
    def multiple_open_answers_params 
-     params.permit(:multiple_open_block_id)
+
+    # params.permit(:authenticity_token, :commit, :multiple_open_block_id, "answer": {})
+     
+     params.permit(answers: [:answer, :multiple_open_piece_id])#.require(:answers)
+
    end
 end
