@@ -12,4 +12,8 @@ class MultipleOpenBlock < ApplicationRecord
   def answered?(user)
     self.multiple_open_answers.where(user_id: user.id).any?
   end
+
+  def get_user_multiple_open_answers(user_id)
+    self.multiple_open_answers.where(user_id: user_id)
+  end
 end

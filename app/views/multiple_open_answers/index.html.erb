@@ -1,0 +1,10 @@
+<%= turbo_frame_tag 'multiple_open_answers' do %>
+  <% @multiple_open_answers.each do |answer| %>
+    <%= answer.correct? %>
+    <div>
+    <%= answer.multiple_open_piece.get_splitted_piece.first %>
+    <%= answer.multiple_open_piece.shown %>
+    <%= answer.multiple_open_piece.get_splitted_piece.last %>
+    </div>
+  <% end %>
+<% end %>

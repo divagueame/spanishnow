@@ -7,14 +7,13 @@
           <div>
            
             <% hidden_field :multiple_open_piece, name: "#{i}", :value => "#{answer.multiple_open_piece_id}" %> 
-            <%= @multiple_open_pieces[i].get_hidden_field.first %> 
+            <%= @multiple_open_pieces[i].get_splitted_piece.first %> 
             <% text_field_tag :answer, answer.answer, name: "answer[#{answer.multiple_open_piece_id}]" %>
             
             
-            <% hidden_field :answer, :multiple_open_piece => answer.multiple_open_piece_id %> 
-            <%= hidden_field_tag "answers[#{i}][multiple_open_piece]", answer.multiple_open_piece_id %> 
+            <%= hidden_field_tag "answers[#{i}][multiple_open_piece_id]", answer.multiple_open_piece_id %> 
             <%= text_field_tag :answer, answer.answer, name: "answers[#{i}][answer]" %>
-            <%= @multiple_open_pieces[i].get_hidden_field.last %> 
+            <%= @multiple_open_pieces[i].get_splitted_piece.last %> 
           </div>
         <% end %>
         <div>

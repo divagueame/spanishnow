@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :multiple_open_blocks, except: [:index ] do 
     resources :multiple_open_pieces
-    resources :multiple_open_answers, only: [:new, :create]
+    resources :multiple_open_answers, only: [:new, :create, :index]
   end
 
   resources :user_text_blocks do 
