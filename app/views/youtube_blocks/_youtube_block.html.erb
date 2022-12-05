@@ -1,3 +1,7 @@
-<div id="<%= dom_id youtube_block %>">
-  <%== youtube_block.code %>
+<div id="<%= dom_id youtube_block %>" class="">
+  <% if youtube_block.code.present? %>
+    <%== youtube_block.code %>
+  <% else %>
+    <%== youtube_block.embed_code %>
+  <% end %>
 </div>

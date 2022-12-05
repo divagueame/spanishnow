@@ -112,3 +112,9 @@
   background-color: rgba(250, 235, 215, 1);
   outline: 2px dashed goldenrod
 }
+iframe.youtube {
+	width: 100%;
+	max-width: 950px;
+	margin: 0 auto;
+	aspect-ratio: 16 / 9;
+}
