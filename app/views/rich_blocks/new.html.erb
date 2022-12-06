@@ -1,7 +1,6 @@
 <div class="container p-20">
-<h1>RICH Blocks</h1>
+  <h1>Rich Blocks</h1>
+  <%= render "form", rich_block: @rich_block %>
 
-<%= render "form", rich_block: @rich_block %>
-
-<%= link_to '< Back to lesson group', lesson_group_path(@lesson_group_id), class: "btn btn-back" %>
+  <%= link_to '< Back to lesson group', lesson_group_path(@lesson_group_id), class: "btn btn-back" %>
 </div>

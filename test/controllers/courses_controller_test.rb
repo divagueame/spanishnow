@@ -17,7 +17,7 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
     sign_in(@admin_user)
     get course_url(@course)
 
-    assert_equal(@lessons.count, 3)
+    assert_equal(@lessons.count, 4)
     assert_response :success
   end
 
@@ -25,7 +25,7 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
     sign_in(@logged_in_user)
     get course_url(@course)
 
-    assert_equal(@lessons.count, 3)
+    assert_equal(@lessons.count, 4)
     assert_response :success
   end
 
@@ -38,7 +38,7 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
     sign_in(@admin_user)
     get course_url(@course)
     assert_response :success
-    assert_equal(@lessons.count, 3)
+    assert_equal(@lessons.count, 4)
   end
 
 end

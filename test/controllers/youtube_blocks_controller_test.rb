@@ -10,7 +10,7 @@ class YoutubeBlocksControllerTest < ActionDispatch::IntegrationTest
 
   test "should get new" do
     sign_in(@admin_user)
-    get new_youtube_block_url
+    get new_youtube_block_url(lesson_group_id: @lesson_group.id)
     assert_response :success
   end
 

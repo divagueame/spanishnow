@@ -1,6 +1,5 @@
 <div class="container p-20">
-<h1>Edit Rich </h1>
-
-<%= render "form", rich_block: @rich_block %>
-
+  <h1>Edit Rich </h1>
+  <%= render "form", rich_block: @rich_block %>
+  <%= link_to '< Back to lesson group', lesson_group_path(@lesson_group_id), class: "btn btn-back" %>
 </div>
