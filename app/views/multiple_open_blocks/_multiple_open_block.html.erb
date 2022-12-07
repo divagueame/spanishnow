@@ -1,12 +1,11 @@
-  <div id="<%= dom_id multiple_open_block %>">
-    <h3>
+  <div id="<%= dom_id multiple_open_block %>" class="w-2/3 mx-auto">
+    <h3 class="text-slate-800 font-bold underline underline-offset-4 text-3xl text-center mb-8 hidden">
       <%= multiple_open_block.title %>
     </h3>
 
-    <p class="my-5">
+    <p class="my-5 hidden">
       <%= multiple_open_block.body %>
     </p> 
-  </div>
 
 
 <% if multiple_open_block.answered?(current_user) %>
@@ -16,3 +15,4 @@
 <% end %>
 
 
+  </div>
