@@ -1,10 +1,40 @@
 <%= turbo_frame_tag 'multiple_open_answers' do %>
   <% @multiple_open_answers.each do |answer| %>
-    <%= answer.correct? %>
-    <div>
-    <%= answer.multiple_open_piece.get_splitted_piece.first %>
-    <%= answer.multiple_open_piece.shown %>
-    <%= answer.multiple_open_piece.get_splitted_piece.last %>
+    <div class="text-2xl p-2 mb-6 ">
+    <% if answer.correct? %>
+      <div class="flex gap-4 items-center">
+      <%= image_tag 'icons/checks/right5.svg', class:"w-6 block" %>
+      <%= answer.full_answer %>
+      </div>
+    <% else %>
+      <div class="flex gap-4 items-center red-filter">
+      <%= image_tag 'icons/checks/wrong1.svg', class:"w-6 block" %>
+      <%= answer.full_answer %>
+      </div>
+      <div class="flex gap-4 items-center">
+      <%= image_tag 'icons/checks/right5.svg', class:"w-6 block" %>
+      <%= answer.multiple_open_piece.full %>
+      </div>
+    <% end %>
     </div>
   <% end %>
 <% end %>
+
+<div class="hidden">
+
+    <%= image_tag 'icons/checks/wrong2.svg', class:"w-8 block" %>
+    <%= image_tag 'icons/checks/wrong3.svg', class:"w-8 block" %>
+    <%= image_tag 'icons/checks/wrong4.svg', class:"w-8 block" %>
+    <%= image_tag 'icons/checks/wrong5.svg', class:"w-8 block" %>
+    <%= image_tag 'icons/checks/wrong7.svg', class:"w-8 block" %>
+    <%= image_tag 'icons/checks/wrong8.svg', class:"w-8 block" %>
+    <%= image_tag 'icons/checks/wrong9.svg', class:"w-8 block" %>
+    <%= image_tag 'icons/checks/wrong10.svg', class:"w-8 block" %>
+    <%= image_tag 'icons/checks/wrong11.svg', class:"w-8 block" %>
+    
+    <%= image_tag 'icons/checks/right.svg', class:"w-8 block" %>
+    <%= image_tag 'icons/checks/right1.svg', class:"w-8 block" %>
+    <%= image_tag 'icons/checks/right2.svg', class:"w-8 block" %>
+    <%= image_tag 'icons/checks/right3.svg', class:"w-8 block" %>
+    <%= image_tag 'icons/checks/right4.svg', class:"w-8 block" %>
+</div>

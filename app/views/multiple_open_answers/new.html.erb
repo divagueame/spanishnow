@@ -1,24 +1,19 @@
   <%= turbo_frame_tag 'multiple_open_answers' do %>
-    <div class="flex flex-col">
+    <div class="flex flex-col ">
       <%= form_tag multiple_open_block_multiple_open_answers_path(@multiple_open_block), method: 'post'  do  %>
-
-        
         <% @multiple_open_answers.each_with_index do |answer, i| %>
-          <div>
-           
+          <div class="text-2xl p-2 mb-6">
             <% hidden_field :multiple_open_piece, name: "#{i}", :value => "#{answer.multiple_open_piece_id}" %> 
             <%= @multiple_open_pieces[i].get_splitted_piece.first %> 
             <% text_field_tag :answer, answer.answer, name: "answer[#{answer.multiple_open_piece_id}]" %>
             
             
             <%= hidden_field_tag "answers[#{i}][multiple_open_piece_id]", answer.multiple_open_piece_id %> 
-            <%= text_field_tag :answer, answer.answer, name: "answers[#{i}][answer]" %>
+            <%= text_field_tag :answer, answer.answer, name: "answers[#{i}][answer]", class: "bg-transparent rounded-lg border-0.5 border-b-4 border-indigo-400 px-3 py-1 w-48 mx-1 focus:border-indigo-500" %>
             <%= @multiple_open_pieces[i].get_splitted_piece.last %> 
           </div>
         <% end %>
-        <div>
-          <%= submit_tag 'Save' %>    
-        </div> 
+          <%= submit_tag 'Save', class:"btn btn-answers" %>    
       <% end %>
 
 

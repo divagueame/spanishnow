@@ -3,6 +3,6 @@ class MultipleOpenPiece < ApplicationRecord
   has_many :multiple_open_answers, dependent: :destroy
   
   def get_splitted_piece 
-   ['before filed','after field']
+    self.full.split(self.shown, 2)
   end
 end
