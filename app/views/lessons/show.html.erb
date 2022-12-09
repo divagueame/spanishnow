@@ -6,6 +6,8 @@
                 <%= link_to '< All lessons', course_path(@lesson.course), class: "btn btn-2" %>
             </div>
     <% else %>
+
+        <%= render partial: 'lessons/navigation', locals: { lesson: @lesson } %>
         <%= render partial: 'lessons/lesson_header',
             locals: 
                 { lesson: @lesson,
