@@ -29,8 +29,10 @@
 }
  
 @layer components {
-  input[type=submit] {
-    @apply bg-sky-200 px-1 py-2 rounded-sm shadow-sm  w-full cursor-pointer hover:bg-sky-100
+  input[type=submit]{
+  }
+  input[type=submit].basic {
+   @apply bg-sky-200 px-1 py-2 rounded-sm shadow-sm  w-full cursor-pointer hover:bg-sky-100
   }
 
   .plan-btn {
@@ -81,6 +83,12 @@
     @apply bg-gradient-to-l bg-cyan-600
 
   }
+  input[type=submit].btn-answers {
+    @apply border-indigo-600 w-1/2 mx-auto hover:bg-indigo-50 hover:cursor-pointer
+  }
+  input[type=submit].btn-answers:focus-visible {
+    @apply border-none ring-offset-2 ring-offset-2 ring-2 focus:ring-offset-8
+  }
 }
 
 
@@ -117,4 +125,7 @@ iframe.youtube {
 	max-width: 950px;
 	margin: 0 auto;
 	aspect-ratio: 16 / 9;
+}
+.red-filter {
+filter: invert(26%) sepia(46%) saturate(5071%) hue-rotate(3deg) brightness(104%) contrast(87%);
 }
