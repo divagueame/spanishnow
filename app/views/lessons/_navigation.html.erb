@@ -1,9 +1,16 @@
-<div class="bg-slate-800 text-slate-200 p-4 fixed top-0 left-0 right-3/4 z-50 bottom-0 ranslate-x-full transition-all">
-  <%= image_tag 'icons/checks/wrong11.svg', class:"w-8 block absolute right-8" %>
+<aside class="bg-slate-800 text-slate-200 p-4 fixed top-0 left-0 w-80 z-50 bottom-0 -translate-x-full transition-all" data-navigation-target="panel">
+  <div data-navigation-target="toggler" data-action="click->navigation#toggle:prevent" class="absolute -right-12 bg-white rounded-full hover:cursor-pointer hover:bg-purple-300">
+    <%= image_tag 'icons/menu3.svg', class:"w-8 block" %>
+  </div>
   <h3><%= lesson.title %></h3>
-  <div>
+  <div class="flex flex-col gap-1">
     <% lesson.lesson_groups.each do |lesson_group| %>
-      <%= lesson_group.title%>
+      <div class="pl-4">
+        <%= link_to lesson_group_path(lesson_group), class: "text-slate-200 hover:text-slate-400 no-underline", data: { turbo_frame: "lesson_group_frame" } do %>
+          <%= lesson_group.position %>.
+          <%= lesson_group.title%>
+        <% end %>
+      </div>
     <% end %>
   </div>
-</div>
+</aside>

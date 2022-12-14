@@ -6,7 +6,7 @@
                 <%= link_to '< All lessons', course_path(@lesson.course), class: "btn btn-2" %>
             </div>
     <% else %>
-
+      <div class="relative left-0 transition-all" data-controller="navigation">
         <%= render partial: 'lessons/navigation', locals: { lesson: @lesson } %>
         <%= render partial: 'lessons/lesson_header',
             locals: 
@@ -16,5 +16,6 @@
         %>
         <%= turbo_frame_tag "lesson_group_frame", src: "/lesson_groups/#{@lesson.lesson_groups.first.id}" %>
 
+      </div>
     <% end %>
 </div>

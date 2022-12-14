@@ -4,6 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = [ "toggler", "panel" ]
   toggle () {
+	this.element.classList.toggle("ml-96")
   	this.panelTarget.classList.toggle("-translate-x-full")
   }
 }
