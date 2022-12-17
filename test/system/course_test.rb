@@ -13,7 +13,7 @@ class CoursesTest < ApplicationSystemTestCase
     sign_in(@admin_user)
     visit course_url(@course)
     assert_selector('#lessons', count: 1)
-    assert_selector('.lesson_link', count: 3)
+    assert_selector('.lesson_link', count: 4)
     
     # visit lesson_url(@lesson)
 

@@ -1,9 +1,14 @@
 one:
-  answer: MyText
-  user: one
-  multiple_open_piece: one
+  answer: madre 
+  user: two 
+  multiple_open_piece: four 
 
 two:
-  answer: MyText
+  answer: wrong 
   user: two
-  multiple_open_piece: two
+  multiple_open_piece: five 
+
+three:
+  answer: noticia 
+  user: two
+  multiple_open_piece: six

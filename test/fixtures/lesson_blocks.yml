@@ -63,3 +63,26 @@ ten:
   lesson_group: seven 
   title: "Chiki"
 
+eleven:
+  position: 1
+  title: "Canon"
+  block: six (RichBlock)
+  lesson_group: four 
+
+twelve:
+  position: 2
+  title: "This is a great idea!"
+  block: fourth_user_text_block (UserTextBlock)
+  lesson_group: four 
+
+thirteen:
+  position: 3
+  title: "Another day at the office"
+  block: three (MultipleOpenBlock)
+  lesson_group: four 
+
+fourteen:
+  position: 4
+  title: "I know it'll be good"
+  block: one (YoutubeBlock)
+  lesson_group: four 

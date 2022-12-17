@@ -6,7 +6,7 @@
                 <%= link_to '< All lessons', course_path(@lesson.course), class: "btn btn-2" %>
             </div>
     <% else %>
-      <div class="relative left-0 transition-all" data-controller="navigation">
+      <div class="relative left-0 transition-all ease-out duration-500" data-controller="navigation">
         <%= render partial: 'lessons/navigation', locals: { lesson: @lesson } %>
         <%= render partial: 'lessons/lesson_header',
             locals: 
