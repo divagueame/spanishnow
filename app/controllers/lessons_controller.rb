@@ -7,17 +7,14 @@ class LessonsController < ApplicationController
     filter_active(@lesson)
   end
 
-  before_action only: %i[show] do
-    filter_study_session(@lesson) unless current_user.admin?
-  end
-
-
   def show
     @lesson_groups = @lesson.lesson_groups
     return if current_user.admin?
-
     @study_session = current_user.study_session
     @active_lesson_group = LessonGroup.find(@study_session.lesson_group_id)
+    if params[:start_lesson].present?
+    else
+    end
   end
 
   def new
@@ -71,6 +68,6 @@ class LessonsController < ApplicationController
   end
 
   def lesson_params
-    params.require(:lesson).permit(:title, :description, :position, :product_id, :active, :course_id, :image)
+    params.require(:lesson).permit(:title, :description, :position, :product_id, :active, :course_id, :image, :start_lesson)
   end
 end

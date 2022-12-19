@@ -29,22 +29,4 @@ class ApplicationController < ActionController::Base
     current_user.study_session
   end
 
-  def filter_study_session(lesson)
-    current_study_session = active_study_session
-
-    if current_study_session.nil?
-      StudySession.create(user_id: current_user.id, lesson_group_id: lesson.lesson_groups.first.id)
-      redirect_to lesson_path(lesson)
-    elsif !lesson.this_lesson_study_session?(current_study_session) && !current_study_session.session_ended?
-      p 'Has active study lesson, but wrong lesson'
-      redirect_to lesson_path(current_study_session.lesson),
-                  notice: "Please, continue with your lesson. You still have #{current_study_session.time_left} left"
-    elsif current_study_session.session_ended?
-      p 'Session ended. Updating lesson'
-      current_study_session.lesson_group.update(lesson_id: lesson.id)
-    else
-      p 'Has active study lesson and is the right lesson'
-      flash[:notice] = "You have #{current_study_session.time_left} left to complete this lesson."
-    end
-  end
 end
