@@ -12,4 +12,7 @@ class Lesson < ApplicationRecord
     self.id === study_session.lesson.id ? true : false
   end
 
+  def lower_active_item
+    self.lower_items.where(active: true).first
+  end
 end

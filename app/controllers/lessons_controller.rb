@@ -2,6 +2,7 @@ class LessonsController < ApplicationController
   before_action :authenticate_admin, only: %i[new edit create update destroy toggle_active_lesson]
   before_action :authenticate_user!, only: %i[show]
   before_action :set_lesson, only: %i[show edit update destroy toggle_active_lesson]
+  before_action :set_active_lesson_group, only: %i[ show ]
 
   before_action only: %i[show] do
     filter_active(@lesson)
@@ -10,10 +11,11 @@ class LessonsController < ApplicationController
   def show
     @lesson_groups = @lesson.lesson_groups
     return if current_user.admin?
-    @study_session = current_user.study_session
-    @active_lesson_group = LessonGroup.find(@study_session.lesson_group_id)
-    if params[:start_lesson].present?
+#   @study_session = current_user.study_session
+    if @active_lesson_group 
+      p "has lesson group"
     else
+      p "NO has lesson group"
     end
   end
 
@@ -67,7 +69,12 @@ class LessonsController < ApplicationController
     @lesson = Lesson.find(params[:id])
   end
 
+  def set_active_lesson_group
+    
+    @active_lesson_group = LessonGroup.find(params[:active_lesson_group]) if params[:active_lesson_group].present?
+  end
+
   def lesson_params
-    params.require(:lesson).permit(:title, :description, :position, :product_id, :active, :course_id, :image, :start_lesson)
+    params.require(:lesson).permit(:title, :description, :position, :product_id, :active, :course_id, :image, :active_lesson_group)
   end
 end

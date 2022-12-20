@@ -8,18 +8,23 @@
     <% else %>
       <div class="relative left-0 transition-all ease-out duration-500" data-controller="navigation">
         <%= render partial: 'lessons/navigation', locals: { lesson: @lesson } %>
-        <% if !params[:start_lesson].present? %>
         <%= render partial: 'lessons/lesson_header',
             locals: 
                 { lesson: @lesson,
                 study_session: current_user.study_session
                 } 
         %>
-        <%= turbo_frame_tag "lesson_group_frame", src: "/lesson_groups/#{@lesson.lesson_groups.first.id}" %>
-      <% else %>
-        <%= render partial: 'lessons/lesson_intro', locals: {lesson: @lesson } %>
-        <%= link_to 'Start Lesson', lesson_path(@lesson), class: 'btn' %>
-      <% end %> 
+        <% if @active_lesson_group %>
+          <%= turbo_frame_tag "lesson_group_frame", src: "/lesson_groups/#{@active_lesson_group}" %>
+        <% else %>
+          <%= turbo_frame_tag "lesson_group_frame" do  %>
+            <div class='container'>
+            <h1><%= @lesson.title %></h1>
+            <p><%= @lesson.description %></p>
+            <%= link_to 'Start Lesson', lesson_group_path(@lesson.lesson_groups.first), class: "btn btn-1 text-slate-200 hover:opacity-80 no-underline" %>
+            </div>
+        <% end %>
+        <% end %>
       </div>
     <% end %>
 </div>

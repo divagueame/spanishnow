@@ -4,19 +4,19 @@
   </div>
   <div class="overflow-y-scroll relative h-full left-0 right-0 py-4">
   <div class="flex flex-col gap-1 mb-4">
-    <% lesson.course.lessons.each do |lessonInCourse| %>
+    <% lesson.course.active_lessons.each do |lessonInCourse| %>
       <div>
-      <%= link_to lesson_path(lesson: lessonInCourse, start_lesson: true) do  %>
+        <%= link_to lesson_path(lessonInCourse), data: {turbo_frame: "lesson_group_frame"}  do  %>
         <h3 class="pb-2 text-xl <%= lesson.id === lessonInCourse.id ? 'text-purple-300' : '' %>"  <%= lesson.id === lessonInCourse.id ? "data-navigation-target=active" : '' %>><%= lessonInCourse.title %></h3>
       <% end %>
-      <% if  lesson.id === lessonInCourse.id %>
+      <% if lesson.id === lessonInCourse.id %>
 
   <div class="flex flex-col gap-1 mb-4">
     <% lesson.lesson_groups.each do |lesson_group| %>
       <div class="pl-4 mb-1 text-lg">
         <%= link_to lesson_group_path(lesson_group), class: "text-slate-200 hover:opacity-80 no-underline", data: { turbo_frame: "lesson_group_frame" } do %>
           <%= lesson_group.position %>.
-          <%= lesson_group.title%>
+          <%= lesson_group.title %>
         <% end %>
       </div>
     <% end %>
