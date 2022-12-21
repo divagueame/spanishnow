@@ -1,4 +1,4 @@
-<aside class="bg-slate-800 text-slate-200 p-4 fixed top-0 left-0 w-80 z-50 bottom-0 -translate-x-full transition-all ease-out duration-300" data-navigation-target="panel">
+<aside class="bg-slate-800 text-slate-200 p-4 fixed top-0 left-0 w-80 z-50 bottom-0 transition-all ease-out duration-300 <%= opened ? '' : '-translate-x-full' %>" data-navigation-target="panel">
   <div data-navigation-target="toggler" data-action="click->navigation#toggle:prevent" class="absolute -right-16 bg-white rounded-full p-4  bg-transparent hover:cursor-pointer ">
     <%= image_tag 'icons/menu3.svg', class:"w-8 block" %>
   </div>
@@ -6,7 +6,7 @@
   <div class="flex flex-col gap-1 mb-4">
     <% lesson.course.active_lessons.each do |lessonInCourse| %>
       <div>
-        <%= link_to lesson_path(lessonInCourse), data: {turbo_frame: "lesson_group_frame"}  do  %>
+        <%= link_to lesson_path(lessonInCourse), data: { turbo_stream: "true" }  do  %>
         <h3 class="pb-2 text-xl <%= lesson.id === lessonInCourse.id ? 'text-purple-300' : '' %>"  <%= lesson.id === lessonInCourse.id ? "data-navigation-target=active" : '' %>><%= lessonInCourse.title %></h3>
       <% end %>
       <% if lesson.id === lessonInCourse.id %>

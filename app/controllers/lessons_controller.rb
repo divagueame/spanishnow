@@ -12,10 +12,9 @@ class LessonsController < ApplicationController
     @lesson_groups = @lesson.lesson_groups
     return if current_user.admin?
 #   @study_session = current_user.study_session
-    if @active_lesson_group 
-      p "has lesson group"
-    else
-      p "NO has lesson group"
+    respond_to do |format|
+        format.html
+        format.turbo_stream 
     end
   end
 
