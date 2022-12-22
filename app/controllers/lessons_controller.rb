@@ -11,7 +11,13 @@ class LessonsController < ApplicationController
   def show
     @lesson_groups = @lesson.lesson_groups
     return if current_user.admin?
-#   @study_session = current_user.study_session
+#is_opened_navigatiois_opened_navigationn   @study_session = current_user.study_session
+
+  if params[:is_opened_navigation] 
+    @is_opened_navigation=true
+  else
+    @is_opened_navigation=false
+  end 
     respond_to do |format|
         format.html
         format.turbo_stream 
@@ -74,6 +80,6 @@ class LessonsController < ApplicationController
   end
 
   def lesson_params
-    params.require(:lesson).permit(:title, :description, :position, :product_id, :active, :course_id, :image, :active_lesson_group)
+    params.require(:lesson).permit(:title, :description, :position, :product_id, :active, :course_id, :image, :active_lesson_group, :is_opened_navigation)
   end
 end

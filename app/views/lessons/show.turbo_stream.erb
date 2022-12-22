@@ -1,5 +1,14 @@
+<%= turbo_stream.update "lesson_header" do %>
+     <%= render partial: 'lessons/lesson_header',
+            locals: 
+                { lesson: @lesson,
+                study_session: current_user.study_session
+                } 
+        %>
+<% end %>
+
 <%= turbo_stream.update "navigation" do %>
-  <%= render partial: 'lessons/navigation', locals: { lesson: @lesson, opened: true} %>
+  <%= render partial: 'lessons/navigation', locals: { lesson: @lesson, opened: @is_opened_navigation} %>
 <% end %>
 <%= turbo_stream.update "lesson_group_frame" do %>
   <%= render partial: 'lessons/lesson_intro', locals: { lesson: @lesson } %>

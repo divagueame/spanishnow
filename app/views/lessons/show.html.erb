@@ -12,12 +12,14 @@
       <%= turbo_frame_tag "navigation" do  %>
           <%= render partial: 'lessons/navigation', locals: { lesson: @lesson, opened: false} %>
       <% end %>
+          <%= turbo_frame_tag "lesson_header" do %>
         <%= render partial: 'lessons/lesson_header',
             locals: 
                 { lesson: @lesson,
                 study_session: current_user.study_session
                 } 
         %>
+    <% end %>
         <% if @active_lesson_group %>
           <%= turbo_frame_tag "lesson_group_frame", src: "/lesson_groups/#{@active_lesson_group}" %>
         <% else %>
