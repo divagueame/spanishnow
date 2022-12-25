@@ -1,14 +1,15 @@
-<div class="bg-slate-300 rounded-sm p-2 mb-4">
+<div class="cbg-slate-300 rounded-sm ep-2 mb-4">
 Your assignment:<br>
 <%= @notification.notifeable.user_text_answer.user_text_block.promptTitle %>
 <%= @notification.notifeable.user_text_answer.user_text_block.promptBody %>
 </div>
-<div class="bg-slate-300 rounded-sm p-2 mb-4">
+<div class="cbg-slate-300 rounded-sm p-2 mb-4">
     You wrote:<br>
     <%= @notification.notifeable.user_text_answer.title %>
     <%= @notification.notifeable.user_text_answer.body %>
 </div>
-<div class="bg-purple-500 rounded-sm p-2">
+<div class="cbg-purple-500 rounded-sm p-2">
     Your Teacher:<br>
     <b><%= @notification.notifeable.body %></b>
 </div>
+<%= link_to 'Go to lesson >', lesson_path(@notification.notifeable.get_lesson_group), params: {:active_lesson_group => @notification.notifeable.get_lesson_group.id}, class: "btn btn-2" %>

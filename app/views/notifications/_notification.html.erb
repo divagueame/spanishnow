@@ -1,4 +1,6 @@
 <%= link_to notification_path(notification), class: "flex gap-2 items-center #{notification.seen ? 'text-slate-600' : 'text-slate-800'} ", data: {turbo_frame: "show_notification"} do %>
-    <%= image_tag 'icons/writing.svg', class:"block" %>
-    <%= notification.notifeable.body %>
+  <%= notification.notifeable.get_lesson_group.lesson.position %>.
+  <%= notification.notifeable.get_lesson_group.position %>
+  <%= notification.notifeable.get_lesson_group.title %>
+    <% notification.notifeable.body %>
 <% end %>

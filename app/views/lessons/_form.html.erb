@@ -26,10 +26,9 @@
     <%= form.file_field :image %>
   </div>
 
-
     <%= form.hidden_field :course_id, value: (lesson.course_id || @course.id) %>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit :class => "btn btn-submit"  %>
   </div>
 <% end %>

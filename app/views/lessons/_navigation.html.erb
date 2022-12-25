@@ -6,8 +6,8 @@
   <div class="flex flex-col gap-1 mb-4">
     <% lesson.course.active_lessons.each do |lessonInCourse| %>
       <div>
-        <%= link_to lesson_path(lessonInCourse), data: { turbo_stream: "true" }  do  %>
-        <h3 class="pb-2 text-xl <%= lesson.id === lessonInCourse.id ? 'text-purple-300' : '' %>"  <%= lesson.id === lessonInCourse.id ? "data-navigation-target=active" : '' %>><%= lessonInCourse.title %></h3>
+        <%= link_to lesson_path(lessonInCourse), class: "no-underline", data: { turbo_stream: "true" }  do  %>
+        <h3 class="pb-2 text-xl <%= lesson.id === lessonInCourse.id ? 'text-purple-300' : 'text-sky-300' %>"  <%= lesson.id === lessonInCourse.id ? "data-navigation-target=active" : '' %>><%= lessonInCourse.title %></h3>
       <% end %>
       <% if lesson.id === lessonInCourse.id %>
 
