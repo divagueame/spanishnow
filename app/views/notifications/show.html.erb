@@ -1,3 +1,4 @@
 <%= turbo_frame_tag 'show_notification' do %>
+    <% image_tag 'icons/writing.svg', class:"block" %>
     <%= render @notification.partial_path, locals: @notification %>
 <% end %>

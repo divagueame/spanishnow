@@ -11,15 +11,15 @@ class LessonsController < ApplicationController
   def show
     @lesson_groups = @lesson.lesson_groups
     return if current_user.admin?
-#is_opened_navigatiois_opened_navigationn   @study_session = current_user.study_session
 
+  
   if params[:is_opened_navigation] 
     @is_opened_navigation=true
   else
     @is_opened_navigation=false
   end 
     respond_to do |format|
-        format.html
+        format.html 
         format.turbo_stream 
     end
   end
@@ -36,7 +36,7 @@ class LessonsController < ApplicationController
     
     respond_to do |format|
       if @lesson.save
-        format.html { redirect_to lesson_url(@lesson), notice: 'Lesson was successfully created.' }
+        format.html { redirect_to course_path(@lesson.course), status: :see_other, notice: 'Lesson was successfully created.' }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -75,7 +75,6 @@ class LessonsController < ApplicationController
   end
 
   def set_active_lesson_group
-    
     @active_lesson_group = LessonGroup.find(params[:active_lesson_group]) if params[:active_lesson_group].present?
   end
 
