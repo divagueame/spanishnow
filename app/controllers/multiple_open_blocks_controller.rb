@@ -16,7 +16,9 @@ class MultipleOpenBlocksController < ApplicationController
     @multiple_open_block.multiple_open_pieces.build
   end
 
-  def edit; end
+  def edit
+    @lesson_group_id = @multiple_open_block.lesson_block.lesson_group_id
+  end
 
   def create
     @multiple_open_block = MultipleOpenBlock.new(multiple_open_block_params)
@@ -34,11 +36,14 @@ class MultipleOpenBlocksController < ApplicationController
   end
 
   def update
+    @lesson_group_id = @multiple_open_block.lesson_block.lesson_group_id
+    p @lesson_group_id
+
     respond_to do |format|
       if @multiple_open_block.update(multiple_open_block_params)
         format.html do
-          redirect_to multiple_open_block_url(@multiple_open_block),
-                      notice: 'Multiple open block was successfully updated.'
+    #     redirect_to lesson_group_path(@lesson_group_id), notice: "Multilple  block was successfully updated."
+          
         end
       else
         format.html { render :edit, status: :unprocessable_entity }

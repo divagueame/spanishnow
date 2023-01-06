@@ -4,7 +4,8 @@ class StudySessionController < ApplicationController
   def destroy 
     @study_session =  StudySession.find(params[:id])
     @study_session.destroy
-    redirect_to course_path(Course.first), notice: "You finished this lesson. Good job", status: 303 
+#   redirect_to course_path(Course.first), notice: "You finished this lesson. Good job", status: 303 
+    redirect_to root_path
   end
 
   def update
