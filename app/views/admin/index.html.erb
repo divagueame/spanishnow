@@ -7,35 +7,39 @@
   </div>
 </div>
 
-<hr>
 
+<div class="py-2 container mx-auto mb-8">
+  <h1 class='underline'>Feedback</h1>
 <% if !@user_text_answers.empty? then %>
+  <div class='pb-8'>
   <h3>These user answers need feedback...</h3>
-  <div class="py-2 container user_text_answers" id="user_text_answers">
+  <div class="py-2 user_text_answers" id="user_text_answers">
     <% @user_text_answers.each do |u| %>
       <div class="user_text_answer" id="user_text_answer_<%= u.id %>">
         <h3 class="title"><%= u.title %></h3>
-        <p class="body"><%= u.body %></p>
-        <%= link_to 'Give feedback', new_feedback_url(:user_text_answer_id => u.id), data: {turbo_frame: 'modal'} %>
+        <p class="body"><% u.body %></p>
+        <%= link_to 'Give feedback', new_feedback_url(:user_text_answer_id => u.id), data: {turbo_frame: 'modal'}, class: 'btn-pill' %>
       </div>
     <% end %>
   </div>
+  </div>
 <% end %>
 
-<hr>
-
-<div class="py-2 container mx-auto">
+<div class="py-2 mx-auto">
   <h3>Previous feedback</h3>
   <% @feedbacks.each do |feedback| %>
+    <div class=''>
     <%= feedback.body %>
-    <%= link_to 'See', feedback_url(feedback) %>
-    <br>
+    <%= link_to 'See', feedback_url(feedback), class: 'btn-pill' %>
+    </div>
   <% end %>
 </div>
+</div>
 
-<hr>
+
 <%# Students %>
 <div class="container py-2">
+  <h1 class='underline'>Current students</h1>
   <div class="flex flex-col gap-2">
     <% @students.each do |student| %>
     <div>

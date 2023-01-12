@@ -29,8 +29,6 @@
 }
  
 @layer components {
-  input[type=submit]{
-  }
   input[type=submit].basic {
    @apply bg-sky-200 px-1 py-2 rounded-sm shadow-sm  w-full cursor-pointer hover:bg-sky-100
   }
@@ -97,6 +95,9 @@
   input[type=submit].btn-answers:focus-visible {
     @apply border-none ring-offset-2 ring-offset-2 ring-2 focus:ring-offset-8
   }
+  .btn-pill {
+     @apply px-3 py-1 border border-slate-300 rounded-full hover:bg-slate-200 inline-block no-underline
+   }
 }
 
 
